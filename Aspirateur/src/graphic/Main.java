@@ -5,6 +5,12 @@
  */
 package graphic;
 
+import java.awt.EventQueue;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
 /**
  *
  * @author Thomas
@@ -16,6 +22,7 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        view.initialize();
     }
 
     /**
@@ -27,7 +34,7 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        view = new javax.swing.JPanel();
+        view = new graphic.GridPanel();
         labelTime = new javax.swing.JLabel();
         sliderTime = new javax.swing.JSlider();
         textFieldTime = new javax.swing.JTextField();
@@ -44,7 +51,7 @@ public class Main extends javax.swing.JFrame {
         view.setLayout(viewLayout);
         viewLayout.setHorizontalGroup(
             viewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 302, Short.MAX_VALUE)
         );
         viewLayout.setVerticalGroup(
             viewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,7 +144,6 @@ public class Main extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(view, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(labelTime)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -157,6 +163,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textFieldJewel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 72, Short.MAX_VALUE))
+            .addComponent(view, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -235,6 +242,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField textFieldDust;
     private javax.swing.JTextField textFieldJewel;
     private javax.swing.JTextField textFieldTime;
-    private javax.swing.JPanel view;
+    private graphic.GridPanel view;
     // End of variables declaration//GEN-END:variables
 }
