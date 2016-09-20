@@ -11,6 +11,7 @@ import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -31,6 +32,15 @@ public class CellPane extends JPanel{
                 public void mouseExited(MouseEvent e) {
                     setBackground(defaultBackground);
                 }
+
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    if (SwingUtilities.isRightMouseButton(e)) {
+                        doPop(e);
+                    }
+                }
+                
+                
             });
         }
 
@@ -38,4 +48,9 @@ public class CellPane extends JPanel{
         public Dimension getPreferredSize() {
             return new Dimension(50, 50);
         }
+        
+        private void doPop(MouseEvent e){
+        PopupMenu menu = new PopupMenu();
+        menu.show(e.getComponent(), e.getX(), e.getY());
+    }
 }
