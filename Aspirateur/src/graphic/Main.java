@@ -55,7 +55,9 @@ public class Main extends javax.swing.JFrame {
         labelTime.setLabelFor(sliderTime);
         labelTime.setText("Frequency of apparition");
 
+        sliderTime.setMaximum(10);
         sliderTime.setMinimum(1);
+        sliderTime.setValue(2);
         sliderTime.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderTimeStateChanged(evt);
@@ -63,18 +65,50 @@ public class Main extends javax.swing.JFrame {
         });
 
         textFieldTime.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        textFieldTime.setText("2");
+        textFieldTime.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldTimeActionPerformed(evt);
+            }
+        });
 
         labelDust.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelDust.setLabelFor(sliderTime);
         labelDust.setText("Dust probability");
 
+        sliderDust.setValue(20);
+        sliderDust.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderDustStateChanged(evt);
+            }
+        });
+
         textFieldDust.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        textFieldDust.setText("20");
+        textFieldDust.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldDustActionPerformed(evt);
+            }
+        });
 
         labelJewel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelJewel.setLabelFor(sliderTime);
         labelJewel.setText("Jewel probability");
 
+        sliderJewel.setValue(10);
+        sliderJewel.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderJewelStateChanged(evt);
+            }
+        });
+
         textFieldJewel.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        textFieldJewel.setText("10");
+        textFieldJewel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldJewelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -131,6 +165,30 @@ public class Main extends javax.swing.JFrame {
     private void sliderTimeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderTimeStateChanged
         textFieldTime.setText(Integer.toString(sliderTime.getValue()));
     }//GEN-LAST:event_sliderTimeStateChanged
+
+    private void sliderDustStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderDustStateChanged
+        textFieldDust.setText(Integer.toString(sliderDust.getValue()));
+    }//GEN-LAST:event_sliderDustStateChanged
+
+    private void sliderJewelStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderJewelStateChanged
+        textFieldJewel.setText(Integer.toString(sliderJewel.getValue())
+        );
+    }//GEN-LAST:event_sliderJewelStateChanged
+
+    private void textFieldTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldTimeActionPerformed
+        sliderTime.setValue(Integer.parseInt(textFieldTime.getText())
+        );
+    }//GEN-LAST:event_textFieldTimeActionPerformed
+
+    private void textFieldDustActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldDustActionPerformed
+        sliderDust.setValue(Integer.parseInt(textFieldDust.getText())
+        );
+    }//GEN-LAST:event_textFieldDustActionPerformed
+
+    private void textFieldJewelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldJewelActionPerformed
+        sliderJewel.setValue(Integer.parseInt(textFieldJewel.getText())
+        );
+    }//GEN-LAST:event_textFieldJewelActionPerformed
 
     /**
      * @param args the command line arguments
