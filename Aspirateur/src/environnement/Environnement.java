@@ -7,6 +7,7 @@ package environnement;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import main.Main;
 
 /**
  * Main class
@@ -24,9 +25,10 @@ public class Environnement implements Runnable{
     
     private Grid grid;
     
-    public static void main(String[] args) {
-        Thread t = new Thread(new Environnement());
-        t.start();
+    private Main main;
+    
+    public Environnement(Main main){
+        this.main = main;
     }
     
     @Override
