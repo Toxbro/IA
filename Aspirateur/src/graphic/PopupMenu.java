@@ -5,6 +5,8 @@
  */
 package graphic;
 
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -20,19 +22,22 @@ import javax.swing.SwingUtilities;
 public class PopupMenu extends JPopupMenu{
     JMenuItem addDust;
     JMenuItem addJewel;
-    public PopupMenu(){
+    public PopupMenu(Component c){
         addDust = new JMenuItem("Add dust");
         addJewel = new JMenuItem("Add jewel");
         addDust.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Add dust");
+                c.setBackground(Color.RED);
+                System.out.println();
             }
         });
         addJewel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Add jewel");
+                c.setBackground(Color.GREEN);
             }
         });
         

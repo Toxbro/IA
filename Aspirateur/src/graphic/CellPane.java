@@ -26,6 +26,7 @@ public class CellPane extends JPanel{
                 public void mouseEntered(MouseEvent e) {
                     defaultBackground = getBackground();
                     setBackground(Color.BLUE);
+                    //System.out.println(e.getComponent().getX());
                 }
 
                 @Override
@@ -50,7 +51,7 @@ public class CellPane extends JPanel{
         }
         
         private void doPop(MouseEvent e){
-        PopupMenu menu = new PopupMenu();
+        PopupMenu menu = new PopupMenu(e.getComponent());
         menu.show(e.getComponent(), e.getX(), e.getY());
     }
 }
