@@ -30,21 +30,44 @@ public class GridPanel extends JPanel{
 
                     CellPane cellPane = new CellPane();
                     Border border = null;
-                    if (row < 2) {
-                        if (col < 4) {
-                            border = new MatteBorder(1, 1, 0, 0, Color.GRAY);
-                        } else {
-                            border = new MatteBorder(1, 1, 0, 1, Color.GRAY);
-                        }
-                    } else {
-                        if (col < 4) {
-                            border = new MatteBorder(1, 1, 1, 0, Color.GRAY);
-                        } else {
-                            border = new MatteBorder(1, 1, 1, 1, Color.GRAY);
-                        }
-                    }
-                    cellPane.setBorder(border);
-                    add(cellPane, gbc);
+                     border = new MatteBorder(0, 0, 0, 0, Color.GRAY);
+                     if(row == 0){
+                         if(col < 3){
+                             if (col == 0){
+                                 border = new MatteBorder(1, 1, 0, 1, Color.GRAY);
+                             }
+                             else{
+                                 border = new MatteBorder(1, 0, 0, 1, Color.GRAY);
+                             }
+                         }
+                     }
+                     else if(row == 1){
+                         if(col == 0){
+                             border = new MatteBorder(1, 1, 1, 1, Color.GRAY);
+                         }else{
+                             border = new MatteBorder(1, 0, 1, 1, Color.GRAY);
+                         }
+                     }
+                     else{
+                         if(col < 3){
+                             if (col == 0){
+                                 border = new MatteBorder(0, 1, 1, 1, Color.GRAY);
+                             }
+                             else{
+                                 border = new MatteBorder(0, 0, 1, 1, Color.GRAY);
+                             }
+                         }
+                     }
+                     if(row == 0 || row == 2){
+                         if(col < 3){
+                            cellPane.setBorder(border);
+                            add(cellPane, gbc);
+                         }
+                     }
+                     else{
+                        cellPane.setBorder(border);
+                        add(cellPane, gbc);
+                     }
                 }
             }
         }
