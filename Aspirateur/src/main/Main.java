@@ -6,6 +6,7 @@
 package main;
 
 import environnement.Environnement;
+import IA.*;
 
 /**
  *
@@ -37,5 +38,29 @@ public final class Main {
      */
     public void setEnvironnement(Environnement aEnvironnement) {
         environnement = aEnvironnement;
+    }
+    
+    public boolean botMove(Direction dir) {
+        //Le robot appelle cette méthode pour signifier au master qu'il s'est déplacé.
+        //return true ou false, dépendamment de si le mouvement était possible oupas.
+        return false;
+    }
+    
+    public boolean getDustState() {
+        //retourne l'état de la poussière sur la case actuelle du robot.
+        return false;
+    }
+    
+    public boolean getJewelState() {
+        //retourne l'état des bijous sur la case actuelle du robot.
+        return false;
+    }
+    
+    public void suck() {
+        //le robot aspire la poussière et les bijous
+    }
+    
+    public void pick() {
+        //le robot prend un bijou
     }
 }
