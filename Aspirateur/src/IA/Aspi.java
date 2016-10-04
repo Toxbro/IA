@@ -56,9 +56,6 @@ public class Aspi implements Runnable {
     }
     
     private void move() {
-        Direction dir = pattern.get(0);
-        pattern.remove(0);
-        pattern.add(dir);
         switch(dir){
             case DOWN: y--;
             case UP: y++;
