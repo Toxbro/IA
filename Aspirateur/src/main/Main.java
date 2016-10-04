@@ -5,7 +5,7 @@
  */
 package main;
 
-import environnement.Environnement;
+import environnement.*;
 import IA.*;
 
 /**
@@ -16,10 +16,19 @@ public final class Main {
     
     private  Environnement environnement;
     
+    private Cell currentRobotCell;
+    
     public Main (){
         setEnvironnement(new Environnement(this));
         Thread t = new Thread(getEnvironnement());
         t.start();
+        
+        currentRobotCell = environnement.getRandomCell();
+        
+        //DEBUG
+        System.out.println("Robot is currently on : "+currentRobotCell.toString());
+        
+        //Initialize other threads
     }
     
     public static void main(String [] args){
@@ -41,26 +50,71 @@ public final class Main {
     }
     
     public boolean botMove(Direction dir) {
-        //Le robot appelle cette méthode pour signifier au master qu'il s'est déplacé.
-        //return true ou false, dépendamment de si le mouvement était possible oupas.
+        Grid grid = environnement.getGrid();
+        Cell newCell;
+        
+        if (dir.equals(Direction.LEFT)) {
+            newCell = grid.getCell(currentRobotCell.getRow(), currentRobotCell.getCol()-1);
+            if ((newCell != null) && (newCell.getEnable())) {
+                currentRobotCell = newCell;
+                
+                //Send event to GUI
+                
+                return true;
+            }   
+        }
+        if (dir.equals(Direction.RIGHT)) {
+            newCell = grid.getCell(currentRobotCell.getRow(), currentRobotCell.getCol()+1);
+            if ((newCell != null) && (newCell.getEnable())) {
+                currentRobotCell = newCell;
+                
+                //Send event to GUI
+                
+                return true;
+            }   
+        }
+        if (dir.equals(Direction.UP)) {
+            newCell = grid.getCell(currentRobotCell.getRow()-1, currentRobotCell.getCol());
+            if ((newCell != null) && (newCell.getEnable())) {
+                currentRobotCell = newCell;
+                
+                //Send event to GUI
+                
+                return true;
+            }   
+        }
+        if (dir.equals(Direction.DOWN)) {
+            newCell = grid.getCell(currentRobotCell.getRow()+1, currentRobotCell.getCol());
+            if ((newCell != null) && (newCell.getEnable())) {
+                currentRobotCell = newCell;
+                
+                //Send event to GUI
+                
+                return true;
+            }   
+        }
         return false;
     }
     
+    //retourne l'état de la poussière sur la case actuelle du robot.
     public boolean getDustState() {
-        //retourne l'état de la poussière sur la case actuelle du robot.
-        return false;
+        return currentRobotCell.hasObject(Type.DUST);
     }
     
+    //retourne l'état des bijous sur la case actuelle du robot.
     public boolean getJewelState() {
-        //retourne l'état des bijous sur la case actuelle du robot.
-        return false;
+        return currentRobotCell.hasObject(Type.JEWEL);
     }
     
+    //le robot aspire la poussière et les bijous
     public void suck() {
-        //le robot aspire la poussière et les bijous
+        currentRobotCell.removeAllObjects();
+        //Send event to GUI
     }
     
+    //le robot prend un bijou
     public void pick() {
-        //le robot prend un bijou
+        currentRobotCell.removeObject(Type.JEWEL);
+        //Send event to GUI
     }
 }

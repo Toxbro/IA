@@ -78,7 +78,7 @@ public class Environnement implements Runnable{
         return (int) (Math.random() * (max - min));
     }
     
-    private Cell getRandomCell(){
+    public Cell getRandomCell(){
         Boolean cellIncorrect = true;
         Cell cell;
         int row, col;
