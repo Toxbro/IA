@@ -7,6 +7,7 @@ package IA;
 
 import java.util.Map;
 import environnement.Cell;
+import java.util.ArrayList;
 import java.util.HashMap;
 import main.Main;
 
@@ -22,14 +23,15 @@ public class Aspi implements Runnable {
     private HashMap<Cell, Integer> grid = new HashMap<Cell, Integer>();
     private Main master;
     private boolean isExploDone;
-    private Cell goal;
+    private ArrayList<Direction> path = new ArrayList<Direction>();
+    private boolean isCellClean;
     
     public Aspi(Main master) {
         this.master = master;
         this.x = 0;
         this.y = 0;
         this.isExploDone = false;
-        this.goal = null;
+        this.path = null;
     }
     
     @Override
@@ -37,30 +39,75 @@ public class Aspi implements Runnable {
         while(true) {
            updateBelief();
            switch(getDesire()){
-               
-           }
+                case GETNEWGOAL:{
+                    getNewGoal();
+                }
+                case MOVETOGOAL:{
+                    
+                }
+                case CLEAN:{
+                    
+                }
+                case EXPLORE:{
+                    
+                }
+            }
         }
     }
     
     private void updateBelief() {
-        if(isExploDone) {
-            updateGrid();
+        updateGrid();        
+        if(!isExploDone)
+            grid.put(new Cell(y, x), 0);
+    }
+    
+    private Desire getDesire(){
+        if(isExploDone && path == null) {
+            return Desire.GETNEWGOAL;
+        }
+        else if(isExploDone && path != null && !isCellClean) {
+            return Desire.CLEAN;
+        }
+        else if(isExploDone && path != null && isCellClean) {
+            return Desire.MOVETOGOAL;
         }
         else {
-            grid.put(new Cell(y, x), 0);
+            return Desire.EXPLORE;
         }
     }
     
-    private int getDesire(){
-         if(isExploDone && goal == null) {
-            goal = setNewGoal();
+    private Cell getGoal(){
+        int max = 0;
+        Cell dirtiest = null;
+        
+        for(Map.Entry<Cell, Integer> entry : grid.entrySet()){
+            if(entry.getValue() > max) {
+                max = entry.getValue();
+                dirtiest = entry.getKey();
+            }
         }
-        if(isExploDone && goal != null) {
-            updateGrid();
+        return dirtiest;
+    }
+    
+    private ArrayList<Cell> getPath(Cell start, Cell end) {
+        ArrayList<Cell> result = new ArrayList<Cell>();
+        int dx = 0, dy = 0;
+        
+        
+        dx = end.getCol() - start.getCol();
+        dy = end.getRow() - start.getRow();
+        
+        for(Map.Entry<Cell, Integer> entry : grid.entrySet()){
+            Cell cell = entry.getKey();
+            if((cell.getCol() == x && cell.getRow() == y+1) ||
+                (cell.getCol() == x && cell.getRow() == y-1) ||
+                (cell.getCol() == x+1 && cell.getRow() == y) ||
+                (cell.getCol() == x-1 && cell.getRow() == y)) {
+                adjacent.add(entry.getKey());
+            }
         }
-        else {
-            grid.put(new Cell(y, x), 0);
-        }
+        
+        return result;
     }
     
     private void move(Direction dir) {
@@ -73,11 +120,11 @@ public class Aspi implements Runnable {
         master.botMove(dir);
     }
     
-    private Boolean getDustState() {
+    private boolean getDustState() {
         return master.getDustState();
     }
     
-    private Boolean getJewelState() {
+    private boolean getJewelState() {
         return master.getJewelState();
     }
     
