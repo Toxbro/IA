@@ -22,40 +22,48 @@ public class Aspi implements Runnable {
     private HashMap<Cell, Integer> grid = new HashMap<Cell, Integer>();
     private Main master;
     private boolean isExploDone;
+    private Cell goal;
     
     public Aspi(Main master) {
         this.master = master;
         this.x = 0;
         this.y = 0;
         this.isExploDone = false;
+        this.goal = null;
     }
     
     @Override
     public void run() {
         while(true) {
-            boolean action = false;
-            if(!action) {
-                if(getJewelState()) {
-                    pick();
-                    action = true;
-                }
-                if(getDustState()) {
-                    suck();
-                    action = true;
-                }
-                if(!getJewelState() && !getJewelState()) {
-                    move();
-                    action = true;
-                }
-            }
+           updateBelief();
+           switch(getDesire()){
+               
+           }
         }
     }
     
     private void updateBelief() {
-        
+        if(isExploDone) {
+            updateGrid();
+        }
+        else {
+            grid.put(new Cell(y, x), 0);
+        }
     }
     
-    private void move() {
+    private int getDesire(){
+         if(isExploDone && goal == null) {
+            goal = setNewGoal();
+        }
+        if(isExploDone && goal != null) {
+            updateGrid();
+        }
+        else {
+            grid.put(new Cell(y, x), 0);
+        }
+    }
+    
+    private void move(Direction dir) {
         switch(dir){
             case DOWN: y--;
             case UP: y++;
@@ -79,6 +87,12 @@ public class Aspi implements Runnable {
     
     private void pick() {
         master.pick();
+    }
+    
+    private void updateGrid() {
+        for(Map.Entry<Cell, Integer> entry : grid.entrySet()) {
+            entry.setValue(entry.getValue()+1);
+        }
     }
 }
 
