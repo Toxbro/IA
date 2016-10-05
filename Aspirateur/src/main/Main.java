@@ -7,6 +7,8 @@ package main;
 
 import environnement.*;
 import IA.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,6 +25,12 @@ public final class Main {
         Thread t = new Thread(getEnvironnement());
         t.start();
         
+        //Temporisation for cell creation
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
         currentRobotCell = environnement.getRandomCell();
         
         //DEBUG
@@ -116,5 +124,37 @@ public final class Main {
     public void pick() {
         currentRobotCell.removeObject(Type.JEWEL);
         //Send event to GUI
+    }
+    
+    /**
+     * Method called by GUI or by Environnement : determined by {@link StackTraceElement}
+     * Add dust to the environnement or the GUI
+     */ 
+    public void addDust(int r, int c){
+        StackTraceElement [] stackTraceElements = Thread.currentThread().getStackTrace();
+        //GUI -> complete what to do
+        if (stackTraceElements[stackTraceElements.length-2].getClassName().equals("environnement.Environnement")) {
+            System.out.println("Called by environnement");
+        }
+        //GUI -> complete if
+        else if (stackTraceElements[stackTraceElements.length-2].getClassName().equals("graphic.COMPLETEHERE")){
+            environnement.getGrid().getCell(r, c).addObject(Type.DUST);
+        }
+    }
+    
+    /**
+     * Method called by GUI or by Environnement : determined by {@link StackTraceElement}
+     * Add jewel to the environnement or the GUI
+     */ 
+    public void addJewel(int r, int c){
+        StackTraceElement [] stackTraceElements = Thread.currentThread().getStackTrace();
+        //GUI -> complete what to do
+        if (stackTraceElements[stackTraceElements.length-2].getClassName().equals("environnement.Environnement")) {
+            System.out.println("Called by environnement");
+        }
+        //GUI -> complete if
+        else if (stackTraceElements[stackTraceElements.length-2].getClassName().equals("graphic.COMPLETEHERE")){
+            environnement.getGrid().getCell(r, c).addObject(Type.JEWEL);
+        }
     }
 }

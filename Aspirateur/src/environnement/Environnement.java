@@ -46,8 +46,9 @@ public class Environnement implements Runnable{
                     while (cellHasObject) {
                         cell = getRandomCell();
                         if (!cell.hasObject(Type.DUST)) {
-                            cell.addObject(new Object(Type.DUST));
+                            cell.addObject(Type.DUST);
                             cellHasObject = false;
+                            main.addDust(cell.getRow(), cell.getCol());
                             System.out.println("Adding dust to cell "+cell.toString());
                         }
                     }
@@ -60,7 +61,7 @@ public class Environnement implements Runnable{
                     while (cellHasObject) {
                         cell = getRandomCell();
                         if (!cell.hasObject(Type.JEWEL)) {
-                            cell.addObject(new Object(Type.JEWEL));
+                            cell.addObject(Type.JEWEL);
                             cellHasObject = false;
                             System.out.println("Adding jewel to cell "+cell.toString());
                         }
@@ -84,9 +85,10 @@ public class Environnement implements Runnable{
         int row, col;
         while (cellIncorrect) {            
             row = getRandom(0, 2);
-            col = getRandom(0, 5);
+            col = getRandom(0, 4);
+
             cell = getGrid().getCell(row, col);
-            if (cell.getEnable()) {
+            if ((cell != null) && (cell.getEnable())) {
                 cellIncorrect = false;
                 return cell;
             }

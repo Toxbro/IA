@@ -85,8 +85,8 @@ public class Cell {
         this.objects = objects;
     }
     
-    public void addObject(Object o){
-        this.objects.add(o);
+    public void addObject(Type t){
+        this.objects.add(new Object(t));
     }
     
     public Boolean removeObject(Type t){
