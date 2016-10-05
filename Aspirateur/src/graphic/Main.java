@@ -9,26 +9,46 @@ package graphic;
  *
  * @author Thomas
  */
-public class Main extends javax.swing.JFrame {
+public class Main extends javax.swing.JFrame implements Runnable{
 
+    private main.Main main;
     /**
      * Creates new form Main
      */
-    public Main() {
+    public Main(main.Main main) {
+        this.main = main;
         
-        initComponents();
-        view.initialize();
-//      view.addJ(0,0);
+//        view.addD(0,0);
+//        view.addJ(0,0);
+//        view.delJ(0, 0);
+//        view.addR(0,0);
+//        view.delJ(0,0);
+//        view.delD(0,0);
+//        view.mvtR(0,0,0,1);
+      //view.delJ(0,0);
+//      view.addD(2,2);
+//      view.addJ(2,2);
+//      view.addR(2, 2);
+//      view.delR(2, 2);
+
 //      view.addJ(1,0);
 //      view.delJ(1,0);
 //      view.addD(1,0);
 //      view.addJ(0,0);
 //      view.addD(0,0);
 //      view.delD(0,0);
-        view.addR(0,0);
-        view.mvtR(0, 0, 1, 0);
-        view.addJ(1,0);
-        view.addD(1,0);
+//      view.addD(2,2);
+//      view.mvtR(0,1,0,2);
+//      view.mvtR(0,2,1,2);
+//      view.addD(2,1);
+//      view.addJ(2,1);
+//      view.mvtR(1,2,2,2);
+//      view.mvtR(2,2,2,1);
+      
+////        view.addR(0,0);
+////        view.mvtR(0, 0, 1, 0);
+////        view.addJ(1,0);
+////        view.addD(1,0);
 //      view.delR(2, 2);
     }
 
@@ -178,66 +198,68 @@ public class Main extends javax.swing.JFrame {
 
     private void sliderTimeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderTimeStateChanged
         textFieldTime.setText(Integer.toString(sliderTime.getValue()));
+        main.setFrequency(sliderTime.getValue());
     }//GEN-LAST:event_sliderTimeStateChanged
 
     private void sliderDustStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderDustStateChanged
         textFieldDust.setText(Integer.toString(sliderDust.getValue()));
+        main.setDustProb(sliderDust.getValue());
     }//GEN-LAST:event_sliderDustStateChanged
 
     private void sliderJewelStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderJewelStateChanged
-        textFieldJewel.setText(Integer.toString(sliderJewel.getValue())
-        );
+        textFieldJewel.setText(Integer.toString(sliderJewel.getValue()));
+        main.setJewelProb(sliderJewel.getValue());
     }//GEN-LAST:event_sliderJewelStateChanged
 
     private void textFieldTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldTimeActionPerformed
-        sliderTime.setValue(Integer.parseInt(textFieldTime.getText())
-        );
+        sliderTime.setValue(Integer.parseInt(textFieldTime.getText()));
+        main.setFrequency(Integer.parseInt(textFieldTime.getText()));
     }//GEN-LAST:event_textFieldTimeActionPerformed
 
     private void textFieldDustActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldDustActionPerformed
-        sliderDust.setValue(Integer.parseInt(textFieldDust.getText())
-        );
+        sliderDust.setValue(Integer.parseInt(textFieldDust.getText()));
+        main.setDustProb(Integer.parseInt(textFieldDust.getText()));
     }//GEN-LAST:event_textFieldDustActionPerformed
 
     private void textFieldJewelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldJewelActionPerformed
-        sliderJewel.setValue(Integer.parseInt(textFieldJewel.getText())
-        );
+        sliderJewel.setValue(Integer.parseInt(textFieldJewel.getText()));
+        main.setJewelProb(Integer.parseInt(textFieldJewel.getText()));
     }//GEN-LAST:event_textFieldJewelActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Main().setVisible(true);
-            }
-        });
-    }
+//    /**
+//     * @param args the command line arguments
+//     */
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new Main(main.Main).setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel labelDust;
@@ -249,6 +271,27 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField textFieldDust;
     private javax.swing.JTextField textFieldJewel;
     private javax.swing.JTextField textFieldTime;
-    private graphic.GridPanel view;
+    public graphic.GridPanel view;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void run() {
+        initComponents();
+        view.initialize(this);
+        setVisible(true);
+    }
+
+    /**
+     * @return the main
+     */
+    public main.Main getMain() {
+        return main;
+    }
+
+    /**
+     * @param main the main to set
+     */
+    public void setMain(main.Main main) {
+        this.main = main;
+    }
 }

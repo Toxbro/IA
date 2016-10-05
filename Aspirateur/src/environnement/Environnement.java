@@ -63,6 +63,7 @@ public class Environnement implements Runnable{
                         if (!cell.hasObject(Type.JEWEL)) {
                             cell.addObject(Type.JEWEL);
                             cellHasObject = false;
+                            main.addJewel(cell.getRow(), cell.getCol());
                             System.out.println("Adding jewel to cell "+cell.toString());
                         }
                     }
@@ -84,8 +85,8 @@ public class Environnement implements Runnable{
         Cell cell;
         int row, col;
         while (cellIncorrect) {            
-            row = getRandom(0, 2);
-            col = getRandom(0, 4);
+            row = getRandom(0, 3);
+            col = getRandom(0, 5);
 
             cell = getGrid().getCell(row, col);
             if ((cell != null) && (cell.getEnable())) {

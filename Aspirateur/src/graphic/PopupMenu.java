@@ -35,21 +35,17 @@ public class PopupMenu extends JPopupMenu{
         addDust.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Add dust");
-                c.getComponent(2).setVisible(true);
-                c.getComponent(2).setBackground(Color.red);
-                //c.setBackground(Color.RED);
+                System.out.println("Adding dust by User to cell ["+c.getCoordY()+","+c.getCoordX()+"]");
+                c.getGp().getMain().getMain().addDust(c.getCoordY(), c.getCoordX());
+                c.getGp().addD(c.getCoordX(), c.getCoordY());
             }
         });
         addJewel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Add jewel");
-                c.getComponent(0).setVisible(true);
-                c.getComponent(0).setBackground(Color.yellow);
-                JLabel jewel = new JLabel(new ImageIcon("ressources/jewels.jpg"));
-                //JLabel jewel = new JLabel(new ImageIcon(((new ImageIcon("ressources/jewels.png")).getImage()).getScaledInstance(10, 10, java.awt.Image.SCALE_SMOOTH)));
-                //c.getComponent(0).add(jewel);
+                System.out.println("Adding jewel by User to cell ["+c.getCoordY()+","+c.getCoordX()+"]");
+                c.getGp().getMain().getMain().addJewel(c.getCoordY(),c.getCoordX());
+                c.getGp().addJ(c.getCoordX(), c.getCoordY());
             }
         });
         
