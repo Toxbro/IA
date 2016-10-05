@@ -18,17 +18,36 @@ public class Main extends javax.swing.JFrame {
         
         initComponents();
         view.initialize();
-//      view.addJ(0,0);
-//      view.addJ(1,0);
-//      view.delJ(1,0);
-//      view.addD(1,0);
-//      view.addJ(0,0);
-//      view.addD(0,0);
-//      view.delD(0,0);
+        view.addD(0,0);
+        view.addJ(0,0);
         view.addR(0,0);
-        view.mvtR(0, 0, 1, 0);
-        view.addJ(1,0);
-        view.addD(1,0);
+        view.delJ(0,0);
+        view.delD(0,0);
+        view.mvtR(0,0,0,1);
+      //view.delJ(0,0);
+//      view.addD(2,2);
+//      view.addJ(2,2);
+//      view.addR(2, 2);
+//      view.delR(2, 2);
+
+      view.addJ(1,0);
+      view.delJ(1,0);
+      view.addD(1,0);
+      view.addJ(0,0);
+      view.addD(0,0);
+//      view.delD(0,0);
+//      view.addD(2,2);
+//      view.mvtR(0,1,0,2);
+//      view.mvtR(0,2,1,2);
+//      view.addD(2,1);
+//      view.addJ(2,1);
+//      view.mvtR(1,2,2,2);
+//      view.mvtR(2,2,2,1);
+      
+////        view.addR(0,0);
+////        view.mvtR(0, 0, 1, 0);
+////        view.addJ(1,0);
+////        view.addD(1,0);
 //      view.delR(2, 2);
     }
 

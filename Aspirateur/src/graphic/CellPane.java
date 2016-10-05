@@ -13,6 +13,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
@@ -33,9 +34,9 @@ public class CellPane extends JPanel{
             jpJ.setVisible(false);
             jpR.setVisible(false);
             jpD.setVisible(false);
-            add(jpJ);
-            add(jpR);
-            add(jpD);
+            add(jpJ,0);
+            add(jpR,1);
+            add(jpD,2);
             addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {

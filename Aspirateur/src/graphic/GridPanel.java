@@ -64,35 +64,44 @@ public class GridPanel extends JPanel{
         }
     
     public void addJ(int x, int y){
+        JLabel jewelI = new JLabel(new ImageIcon(((new ImageIcon("ressources/jewels.png")).getImage()).getScaledInstance(10, 10, java.awt.Image.SCALE_SMOOTH)));
+        JLabel robotI = new JLabel(new ImageIcon(((new ImageIcon("ressources/aspi.png")).getImage()).getScaledInstance(10, 35, java.awt.Image.SCALE_SMOOTH)));
+        JLabel dustI = new JLabel(new ImageIcon(((new ImageIcon("ressources/dust.png")).getImage()).getScaledInstance(10, 10, java.awt.Image.SCALE_SMOOTH)));
         int numCell = numCompo(x,y);
         int etatCell = etat[numCell];
         Component listC[] = this.getComponents();
         CellPane cp = (CellPane)listC[numCell];
         if(etatCell<4){
             if(etatCell == 0){
+                cp.add(jewelI,0);
                 cp.getComponent(0).setVisible(true);
-                cp.getComponent(0).setBackground(Color.yellow);
-                //JLabel jewel = new JLabel(new ImageIcon("ressources/jewels.jpg"));
                 etat[numCell] = 4;
             }else if(etatCell == 1){
+                cp.add(jewelI,0);
+                cp.add(dustI,2);
                 cp.getComponent(0).setVisible(true);
                 cp.getComponent(2).setVisible(true);
-                cp.getComponent(0).setBackground(Color.yellow);
-                cp.getComponent(2).setBackground(Color.red);
+//                cp.getComponent(0).setBackground(Color.yellow);
+//                cp.getComponent(2).setBackground(Color.red);
                 etat[numCell] = 5;
             }else if(etatCell == 2){  
+                cp.add(jewelI,0);
+                cp.add(robotI,1);
                 cp.getComponent(0).setVisible(true);
                 cp.getComponent(1).setVisible(true);
-                cp.getComponent(0).setBackground(Color.yellow);
-                cp.getComponent(1).setBackground(Color.blue);
+//                cp.getComponent(0).setBackground(Color.yellow);
+//                cp.getComponent(1).setBackground(Color.blue);
                 etat[numCell] = 6;
             }else{
+                cp.add(jewelI,0);
+                cp.add(robotI,1);
+                cp.add(dustI,2);
                 cp.getComponent(0).setVisible(true);
                 cp.getComponent(1).setVisible(true);
                 cp.getComponent(2).setVisible(true);
-                cp.getComponent(0).setBackground(Color.yellow);
-                cp.getComponent(1).setBackground(Color.blue);
-                cp.getComponent(2).setBackground(Color.red);
+//                cp.getComponent(0).setBackground(Color.yellow);
+//                cp.getComponent(1).setBackground(Color.blue);
+//                cp.getComponent(2).setBackground(Color.red);
                 etat[numCell] = 7;
             }
         }
@@ -104,10 +113,11 @@ public class GridPanel extends JPanel{
     }
     
     public void delJ(int x, int y){
+        JLabel jewelI = new JLabel(new ImageIcon(((new ImageIcon("ressources/jewels.png")).getImage()).getScaledInstance(10, 10, java.awt.Image.SCALE_SMOOTH)));
+        JLabel robotI = new JLabel(new ImageIcon(((new ImageIcon("ressources/aspi.png")).getImage()).getScaledInstance(10, 35, java.awt.Image.SCALE_SMOOTH)));
+        JLabel dustI = new JLabel(new ImageIcon(((new ImageIcon("ressources/dust.png")).getImage()).getScaledInstance(10, 10, java.awt.Image.SCALE_SMOOTH)));
         int numCell = numCompo(x,y);
-        System.out.println(numCell);
         int etatCell = etat[numCell];
-        System.out.println(etatCell);
         Component listC[] = this.getComponents();
         CellPane cp = (CellPane)listC[numCell];
         if(etatCell>=4){
@@ -116,20 +126,25 @@ public class GridPanel extends JPanel{
                 etat[numCell] = 0;
             }else if(etatCell == 5){
                 cp.getComponent(0).setVisible(false);
+                cp.add(dustI,2);
+//                cp.getComponent(0).setVisible(false);
                 cp.getComponent(2).setVisible(true);
-                cp.getComponent(2).setBackground(Color.red);
+//                cp.getComponent(2).setBackground(Color.red);
                 etat[numCell] = 1;
             }else if(etatCell == 6){  
                 cp.getComponent(0).setVisible(false);
+                cp.add(robotI,1);
                 cp.getComponent(1).setVisible(true);
-                cp.getComponent(1).setBackground(Color.blue);
+//                cp.getComponent(1).setBackground(Color.blue);
                 etat[numCell] = 2;
             }else{
                 cp.getComponent(0).setVisible(false);
+                cp.add(robotI,1);
+                cp.add(dustI,2);
                 cp.getComponent(1).setVisible(true);
                 cp.getComponent(2).setVisible(true);
-                cp.getComponent(1).setBackground(Color.blue);
-                cp.getComponent(2).setBackground(Color.red);
+//                cp.getComponent(1).setBackground(Color.blue);
+//                cp.getComponent(2).setBackground(Color.red);
                 etat[numCell] = 3;
             }
         }
@@ -140,34 +155,45 @@ public class GridPanel extends JPanel{
     }
     
     public void addD(int x, int y){
+        JLabel jewelI = new JLabel(new ImageIcon(((new ImageIcon("ressources/jewels.png")).getImage()).getScaledInstance(10, 10, java.awt.Image.SCALE_SMOOTH)));
+        JLabel robotI = new JLabel(new ImageIcon(((new ImageIcon("ressources/aspi.png")).getImage()).getScaledInstance(10, 35, java.awt.Image.SCALE_SMOOTH)));
+        JLabel dustI = new JLabel(new ImageIcon(((new ImageIcon("ressources/dust.png")).getImage()).getScaledInstance(10, 10, java.awt.Image.SCALE_SMOOTH)));
         int numCell = numCompo(x,y);
         int etatCell = etat[numCell];
         Component listC[] = this.getComponents();
         CellPane cp = (CellPane)listC[numCell];
         if(etatCell!=1 || etatCell!=3 || etatCell!=5 || etatCell!=7){
             if(etatCell == 0){
-                cp.getComponent(2).setVisible(true);
-                cp.getComponent(2).setBackground(Color.red);
+                cp.add(dustI,2);
+//                cp.getComponent(2).setVisible(true);
+//                cp.getComponent(2).setBackground(Color.red);
                 etat[numCell] = 1;
             }else if(etatCell == 2){
-                cp.getComponent(1).setVisible(true);
-                cp.getComponent(2).setVisible(true);
-                cp.getComponent(1).setBackground(Color.blue);
-                cp.getComponent(2).setBackground(Color.red);
+                cp.add(robotI,1);
+                cp.add(dustI,2);
+//                cp.getComponent(1).setVisible(true);
+//                cp.getComponent(2).setVisible(true);
+//                cp.getComponent(1).setBackground(Color.blue);
+//                cp.getComponent(2).setBackground(Color.red);
                 etat[numCell] = 3;
-            }else if(etatCell == 4){  
-                cp.getComponent(0).setVisible(true);
-                cp.getComponent(2).setVisible(true);
-                cp.getComponent(0).setBackground(Color.yellow);
-                cp.getComponent(2).setBackground(Color.red);
+            }else if(etatCell == 4){ 
+                cp.add(jewelI,0);
+                cp.add(dustI,2);
+//                cp.getComponent(0).setVisible(true);
+//                cp.getComponent(2).setVisible(true);
+//                cp.getComponent(0).setBackground(Color.yellow);
+//                cp.getComponent(2).setBackground(Color.red);
                 etat[numCell] = 5;
             }else{
-                cp.getComponent(0).setVisible(true);
-                cp.getComponent(1).setVisible(true);
-                cp.getComponent(2).setVisible(true);
-                cp.getComponent(0).setBackground(Color.yellow);
-                cp.getComponent(1).setBackground(Color.blue);
-                cp.getComponent(2).setBackground(Color.red);
+                cp.add(jewelI,0);
+                cp.add(robotI,1);
+                cp.add(dustI,2);
+//                cp.getComponent(0).setVisible(true);
+//                cp.getComponent(1).setVisible(true);
+//                cp.getComponent(2).setVisible(true);
+//                cp.getComponent(0).setBackground(Color.yellow);
+//                cp.getComponent(1).setBackground(Color.blue);
+//                cp.getComponent(2).setBackground(Color.red);
                 etat[numCell] = 7;
             }
         }
@@ -178,10 +204,11 @@ public class GridPanel extends JPanel{
     }
     
     public void delD(int x, int y){
+        JLabel jewelI = new JLabel(new ImageIcon(((new ImageIcon("ressources/jewels.png")).getImage()).getScaledInstance(10, 10, java.awt.Image.SCALE_SMOOTH)));
+        JLabel robotI = new JLabel(new ImageIcon(((new ImageIcon("ressources/aspi.png")).getImage()).getScaledInstance(10, 35, java.awt.Image.SCALE_SMOOTH)));
+        JLabel dustI = new JLabel(new ImageIcon(((new ImageIcon("ressources/dust.png")).getImage()).getScaledInstance(10, 10, java.awt.Image.SCALE_SMOOTH)));
         int numCell = numCompo(x,y);
-        System.out.println(numCell);
         int etatCell = etat[numCell];
-        System.out.println(etatCell);
         Component listC[] = this.getComponents();
         CellPane cp = (CellPane)listC[numCell];
         if(etatCell!=0 || etatCell!=2 || etatCell!=4 || etatCell!=6){
@@ -189,21 +216,25 @@ public class GridPanel extends JPanel{
                 cp.getComponent(2).setVisible(false);
                 etat[numCell] = 0;
             }else if(etatCell == 3){
-                cp.getComponent(1).setVisible(true);
+//                cp.getComponent(1).setVisible(true);
                 cp.getComponent(2).setVisible(false);
-                cp.getComponent(1).setBackground(Color.blue);
+                cp.add(robotI,1);
+//                cp.getComponent(1).setBackground(Color.blue);
                 etat[numCell] = 2;
             }else if(etatCell == 5){  
-                cp.getComponent(0).setVisible(true);
+//                cp.getComponent(0).setVisible(true);
                 cp.getComponent(2).setVisible(false);
-                cp.getComponent(0).setBackground(Color.yellow);
+                cp.add(jewelI,0);
+//                cp.getComponent(0).setBackground(Color.yellow);
                 etat[numCell] = 4;
             }else{
-                cp.getComponent(0).setVisible(true);
-                cp.getComponent(1).setVisible(true);
+//                cp.getComponent(0).setVisible(true);
+//                cp.getComponent(1).setVisible(true);
                 cp.getComponent(2).setVisible(false);
-                cp.getComponent(0).setBackground(Color.yellow);
-                cp.getComponent(1).setBackground(Color.blue);
+                cp.add(jewelI,0);
+                cp.add(dustI,1);
+//                cp.getComponent(0).setBackground(Color.yellow);
+//                cp.getComponent(1).setBackground(Color.blue);
                 etat[numCell] = 6;
             }
         }
@@ -215,33 +246,48 @@ public class GridPanel extends JPanel{
     
     public void addR(int x, int y){
         if(!robot){
+            JLabel jewelI = new JLabel(new ImageIcon(((new ImageIcon("ressources/jewels.png")).getImage()).getScaledInstance(10, 10, java.awt.Image.SCALE_SMOOTH)));
+            JLabel robotI = new JLabel(new ImageIcon(((new ImageIcon("ressources/aspi.png")).getImage()).getScaledInstance(10, 35, java.awt.Image.SCALE_SMOOTH)));
+            JLabel dustI = new JLabel(new ImageIcon(((new ImageIcon("ressources/dust.png")).getImage()).getScaledInstance(10, 10, java.awt.Image.SCALE_SMOOTH)));
             int numCell = numCompo(x,y);
             int etatCell = etat[numCell];
             Component listC[] = this.getComponents();
             CellPane cp = (CellPane)listC[numCell];
             if(etatCell == 0){
-                cp.getComponent(1).setVisible(true);
+                cp.add(robotI,1);
+//                cp.getComponent(1).setVisible(true);
                 cp.getComponent(1).setBackground(Color.blue);
                 etat[numCell] = 2;
             }else if(etatCell == 1){
-                cp.getComponent(1).setVisible(true);
-                cp.getComponent(2).setVisible(true);
-                cp.getComponent(1).setBackground(Color.blue);
-                cp.getComponent(2).setBackground(Color.red);
+                cp.add(robotI,1);
+                cp.add(dustI,2);
+//                cp.getComponent(1).setVisible(true);
+//                cp.getComponent(2).setVisible(true);
+//                cp.getComponent(1).setBackground(Color.blue);
+//                cp.getComponent(2).setBackground(Color.red);
                 etat[numCell] = 3;
-            }else if(etatCell == 4){  
+            }else if(etatCell == 4){ 
+                cp.add(jewelI,0);
+                cp.add(robotI,1);
                 cp.getComponent(0).setVisible(true);
                 cp.getComponent(1).setVisible(true);
-                cp.getComponent(0).setBackground(Color.yellow);
-                cp.getComponent(1).setBackground(Color.blue);
+//                cp.getComponent(0).setBackground(Color.yellow);
+//                cp.getComponent(1).setBackground(Color.blue);
                 etat[numCell] = 6;
             }else if(etatCell == 5){
+                cp.add(jewelI,0);
+                cp.add(robotI,1);
+                cp.add(dustI,2);
                 cp.getComponent(0).setVisible(true);
                 cp.getComponent(1).setVisible(true);
                 cp.getComponent(2).setVisible(true);
-                cp.getComponent(0).setBackground(Color.yellow);
-                cp.getComponent(1).setBackground(Color.blue);
-                cp.getComponent(2).setBackground(Color.red);
+//                cp.getComponent(0).setBackground(Color.yellow);
+//                cp.getComponent(1).setBackground(Color.blue);
+//                cp.getComponent(2).setBackground(Color.red);
+                
+//                cp.add(jewelI,cp.getComponent(0));
+//                cp.add(robotI,cp.getComponent(1));
+//                cp.add(dustI,cp.getComponent(2));
                 etat[numCell] = 7;
             }
             gbc.gridx=x;
@@ -254,10 +300,11 @@ public class GridPanel extends JPanel{
     
     public void delR(int x, int y){
         if(robot){
+            JLabel jewelI = new JLabel(new ImageIcon(((new ImageIcon("ressources/jewels.png")).getImage()).getScaledInstance(10, 10, java.awt.Image.SCALE_SMOOTH)));
+            JLabel robotI = new JLabel(new ImageIcon(((new ImageIcon("ressources/aspi.png")).getImage()).getScaledInstance(10, 35, java.awt.Image.SCALE_SMOOTH)));
+            JLabel dustI = new JLabel(new ImageIcon(((new ImageIcon("ressources/dust.png")).getImage()).getScaledInstance(10, 10, java.awt.Image.SCALE_SMOOTH)));
             int numCell = numCompo(x,y);
-            System.out.println(numCell);
             int etatCell = etat[numCell];
-            System.out.println(etatCell);
             Component listC[] = this.getComponents();
             CellPane cp = (CellPane)listC[numCell];
             if(etatCell == 2){
@@ -265,20 +312,24 @@ public class GridPanel extends JPanel{
                 etat[numCell] = 0;
             }else if(etatCell == 3){
                 cp.getComponent(1).setVisible(false);
+                cp.add(robotI,2);
                 cp.getComponent(2).setVisible(true);
-                cp.getComponent(2).setBackground(Color.red);
+//                cp.getComponent(2).setBackground(Color.red);
                 etat[numCell] = 1;
             }else if(etatCell == 6){  
                 cp.getComponent(0).setVisible(true);
                 cp.getComponent(1).setVisible(false);
-                cp.getComponent(0).setBackground(Color.yellow);
+                cp.add(jewelI,0);
+//                cp.getComponent(0).setBackground(Color.yellow);
                 etat[numCell] = 4;
             }else if(etatCell == 7){
                 cp.getComponent(0).setVisible(true);
                 cp.getComponent(1).setVisible(false);
+                cp.add(jewelI,0);
+                cp.add(dustI,2);
                 cp.getComponent(2).setVisible(true);
-                cp.getComponent(0).setBackground(Color.yellow);
-                cp.getComponent(2).setBackground(Color.red);
+//                cp.getComponent(0).setBackground(Color.yellow);
+//                cp.getComponent(2).setBackground(Color.red);
                 etat[numCell] = 5;
             }
             gbc.gridx=x;

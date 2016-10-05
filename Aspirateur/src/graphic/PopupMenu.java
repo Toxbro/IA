@@ -47,7 +47,7 @@ public class PopupMenu extends JPopupMenu{
                 System.out.println("Add jewel");
                 c.getComponent(0).setVisible(true);
                 c.getComponent(0).setBackground(Color.yellow);
-                JLabel jewel = new JLabel(new ImageIcon("ressources/jewels.jpg"));
+                //JLabel jewel = new JLabel(new ImageIcon("ressources/jewels.png"));
                 //JLabel jewel = new JLabel(new ImageIcon(((new ImageIcon("ressources/jewels.png")).getImage()).getScaledInstance(10, 10, java.awt.Image.SCALE_SMOOTH)));
                 //c.getComponent(0).add(jewel);
             }
