@@ -23,6 +23,7 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         view.initialize();
+        view.addJ(view,0,0);//affiche une bande noire dans la casa 0,0
     }
 
     /**

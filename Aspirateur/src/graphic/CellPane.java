@@ -8,10 +8,15 @@ package graphic;
 import static com.sun.java.accessibility.util.AWTEventMonitor.addMouseListener;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import javax.swing.border.Border;
+import javax.swing.border.MatteBorder;
 
 /**
  *
@@ -19,14 +24,14 @@ import javax.swing.SwingUtilities;
  */
 public class CellPane extends JPanel{
     private Color defaultBackground;
-
+    
         public CellPane() {
+            
             addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
                     defaultBackground = getBackground();
                     setBackground(Color.BLUE);
-                    //System.out.println(e.getComponent().getX());
                 }
 
                 @Override
@@ -40,8 +45,6 @@ public class CellPane extends JPanel{
                         doPop(e);
                     }
                 }
-                
-                
             });
         }
 
@@ -51,7 +54,8 @@ public class CellPane extends JPanel{
         }
         
         private void doPop(MouseEvent e){
-        PopupMenu menu = new PopupMenu(e.getComponent());
+        PopupMenu menu = new PopupMenu(this);
         menu.show(e.getComponent(), e.getX(), e.getY());
-    }
+        }
+        
 }
