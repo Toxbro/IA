@@ -5,12 +5,6 @@
  */
 package graphic;
 
-import java.awt.EventQueue;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-
 /**
  *
  * @author Thomas
@@ -21,9 +15,21 @@ public class Main extends javax.swing.JFrame {
      * Creates new form Main
      */
     public Main() {
+        
         initComponents();
         view.initialize();
-        view.addJ(view,0,0);//affiche une bande noire dans la casa 0,0
+//      view.addJ(0,0);
+//      view.addJ(1,0);
+//      view.delJ(1,0);
+//      view.addD(1,0);
+//      view.addJ(0,0);
+//      view.addD(0,0);
+//      view.delD(0,0);
+        view.addR(0,0);
+        view.mvtR(0, 0, 1, 0);
+        view.addJ(1,0);
+        view.addD(1,0);
+//      view.delR(2, 2);
     }
 
     /**

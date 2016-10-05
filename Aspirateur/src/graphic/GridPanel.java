@@ -22,9 +22,19 @@ import javax.swing.border.MatteBorder;
  * @author Thomas
  */
 public class GridPanel extends JPanel{
-
+//Grille
+//  X : 0 1 2  3 4
+//Y: 0 |0|1|2|   
+//   1 |3|4|5|6|7|
+//   2 |8|9|10|
+//    
+//    (x,y)=numCase
+//    (1,0) = 1
+//    (0,1) = 3
+//    (2,2) = 10
     public int[] etat = new int[11];
-    
+    public boolean robot;
+    private GridBagConstraints gbc = new GridBagConstraints();
     public GridPanel() {}
     
     public void initialize(){
@@ -34,7 +44,7 @@ public class GridPanel extends JPanel{
             }
             setLayout(new GridBagLayout());
 
-            GridBagConstraints gbc = new GridBagConstraints();
+            //GridBagConstraints gbc = new GridBagConstraints();
             for (int row = 0; row < 3; row++) {
                 for (int col = 0; col < 5; col++) {
                     gbc.gridx = col;
@@ -53,60 +63,237 @@ public class GridPanel extends JPanel{
             }
         }
     
-    public void addJ(GridPanel gp, int x, int y){
+    public void addJ(int x, int y){
         int numCell = numCompo(x,y);
         int etatCell = etat[numCell];
-        CellPane cp = creaCell(numCell);
+        Component listC[] = this.getComponents();
+        CellPane cp = (CellPane)listC[numCell];
         if(etatCell<4){
             if(etatCell == 0){
+                cp.getComponent(0).setVisible(true);
                 cp.getComponent(0).setBackground(Color.yellow);
-                JLabel jewel = new JLabel(new ImageIcon("ressources/jewels.jpg"));
+                //JLabel jewel = new JLabel(new ImageIcon("ressources/jewels.jpg"));
                 etat[numCell] = 4;
             }else if(etatCell == 1){
+                cp.getComponent(0).setVisible(true);
+                cp.getComponent(2).setVisible(true);
                 cp.getComponent(0).setBackground(Color.yellow);
                 cp.getComponent(2).setBackground(Color.red);
                 etat[numCell] = 5;
-            }else if(etatCell == 2){                
+            }else if(etatCell == 2){  
+                cp.getComponent(0).setVisible(true);
+                cp.getComponent(1).setVisible(true);
                 cp.getComponent(0).setBackground(Color.yellow);
                 cp.getComponent(1).setBackground(Color.blue);
                 etat[numCell] = 6;
             }else{
+                cp.getComponent(0).setVisible(true);
+                cp.getComponent(1).setVisible(true);
+                cp.getComponent(2).setVisible(true);
                 cp.getComponent(0).setBackground(Color.yellow);
                 cp.getComponent(1).setBackground(Color.blue);
                 cp.getComponent(2).setBackground(Color.red);
                 etat[numCell] = 7;
             }
         }
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridx=y;
-        gbc.gridy=x;
-        gp.add(cp, gbc);
-        gp.setVisible(true);
-        //this.setVisible(true);
+        gbc.gridx=x;
+        gbc.gridy=y;
+        cp.setBorder(fBord(numCell));
+        this.setComponentZOrder(cp, numCell);
+
     }
     
-    public void delJ(GridBagLayout gbl, int x, int y){
-        
+    public void delJ(int x, int y){
+        int numCell = numCompo(x,y);
+        System.out.println(numCell);
+        int etatCell = etat[numCell];
+        System.out.println(etatCell);
+        Component listC[] = this.getComponents();
+        CellPane cp = (CellPane)listC[numCell];
+        if(etatCell>=4){
+            if(etatCell == 4){
+                cp.getComponent(0).setVisible(false);
+                etat[numCell] = 0;
+            }else if(etatCell == 5){
+                cp.getComponent(0).setVisible(false);
+                cp.getComponent(2).setVisible(true);
+                cp.getComponent(2).setBackground(Color.red);
+                etat[numCell] = 1;
+            }else if(etatCell == 6){  
+                cp.getComponent(0).setVisible(false);
+                cp.getComponent(1).setVisible(true);
+                cp.getComponent(1).setBackground(Color.blue);
+                etat[numCell] = 2;
+            }else{
+                cp.getComponent(0).setVisible(false);
+                cp.getComponent(1).setVisible(true);
+                cp.getComponent(2).setVisible(true);
+                cp.getComponent(1).setBackground(Color.blue);
+                cp.getComponent(2).setBackground(Color.red);
+                etat[numCell] = 3;
+            }
+        }
+        gbc.gridx=x;
+        gbc.gridy=y;
+        cp.setBorder(fBord(numCell));
+        this.setComponentZOrder(cp, numCell);
     }
     
-    public void addD(GridBagLayout gbl, int x, int y){
-        
+    public void addD(int x, int y){
+        int numCell = numCompo(x,y);
+        int etatCell = etat[numCell];
+        Component listC[] = this.getComponents();
+        CellPane cp = (CellPane)listC[numCell];
+        if(etatCell!=1 || etatCell!=3 || etatCell!=5 || etatCell!=7){
+            if(etatCell == 0){
+                cp.getComponent(2).setVisible(true);
+                cp.getComponent(2).setBackground(Color.red);
+                etat[numCell] = 1;
+            }else if(etatCell == 2){
+                cp.getComponent(1).setVisible(true);
+                cp.getComponent(2).setVisible(true);
+                cp.getComponent(1).setBackground(Color.blue);
+                cp.getComponent(2).setBackground(Color.red);
+                etat[numCell] = 3;
+            }else if(etatCell == 4){  
+                cp.getComponent(0).setVisible(true);
+                cp.getComponent(2).setVisible(true);
+                cp.getComponent(0).setBackground(Color.yellow);
+                cp.getComponent(2).setBackground(Color.red);
+                etat[numCell] = 5;
+            }else{
+                cp.getComponent(0).setVisible(true);
+                cp.getComponent(1).setVisible(true);
+                cp.getComponent(2).setVisible(true);
+                cp.getComponent(0).setBackground(Color.yellow);
+                cp.getComponent(1).setBackground(Color.blue);
+                cp.getComponent(2).setBackground(Color.red);
+                etat[numCell] = 7;
+            }
+        }
+        gbc.gridx=x;
+        gbc.gridy=y;
+        cp.setBorder(fBord(numCell));
+        this.setComponentZOrder(cp, numCell);
     }
     
-    public void delD(GridBagLayout gbl, int x, int y){
-        
+    public void delD(int x, int y){
+        int numCell = numCompo(x,y);
+        System.out.println(numCell);
+        int etatCell = etat[numCell];
+        System.out.println(etatCell);
+        Component listC[] = this.getComponents();
+        CellPane cp = (CellPane)listC[numCell];
+        if(etatCell!=0 || etatCell!=2 || etatCell!=4 || etatCell!=6){
+            if(etatCell == 1){
+                cp.getComponent(2).setVisible(false);
+                etat[numCell] = 0;
+            }else if(etatCell == 3){
+                cp.getComponent(1).setVisible(true);
+                cp.getComponent(2).setVisible(false);
+                cp.getComponent(1).setBackground(Color.blue);
+                etat[numCell] = 2;
+            }else if(etatCell == 5){  
+                cp.getComponent(0).setVisible(true);
+                cp.getComponent(2).setVisible(false);
+                cp.getComponent(0).setBackground(Color.yellow);
+                etat[numCell] = 4;
+            }else{
+                cp.getComponent(0).setVisible(true);
+                cp.getComponent(1).setVisible(true);
+                cp.getComponent(2).setVisible(false);
+                cp.getComponent(0).setBackground(Color.yellow);
+                cp.getComponent(1).setBackground(Color.blue);
+                etat[numCell] = 6;
+            }
+        }
+        gbc.gridx=x;
+        gbc.gridy=y;
+        cp.setBorder(fBord(numCell));
+        this.setComponentZOrder(cp, numCell);
     }
     
-    public void addR(GridBagLayout gbl, int x, int y){
-        
+    public void addR(int x, int y){
+        if(!robot){
+            int numCell = numCompo(x,y);
+            int etatCell = etat[numCell];
+            Component listC[] = this.getComponents();
+            CellPane cp = (CellPane)listC[numCell];
+            if(etatCell == 0){
+                cp.getComponent(1).setVisible(true);
+                cp.getComponent(1).setBackground(Color.blue);
+                etat[numCell] = 2;
+            }else if(etatCell == 1){
+                cp.getComponent(1).setVisible(true);
+                cp.getComponent(2).setVisible(true);
+                cp.getComponent(1).setBackground(Color.blue);
+                cp.getComponent(2).setBackground(Color.red);
+                etat[numCell] = 3;
+            }else if(etatCell == 4){  
+                cp.getComponent(0).setVisible(true);
+                cp.getComponent(1).setVisible(true);
+                cp.getComponent(0).setBackground(Color.yellow);
+                cp.getComponent(1).setBackground(Color.blue);
+                etat[numCell] = 6;
+            }else if(etatCell == 5){
+                cp.getComponent(0).setVisible(true);
+                cp.getComponent(1).setVisible(true);
+                cp.getComponent(2).setVisible(true);
+                cp.getComponent(0).setBackground(Color.yellow);
+                cp.getComponent(1).setBackground(Color.blue);
+                cp.getComponent(2).setBackground(Color.red);
+                etat[numCell] = 7;
+            }
+            gbc.gridx=x;
+            gbc.gridy=y;
+            cp.setBorder(fBord(numCell));
+            this.setComponentZOrder(cp, numCell);
+            robot = true;
+        }
     }
     
-    public void delR(GridBagLayout gbl, int x, int y){
-        
+    public void delR(int x, int y){
+        if(robot){
+            int numCell = numCompo(x,y);
+            System.out.println(numCell);
+            int etatCell = etat[numCell];
+            System.out.println(etatCell);
+            Component listC[] = this.getComponents();
+            CellPane cp = (CellPane)listC[numCell];
+            if(etatCell == 2){
+                cp.getComponent(1).setVisible(false);
+                etat[numCell] = 0;
+            }else if(etatCell == 3){
+                cp.getComponent(1).setVisible(false);
+                cp.getComponent(2).setVisible(true);
+                cp.getComponent(2).setBackground(Color.red);
+                etat[numCell] = 1;
+            }else if(etatCell == 6){  
+                cp.getComponent(0).setVisible(true);
+                cp.getComponent(1).setVisible(false);
+                cp.getComponent(0).setBackground(Color.yellow);
+                etat[numCell] = 4;
+            }else if(etatCell == 7){
+                cp.getComponent(0).setVisible(true);
+                cp.getComponent(1).setVisible(false);
+                cp.getComponent(2).setVisible(true);
+                cp.getComponent(0).setBackground(Color.yellow);
+                cp.getComponent(2).setBackground(Color.red);
+                etat[numCell] = 5;
+            }
+            gbc.gridx=x;
+            gbc.gridy=y;
+            cp.setBorder(fBord(numCell));
+            this.setComponentZOrder(cp, numCell);
+            robot = false;
+        }
     }
     
-    public void mvtR(GridBagLayout gbl, int exX, int exY, int x, int y){
-        
+    public void mvtR(int exX, int exY, int x, int y){
+        if(robot){
+            delR(exX,exY);
+            addR(x,y);
+        }
     }
     /**
      * Fonction qui retourne le numéro de la CellPane en fonction de X et Y
@@ -153,41 +340,35 @@ public class GridPanel extends JPanel{
      */
     public CellPane creaCell (int numCell){
         CellPane cellPane = new CellPane();
-        cellPane.setLayout(new GridLayout(1,3));
-        JPanel jpJ = new JPanel();
-        JPanel jpR = new JPanel();
-        JPanel jpD = new JPanel();
-        jpJ.setVisible(false);
-        jpR.setVisible(false);
-        jpD.setVisible(false);
-        cellPane.add(jpJ);
-        cellPane.add(jpR);
-        cellPane.add(jpD);
         Border border = new MatteBorder(0, 0, 0, 0, Color.GRAY);
-        if(numCell==0){
-            border = new MatteBorder(1, 1, 0, 1, Color.GRAY);
-        }else if(numCell == 1){
-            border = new MatteBorder(1, 0, 0, 1, Color.GRAY);
-        }else if(numCell == 2){
-            border = new MatteBorder(1, 0, 0, 1, Color.GRAY);
-        }else if(numCell == 3){
-            border = new MatteBorder(1, 1, 1, 1, Color.GRAY);
-        }else if(numCell == 4){
-            border = new MatteBorder(1, 0, 1, 1, Color.GRAY);
-        }else if(numCell == 5){
-            border = new MatteBorder(1, 0, 1, 1, Color.GRAY);
-        }else if(numCell == 6){
-            border = new MatteBorder(1, 0, 1, 1, Color.GRAY);
-        }else if(numCell == 7){
-            border = new MatteBorder(1, 0, 1, 1, Color.GRAY);
-        }else if(numCell == 8){
-            border = new MatteBorder(0, 1, 1, 1, Color.GRAY);
-        }else if(numCell == 9){
-            border = new MatteBorder(0, 0, 1, 1, Color.GRAY);
-        }else{
-            border = new MatteBorder(0, 0, 1, 1, Color.GRAY);
-        }
+        border = fBord(numCell);
         cellPane.setBorder(border);
         return cellPane;
+    }
+    
+    public Border fBord(int numCell){
+        if(numCell==0){
+            return new MatteBorder(1, 1, 0, 1, Color.GRAY);
+        }else if(numCell == 1){
+            return new MatteBorder(1, 0, 0, 1, Color.GRAY);
+        }else if(numCell == 2){
+            return new MatteBorder(1, 0, 0, 1, Color.GRAY);
+        }else if(numCell == 3){
+            return new MatteBorder(1, 1, 1, 1, Color.GRAY);
+        }else if(numCell == 4){
+            return new MatteBorder(1, 0, 1, 1, Color.GRAY);
+        }else if(numCell == 5){
+            return new MatteBorder(1, 0, 1, 1, Color.GRAY);
+        }else if(numCell == 6){
+            return new MatteBorder(1, 0, 1, 1, Color.GRAY);
+        }else if(numCell == 7){
+            return new MatteBorder(1, 0, 1, 1, Color.GRAY);
+        }else if(numCell == 8){
+            return new MatteBorder(0, 1, 1, 1, Color.GRAY);
+        }else if(numCell == 9){
+            return new MatteBorder(0, 0, 1, 1, Color.GRAY);
+        }else{
+            return new MatteBorder(0, 0, 1, 1, Color.GRAY);
+        }
     }
 }

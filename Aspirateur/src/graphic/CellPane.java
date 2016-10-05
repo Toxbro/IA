@@ -26,7 +26,16 @@ public class CellPane extends JPanel{
     private Color defaultBackground;
     
         public CellPane() {
-            
+            setLayout(new GridLayout(1,3));
+            JPanel jpJ = new JPanel();
+            JPanel jpR = new JPanel();
+            JPanel jpD = new JPanel();
+            jpJ.setVisible(false);
+            jpR.setVisible(false);
+            jpD.setVisible(false);
+            add(jpJ);
+            add(jpR);
+            add(jpD);
             addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
@@ -54,8 +63,8 @@ public class CellPane extends JPanel{
         }
         
         private void doPop(MouseEvent e){
-        PopupMenu menu = new PopupMenu(this);
-        menu.show(e.getComponent(), e.getX(), e.getY());
+            PopupMenu menu = new PopupMenu(this);
+            menu.show(e.getComponent(), e.getX(), e.getY());
         }
         
 }
