@@ -10,5 +10,5 @@ package IA;
  * @author quentin
  */
 public enum Desire {
-    CLEAN, GETNEWGOAL, EXPLORE, MOVETOGOAL;
+    PICK, CLEAN, GETNEWGOAL, EXPLORE, MOVETOGOAL;
 }

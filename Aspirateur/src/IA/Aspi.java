@@ -18,20 +18,21 @@ import main.Main;
 
 public class Aspi implements Runnable {
     
-    private int x,y;
+    private Cell currentCell;
     private int conso;
     private HashMap<Cell, Integer> grid = new HashMap<Cell, Integer>();
     private Main master;
     private boolean isExploDone;
     private ArrayList<Direction> path = new ArrayList<Direction>();
-    private boolean isCellClean;
+    private boolean isCellClean = false;
+    private int cellTotal;
     
-    public Aspi(Main master) {
+    public Aspi(Main master, int cellTotal) {
         this.master = master;
-        this.x = 0;
-        this.y = 0;
+        this.currentCell = new Cell(0, 0);
         this.isExploDone = false;
         this.path = null;
+        this.cellTotal = cellTotal;
     }
     
     @Override
@@ -39,41 +40,52 @@ public class Aspi implements Runnable {
         while(true) {
            updateBelief();
            switch(getDesire()){
-                case GETNEWGOAL:{
-                    getNewGoal();
+                case EXPLORE:{
+                    explore();
+                    break;
                 }
-                case MOVETOGOAL:{
-                    
+                case GETNEWGOAL:{
+                    path = getPath(currentCell, getGoal());
+                    break;
+                }
+                case PICK: {
+                    pick();
+                    break;
                 }
                 case CLEAN:{
-                    
+                    suck();
+                    break;
                 }
-                case EXPLORE:{
-                    
+                case MOVETOGOAL:{
+                    move(path.get(0));
+                    path.remove(0);
+                    break;
                 }
             }
         }
     }
     
+    private void explore() {
+        
+    }
+    
     private void updateBelief() {
-        updateGrid();        
-        if(!isExploDone)
-            grid.put(new Cell(y, x), 0);
+        for(Map.Entry<Cell, Integer> entry : grid.entrySet()) {
+            entry.setValue(entry.getValue()+1);
+        }
     }
     
     private Desire getDesire(){
-        if(isExploDone && path == null) {
-            return Desire.GETNEWGOAL;
-        }
-        else if(isExploDone && path != null && !isCellClean) {
-            return Desire.CLEAN;
-        }
-        else if(isExploDone && path != null && isCellClean) {
-            return Desire.MOVETOGOAL;
-        }
-        else {
+        if(!isExploDone)
             return Desire.EXPLORE;
-        }
+        else if(path.isEmpty())
+            return Desire.GETNEWGOAL;
+        else if(getJewelState())
+            return Desire.PICK;
+        else if(getDustState())
+            return Desire.CLEAN;
+        else
+            return Desire.MOVETOGOAL;
     }
     
     private Cell getGoal(){
@@ -89,33 +101,117 @@ public class Aspi implements Runnable {
         return dirtiest;
     }
     
-    private ArrayList<Cell> getPath(Cell start, Cell end) {
+    private ArrayList<Direction> getPath(Cell start, Cell end) {
+        ArrayList<ArrayList<Cell>> choice = getPathList(start, end);
+        ArrayList<Cell> path = new ArrayList<Cell>();
+        ArrayList<Direction> result = new ArrayList<Direction>();
+        int dustAmount = 0, maxDust = 0;
+        
+        for(ArrayList<Cell> p : choice) {
+            for(Cell c : p) {
+                for(Map.Entry<Cell, Integer> entry : grid.entrySet()){
+                    if(entry.getKey() == c) {
+                        dustAmount += entry.getValue();
+                    }
+                }
+            }
+            if(dustAmount > maxDust) {
+                maxDust = dustAmount;
+                path = p;
+            }
+        }
+        
+        for(Cell c : path) {
+            if(c.getCol() == currentCell.getCol() && c.getRow() == currentCell.getRow()+1)
+                result.add(Direction.DOWN);
+            else if(c.getCol() == currentCell.getCol() && c.getRow() == currentCell.getRow()-1)
+                result.add(Direction.UP);
+            else if(c.getCol() == currentCell.getCol()+1 && c.getRow() == currentCell.getRow())
+                result.add(Direction.RIGHT);
+            else if(c.getCol() == currentCell.getCol()-1 && c.getRow() == currentCell.getRow())
+                result.add(Direction.LEFT);
+        }
+        
+        return result;
+    }
+    
+    private ArrayList<ArrayList<Cell>> getPathList(Cell start, Cell end) {
+        ArrayList<ArrayList<Cell>> result = new ArrayList<ArrayList<Cell>>();
+        ArrayList<ArrayList<Cell>> tempResult;
+        ArrayList<Cell> adjacent = new ArrayList<Cell>();
+        int dist = Integer.MAX_VALUE;
+        
+        adjacent = getClosestAdj(start, end);
+
+        for(Cell c : adjacent){
+            
+            if(c != end) {
+                tempResult = getPathList(c, end);
+                
+                for(ArrayList<Cell> r : tempResult) {
+                    r.add(0, start);
+                    result.add(r);
+                }
+            }
+            else {
+                result.add(new ArrayList<Cell>() {{
+                    add(start); 
+                    add(end);
+                }});
+            }
+        }
+
+        return result;
+    }
+    
+    private ArrayList<Cell> getClosestAdj(Cell start, Cell end){
         ArrayList<Cell> result = new ArrayList<Cell>();
-        int dx = 0, dy = 0;
+        ArrayList<Cell> adjacent;
+        HashMap<Cell, Integer> closeAdj= new HashMap<Cell, Integer>();
+        int dist = Integer.MAX_VALUE;
         
+        adjacent = getAdj(start);
         
-        dx = end.getCol() - start.getCol();
-        dy = end.getRow() - start.getRow();
+        for(Cell c : adjacent){
+            closeAdj.put(c, Math.abs(c.getCol() - currentCell.getCol()) + Math.abs(c.getRow() - currentCell.getRow()));
+        }
         
-        for(Map.Entry<Cell, Integer> entry : grid.entrySet()){
-            Cell cell = entry.getKey();
-            if((cell.getCol() == x && cell.getRow() == y+1) ||
-                (cell.getCol() == x && cell.getRow() == y-1) ||
-                (cell.getCol() == x+1 && cell.getRow() == y) ||
-                (cell.getCol() == x-1 && cell.getRow() == y)) {
-                adjacent.add(entry.getKey());
+        for(Map.Entry<Cell, Integer> entry : closeAdj.entrySet()) {
+            if(entry.getValue() < dist) {
+                dist = entry.getValue();
+                result = new ArrayList<Cell>();
+                result.add(entry.getKey());
+            }
+            else if(entry.getValue() == dist) {
+                result.add(entry.getKey());
             }
         }
         
         return result;
     }
     
+    private ArrayList<Cell> getAdj(Cell c){
+        ArrayList<Cell> result = new ArrayList<Cell>();
+        
+        for(Map.Entry<Cell, Integer> entry : grid.entrySet()){
+            Cell cell = entry.getKey();
+            if((cell.getCol() == currentCell.getCol() && cell.getRow() == currentCell.getRow()+1) ||
+                (cell.getCol() == currentCell.getCol() && cell.getRow() == currentCell.getRow()-1) ||
+                (cell.getCol() == currentCell.getCol()+1 && cell.getRow() == currentCell.getRow()) ||
+                (cell.getCol() == currentCell.getCol()-1 && cell.getRow() == currentCell.getRow())) {
+                result.add(entry.getKey());
+            }
+        }
+        
+        return result;
+    } 
+    
     private void move(Direction dir) {
         switch(dir){
-            case DOWN: y--;
-            case UP: y++;
-            case LEFT: x--;
-            case RIGHT: x++;
+            case DOWN: currentCell = getCell(currentCell.getCol(),currentCell.getRow()+1);
+            case UP: currentCell = getCell(currentCell.getCol(),currentCell.getRow()-1);
+            case LEFT: currentCell = getCell(currentCell.getCol()-1,currentCell.getRow());
+            case RIGHT: currentCell = getCell(currentCell.getCol()+1,currentCell.getRow());
         }
         master.botMove(dir);
     }
@@ -136,10 +232,12 @@ public class Aspi implements Runnable {
         master.pick();
     }
     
-    private void updateGrid() {
+    private Cell getCell(int x, int y) {
         for(Map.Entry<Cell, Integer> entry : grid.entrySet()) {
-            entry.setValue(entry.getValue()+1);
+            if(entry.getKey().getCol() == x && entry.getKey().getRow() == y)
+                return entry.getKey();
         }
+        return null;
     }
 }
 

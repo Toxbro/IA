@@ -49,51 +49,21 @@ public final class Main {
         environnement = aEnvironnement;
     }
     
-    public boolean botMove(Direction dir) {
+    public void botMove(Direction dir) {
         Grid grid = environnement.getGrid();
-        Cell newCell;
+        Cell newCell = null;
         
-        if (dir.equals(Direction.LEFT)) {
-            newCell = grid.getCell(currentRobotCell.getRow(), currentRobotCell.getCol()-1);
-            if ((newCell != null) && (newCell.getEnable())) {
-                currentRobotCell = newCell;
-                
-                //Send event to GUI
-                
-                return true;
-            }   
+        switch(dir){
+            case LEFT:
+                newCell = grid.getCell(currentRobotCell.getRow(), currentRobotCell.getCol()-1);
+            case RIGHT:
+                newCell = grid.getCell(currentRobotCell.getRow(), currentRobotCell.getCol()+1);
+            case UP:
+                newCell = grid.getCell(currentRobotCell.getRow()-1, currentRobotCell.getCol());
+            case DOWN:
+                newCell = grid.getCell(currentRobotCell.getRow()+1, currentRobotCell.getCol());
         }
-        if (dir.equals(Direction.RIGHT)) {
-            newCell = grid.getCell(currentRobotCell.getRow(), currentRobotCell.getCol()+1);
-            if ((newCell != null) && (newCell.getEnable())) {
-                currentRobotCell = newCell;
-                
-                //Send event to GUI
-                
-                return true;
-            }   
-        }
-        if (dir.equals(Direction.UP)) {
-            newCell = grid.getCell(currentRobotCell.getRow()-1, currentRobotCell.getCol());
-            if ((newCell != null) && (newCell.getEnable())) {
-                currentRobotCell = newCell;
-                
-                //Send event to GUI
-                
-                return true;
-            }   
-        }
-        if (dir.equals(Direction.DOWN)) {
-            newCell = grid.getCell(currentRobotCell.getRow()+1, currentRobotCell.getCol());
-            if ((newCell != null) && (newCell.getEnable())) {
-                currentRobotCell = newCell;
-                
-                //Send event to GUI
-                
-                return true;
-            }   
-        }
-        return false;
+        currentRobotCell = newCell;
     }
     
     //retourne l'état de la poussière sur la case actuelle du robot.
@@ -116,5 +86,34 @@ public final class Main {
     public void pick() {
         currentRobotCell.removeObject(Type.JEWEL);
         //Send event to GUI
+    }
+    
+    public boolean isCellEnabled(Direction dir) {
+        Grid grid = environnement.getGrid();
+        Cell newCell;
+        
+        switch(dir){
+            case LEFT: {
+                newCell = grid.getCell(currentRobotCell.getRow(), currentRobotCell.getCol()-1);
+                if ((newCell != null) && (newCell.getEnable()))
+                    return true;
+            }
+            case RIGHT:{
+                newCell = grid.getCell(currentRobotCell.getRow(), currentRobotCell.getCol()+1);
+                if ((newCell != null) && (newCell.getEnable()))
+                    return true;
+            }
+            case UP:{
+                newCell = grid.getCell(currentRobotCell.getRow()-1, currentRobotCell.getCol());
+                if ((newCell != null) && (newCell.getEnable()))
+                    return true;
+            }
+            case DOWN:{
+                newCell = grid.getCell(currentRobotCell.getRow()+1, currentRobotCell.getCol());
+                if ((newCell != null) && (newCell.getEnable()))
+                    return true;
+            }
+        }
+        return false;
     }
 }
