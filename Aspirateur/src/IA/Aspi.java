@@ -9,6 +9,8 @@ import java.util.Map;
 import environnement.Cell;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import main.Main;
 
 /**
@@ -33,6 +35,7 @@ public class Aspi implements Runnable {
         this.isExploDone = false;
         this.path = null;
         this.cellTotal = cellTotal;
+        this.grid.put(new Cell(0, 0), 0);
     }
     
     @Override
@@ -57,6 +60,8 @@ public class Aspi implements Runnable {
                     break;
                 }
                 case MOVETOGOAL:{
+                    if(getJewelState() || getDustState())
+                        break;
                     move(path.get(0));
                     path.remove(0);
                     break;
@@ -66,7 +71,19 @@ public class Aspi implements Runnable {
     }
     
     private void explore() {
-        
+        ArrayList<Cell> adjacent = getAdj(currentCell);
+        ArrayList<Cell> unknown = new ArrayList<Cell>();
+        for(Cell c : adjacent) {
+            if(!grid.containsKey(c)) {
+                grid.put(c, 0);
+                unknown.add(c);
+                cellTotal--;
+            }
+        }
+        if(cellTotal == 0)
+            isExploDone = true;
+        else
+            move(getDir(unknown.get((int) (Math.random() * unknown.size()))));
     }
     
     private void updateBelief() {
@@ -122,14 +139,7 @@ public class Aspi implements Runnable {
         }
         
         for(Cell c : path) {
-            if(c.getCol() == currentCell.getCol() && c.getRow() == currentCell.getRow()+1)
-                result.add(Direction.DOWN);
-            else if(c.getCol() == currentCell.getCol() && c.getRow() == currentCell.getRow()-1)
-                result.add(Direction.UP);
-            else if(c.getCol() == currentCell.getCol()+1 && c.getRow() == currentCell.getRow())
-                result.add(Direction.RIGHT);
-            else if(c.getCol() == currentCell.getCol()-1 && c.getRow() == currentCell.getRow())
-                result.add(Direction.LEFT);
+            result.add(getDir(c));
         }
         
         return result;
@@ -193,27 +203,21 @@ public class Aspi implements Runnable {
     private ArrayList<Cell> getAdj(Cell c){
         ArrayList<Cell> result = new ArrayList<Cell>();
         
-        for(Map.Entry<Cell, Integer> entry : grid.entrySet()){
-            Cell cell = entry.getKey();
-            if((cell.getCol() == currentCell.getCol() && cell.getRow() == currentCell.getRow()+1) ||
-                (cell.getCol() == currentCell.getCol() && cell.getRow() == currentCell.getRow()-1) ||
-                (cell.getCol() == currentCell.getCol()+1 && cell.getRow() == currentCell.getRow()) ||
-                (cell.getCol() == currentCell.getCol()-1 && cell.getRow() == currentCell.getRow())) {
-                result.add(entry.getKey());
-            }
+        for(Direction d : Direction.values()){
+            result.add(getCell(c, d));
         }
-        
         return result;
     } 
     
     private void move(Direction dir) {
-        switch(dir){
-            case DOWN: currentCell = getCell(currentCell.getCol(),currentCell.getRow()+1);
-            case UP: currentCell = getCell(currentCell.getCol(),currentCell.getRow()-1);
-            case LEFT: currentCell = getCell(currentCell.getCol()-1,currentCell.getRow());
-            case RIGHT: currentCell = getCell(currentCell.getCol()+1,currentCell.getRow());
-        }
+        conso++;
+        currentCell = getCell(currentCell, dir);
         master.botMove(dir);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Aspi.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     private boolean getDustState() {
@@ -225,11 +229,23 @@ public class Aspi implements Runnable {
     }
     
     private void suck() {
+        conso++;
         master.suck();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Aspi.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     private void pick() {
+        conso++;
         master.pick();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Aspi.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     private Cell getCell(int x, int y) {
@@ -237,7 +253,38 @@ public class Aspi implements Runnable {
             if(entry.getKey().getCol() == x && entry.getKey().getRow() == y)
                 return entry.getKey();
         }
-        return null;
+        if(!isExploDone)
+            return new Cell(y,x);
+        else
+            return null;
+    }
+    
+    private Cell getCell(Cell c, Direction dir) {
+        switch(dir){
+            case RIGHT:
+                return getCell(c.getCol()+1,c.getRow());
+            case LEFT:
+                return getCell(c.getCol()-1,c.getRow());
+            case UP:
+                return getCell(c.getCol(),c.getRow()-1);
+            case DOWN:
+                return getCell(c.getCol(),c.getRow()+1);
+            default:
+                return null;
+        }
+    }
+    
+    private Direction getDir(Cell c) {
+        if(c.getCol() == currentCell.getCol() && c.getRow() == currentCell.getRow()+1)
+            return Direction.DOWN;
+        else if(c.getCol() == currentCell.getCol() && c.getRow() == currentCell.getRow()-1)
+            return Direction.UP;
+        else if(c.getCol() == currentCell.getCol()+1 && c.getRow() == currentCell.getRow())
+            return Direction.RIGHT;
+        else if(c.getCol() == currentCell.getCol()-1 && c.getRow() == currentCell.getRow())
+            return Direction.LEFT;
+        else
+            return null;
     }
 }
 

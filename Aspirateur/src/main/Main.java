@@ -88,32 +88,12 @@ public final class Main {
         //Send event to GUI
     }
     
-    public boolean isCellEnabled(Direction dir) {
+    public boolean isCellEnabled(Cell c) {
         Grid grid = environnement.getGrid();
-        Cell newCell;
         
-        switch(dir){
-            case LEFT: {
-                newCell = grid.getCell(currentRobotCell.getRow(), currentRobotCell.getCol()-1);
-                if ((newCell != null) && (newCell.getEnable()))
-                    return true;
-            }
-            case RIGHT:{
-                newCell = grid.getCell(currentRobotCell.getRow(), currentRobotCell.getCol()+1);
-                if ((newCell != null) && (newCell.getEnable()))
-                    return true;
-            }
-            case UP:{
-                newCell = grid.getCell(currentRobotCell.getRow()-1, currentRobotCell.getCol());
-                if ((newCell != null) && (newCell.getEnable()))
-                    return true;
-            }
-            case DOWN:{
-                newCell = grid.getCell(currentRobotCell.getRow()+1, currentRobotCell.getCol());
-                if ((newCell != null) && (newCell.getEnable()))
-                    return true;
-            }
-        }
-        return false;
+        if((c != null) && (c.getEnable()))
+            return true;
+        else
+            return false;
     }
 }
