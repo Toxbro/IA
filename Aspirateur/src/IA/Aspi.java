@@ -5,33 +5,35 @@
  */
 package IA;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Map;
+import environnement.Cell;
+import java.util.HashMap;
+import main.Main;
 
 /**
  *
  * @author quentin
  */
+
 public class Aspi implements Runnable {
     
     private int x,y;
     private int conso;
-    private ArrayList<Direction> pattern = new ArrayList<Direction>();
-    private Master master;
+    private HashMap<Cell, Integer> grid = new HashMap<Cell, Integer>();
+    private Main master;
+    private boolean isExploDone;
     
-    public Aspi(Master master, int x, int y) {
+    public Aspi(Main master) {
         this.master = master;
-//        this.x = x;
-//        this.y = y;
-        this.pattern.addAll(Arrays.asList( Direction.RIGHT, Direction.RIGHT, Direction.DOWN, Direction.DOWN, Direction.LEFT, Direction.LEFT,
-                        Direction.UP, Direction.RIGHT, Direction.RIGHT, Direction.RIGHT, Direction.RIGHT, Direction.LEFT,
-                        Direction.LEFT, Direction.LEFT, Direction.LEFT, Direction.LEFT, Direction.UP));
+        this.x = 0;
+        this.y = 0;
+        this.isExploDone = false;
     }
     
     @Override
     public void run() {
         while(true) {
-            Booolean action = false;
+            boolean action = false;
             if(!action) {
                 if(getJewelState()) {
                     pick();
@@ -49,6 +51,10 @@ public class Aspi implements Runnable {
         }
     }
     
+    private void updateBelief() {
+        
+    }
+    
     private void move() {
         Direction dir = pattern.get(0);
         pattern.remove(0);
@@ -63,18 +69,20 @@ public class Aspi implements Runnable {
     }
     
     private Boolean getDustState() {
-        return master.getDustState(x,y);
+        return master.getDustState();
     }
     
     private Boolean getJewelState() {
-        return master.getJewelState(x,y);
+        return master.getJewelState();
     }
     
     private void suck() {
-        master.suck(x,y);
+        master.suck();
     }
     
     private void pick() {
-        master.pick(x,y);
+        master.pick();
     }
 }
+
+

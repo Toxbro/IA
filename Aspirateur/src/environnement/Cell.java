@@ -85,12 +85,16 @@ public class Cell {
         this.objects = objects;
     }
     
-    public void addObject(Object o){
-        this.objects.add(o);
+    public void addObject(Type t){
+        this.objects.add(new Object(t));
     }
     
-    public Object removeObject(Object o){
-        return this.objects.remove(this.objects.indexOf(o));
+    public Boolean removeObject(Type t){
+        for (Object o : objects){
+            if (o.getType() == t)
+                return this.objects.remove(o);
+        }
+        return false;
     }
     
     public void removeAllObjects(){
