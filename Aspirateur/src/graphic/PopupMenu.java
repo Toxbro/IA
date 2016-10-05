@@ -50,37 +50,6 @@ public class PopupMenu extends JPopupMenu{
                 JLabel jewel = new JLabel(new ImageIcon("ressources/jewels.jpg"));
                 //JLabel jewel = new JLabel(new ImageIcon(((new ImageIcon("ressources/jewels.png")).getImage()).getScaledInstance(10, 10, java.awt.Image.SCALE_SMOOTH)));
                 //c.getComponent(0).add(jewel);
-                //c.setLayout(new GridBagLayout());
-//                JPanel gbl = new JPanel();
-//                gbl.setLayout(new GridBagLayout());
-//                GridBagConstraints cJ = new GridBagConstraints();
-//                cJ.gridx = 0;
-//                cJ.gridy = 0;
-//                GridBagConstraints c1 = new GridBagConstraints();
-//                c1.gridx = 0;
-//                c1.gridy = 1;
-//                GridBagConstraints c2 = new GridBagConstraints();
-//                c2.gridx = 0;
-//                c2.gridy = 2;
-//                Border border = null;
-//                     border = new MatteBorder(1, 1, 1, 1, Color.GRAY);
-//                JPanel jp = new JPanel();
-//                jp.setBackground(Color.GREEN);
-//                jp.setBorder(border);
-//                //JLabel jewel = new JLabel(new ImageIcon(((new ImageIcon("ressources/jewels.png")).getImage()).getScaledInstance(10, 10, java.awt.Image.SCALE_SMOOTH)));
-//                //jewel.setBackground(Color.GREEN);
-//                gbl.add(jp,cJ);
-//                gbl.add(jp,c1);
-//                gbl.add(jp,c2);
-//                gbl.setVisible(true);
-//                //c.setBackground(Color.black);
-//                c.add(gbl);
-//                c.setEnabled(true);
-//                c.setVisible(true);
-                //JLabel jewel = new JLabel(new ImageIcon(((new ImageIcon("ressources/jewels.png")).getImage()).getScaledInstance(10, 10, java.awt.Image.SCALE_SMOOTH)));
-                //c.add(jewel);
-                //c.addJ();
-                //c.setBackground(Color.GREEN);
             }
         });
         
