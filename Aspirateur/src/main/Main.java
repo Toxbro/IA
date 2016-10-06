@@ -75,53 +75,32 @@ public final class Main {
         Grid grid = environnement.getGrid();
         Cell newCell = null;
         
-
+        
         switch(dir){
             case LEFT:
                 newCell = grid.getCell(currentRobotCell.getRow(), currentRobotCell.getCol()-1);
-            case RIGHT:
-                newCell = grid.getCell(currentRobotCell.getRow(), currentRobotCell.getCol()+1);
-            case UP:
-                newCell = grid.getCell(currentRobotCell.getRow()-1, currentRobotCell.getCol());
-            case DOWN:
-                newCell = grid.getCell(currentRobotCell.getRow()+1, currentRobotCell.getCol());
-        }
-        currentRobotCell = newCell;
-
-        if (dir.equals(Direction.LEFT)) {
-            newCell = grid.getCell(currentRobotCell.getRow(), currentRobotCell.getCol()-1);
-            if ((newCell != null) && (newCell.getEnable())) {
-                //Send event to GUI
+                if ((newCell != null) && (newCell.getEnable())) {
                 graph.view.mvtR(currentRobotCell.getCol(), currentRobotCell.getRow(), newCell.getCol(), newCell.getRow());  
                 currentRobotCell = newCell;
-                
-                
-            }   
-        }
-        if (dir.equals(Direction.RIGHT)) {
-            newCell = grid.getCell(currentRobotCell.getRow(), currentRobotCell.getCol()+1);
-            if ((newCell != null) && (newCell.getEnable())) {
-                //Send event to GUI
+                }
+            case RIGHT:
+                newCell = grid.getCell(currentRobotCell.getRow(), currentRobotCell.getCol()+1);
+                if ((newCell != null) && (newCell.getEnable())) {
                 graph.view.mvtR(currentRobotCell.getCol(), currentRobotCell.getRow(), newCell.getCol(), newCell.getRow()); 
                 currentRobotCell = newCell;
-                
-
-            }   
-        }
-        if (dir.equals(Direction.UP)) {
-            newCell = grid.getCell(currentRobotCell.getRow()-1, currentRobotCell.getCol());
-            if ((newCell != null) && (newCell.getEnable())) {
-
+                }
+            case UP:
+                newCell = grid.getCell(currentRobotCell.getRow()-1, currentRobotCell.getCol());
+                if ((newCell != null) && (newCell.getEnable())) {
                 graph.view.mvtR(currentRobotCell.getCol(), currentRobotCell.getRow(), newCell.getCol(), newCell.getRow()); 
                 currentRobotCell = newCell;
-            }   
-        }
-        if (dir.equals(Direction.DOWN)) {
-            newCell = grid.getCell(currentRobotCell.getRow()+1, currentRobotCell.getCol());
-            if ((newCell != null) && (newCell.getEnable())) {
+                }
+            case DOWN:
+                newCell = grid.getCell(currentRobotCell.getRow()+1, currentRobotCell.getCol());
+                if ((newCell != null) && (newCell.getEnable())) {
                 graph.view.mvtR(currentRobotCell.getCol(), currentRobotCell.getRow(), newCell.getCol(), newCell.getRow()); 
                 currentRobotCell = newCell;
-            }   
+                }
         }
     }
     
