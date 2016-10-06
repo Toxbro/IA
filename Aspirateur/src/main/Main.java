@@ -71,10 +71,23 @@ public final class Main {
         environnement = aEnvironnement;
     }
     
-    public boolean botMove(Direction dir) {
+    public void botMove(Direction dir) {
         Grid grid = environnement.getGrid();
-        Cell newCell;
+        Cell newCell = null;
         
+<<<<<<< HEAD
+        switch(dir){
+            case LEFT:
+                newCell = grid.getCell(currentRobotCell.getRow(), currentRobotCell.getCol()-1);
+            case RIGHT:
+                newCell = grid.getCell(currentRobotCell.getRow(), currentRobotCell.getCol()+1);
+            case UP:
+                newCell = grid.getCell(currentRobotCell.getRow()-1, currentRobotCell.getCol());
+            case DOWN:
+                newCell = grid.getCell(currentRobotCell.getRow()+1, currentRobotCell.getCol());
+        }
+        currentRobotCell = newCell;
+=======
         if (dir.equals(Direction.LEFT)) {
             newCell = grid.getCell(currentRobotCell.getRow(), currentRobotCell.getCol()-1);
             if ((newCell != null) && (newCell.getEnable())) {
@@ -122,6 +135,7 @@ public final class Main {
             }   
         }
         return false;
+>>>>>>> master
     }
     
     //retourne l'état de la poussière sur la case actuelle du robot.
@@ -211,5 +225,14 @@ public final class Main {
     public void setJewelProb(int prob){
         //System.out.println("main.Main.setJewelProb()"+prob);
         environnement.setPercentageJewel(prob);
+    }
+    
+    public boolean isCellEnabled(Cell c) {
+        Grid grid = environnement.getGrid();
+        
+        if((c != null) && (c.getEnable()))
+            return true;
+        else
+            return false;
     }
 }
