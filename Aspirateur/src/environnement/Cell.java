@@ -21,7 +21,8 @@ public class Cell {
         objects = new ArrayList<>();
         col = c;
         row = r;
-        System.out.println("Cell "+this.toString()+" created and is "+getEnable());
+        StackTraceElement [] stackTraceElements = Thread.currentThread().getStackTrace();
+        System.out.println(stackTraceElements[stackTraceElements.length-2].getClassName()+" say : Cell "+this.toString()+" created and is "+getEnable());
     }
     
     public Cell (int r, int c, Boolean e){

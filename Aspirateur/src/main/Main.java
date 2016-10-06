@@ -26,11 +26,19 @@ public final class Main {
     
     private Cell currentRobotCell;
     
+    private Cell initialRobotCell;
+    
     public Main (){
         
         setGraph(new graphic.Main(this));
         Thread tGraphic = new Thread(getGraph());
         tGraphic.start();
+        
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         setEnvironnement(new Environnement(this));
         Thread tEnvironnement = new Thread(getEnvironnement());
@@ -43,12 +51,13 @@ public final class Main {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
         currentRobotCell = environnement.getRandomCell();
+        initialRobotCell = currentRobotCell;
         graph.view.addR(currentRobotCell.getCol(), currentRobotCell.getRow());
         
         //DEBUG
         System.out.println("Robot is currently on : "+currentRobotCell.toString());
         
-        setRobot(new Aspi(this, 11));
+        setRobot(new Aspi(this, 10));
         Thread tRobot = new Thread(getRobot());
         tRobot.start();
     }
@@ -75,33 +84,40 @@ public final class Main {
         Grid grid = environnement.getGrid();
         Cell newCell = null;
         
+        System.out.println(dir);
         
         switch(dir){
             case LEFT:
                 newCell = grid.getCell(currentRobotCell.getRow(), currentRobotCell.getCol()-1);
                 if ((newCell != null) && (newCell.getEnable())) {
-                graph.view.mvtR(currentRobotCell.getCol(), currentRobotCell.getRow(), newCell.getCol(), newCell.getRow());  
-                currentRobotCell = newCell;
+                    graph.view.mvtR(currentRobotCell.getCol(), currentRobotCell.getRow(), newCell.getCol(), newCell.getRow());  
+                    currentRobotCell = newCell;
                 }
+                break;
             case RIGHT:
                 newCell = grid.getCell(currentRobotCell.getRow(), currentRobotCell.getCol()+1);
                 if ((newCell != null) && (newCell.getEnable())) {
-                graph.view.mvtR(currentRobotCell.getCol(), currentRobotCell.getRow(), newCell.getCol(), newCell.getRow()); 
-                currentRobotCell = newCell;
+                    graph.view.mvtR(currentRobotCell.getCol(), currentRobotCell.getRow(), newCell.getCol(), newCell.getRow()); 
+                    currentRobotCell = newCell;
                 }
+                break;
             case UP:
                 newCell = grid.getCell(currentRobotCell.getRow()-1, currentRobotCell.getCol());
                 if ((newCell != null) && (newCell.getEnable())) {
-                graph.view.mvtR(currentRobotCell.getCol(), currentRobotCell.getRow(), newCell.getCol(), newCell.getRow()); 
-                currentRobotCell = newCell;
+                    graph.view.mvtR(currentRobotCell.getCol(), currentRobotCell.getRow(), newCell.getCol(), newCell.getRow()); 
+                    currentRobotCell = newCell;
                 }
+                break;
             case DOWN:
                 newCell = grid.getCell(currentRobotCell.getRow()+1, currentRobotCell.getCol());
                 if ((newCell != null) && (newCell.getEnable())) {
-                graph.view.mvtR(currentRobotCell.getCol(), currentRobotCell.getRow(), newCell.getCol(), newCell.getRow()); 
-                currentRobotCell = newCell;
+                    graph.view.mvtR(currentRobotCell.getCol(), currentRobotCell.getRow(), newCell.getCol(), newCell.getRow()); 
+                    currentRobotCell = newCell;
                 }
+                break;
         }
+        
+        System.out.println("Robot déplacé en "+currentRobotCell.getRow()+','+currentRobotCell.getCol());
     }
     
     //retourne l'état de la poussière sur la case actuelle du robot.
@@ -191,11 +207,12 @@ public final class Main {
     
     public boolean isCellEnabled(Cell c) {
         Grid grid = environnement.getGrid();
+        Cell cell;
         
-        if((c != null) && (c.getEnable()))
-            return true;
-        else
-            return false;
+        cell = grid.getCell(c.getRow()+initialRobotCell.getRow(), c.getCol()+initialRobotCell.getCol());
+        if(cell != null)
+            return cell.getEnable();
+        return false;
     }
 
     /**

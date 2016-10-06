@@ -25,7 +25,7 @@ public class Aspi implements Runnable {
     private HashMap<Cell, Integer> grid = new HashMap<Cell, Integer>();
     private Main master;
     private boolean isExploDone;
-    private ArrayList<Direction> path = new ArrayList<Direction>();
+    private ArrayList<Direction> path;
     private boolean isCellClean = false;
     private int cellTotal;
     
@@ -33,22 +33,28 @@ public class Aspi implements Runnable {
         this.master = master;
         this.currentCell = new Cell(0, 0);
         this.isExploDone = false;
-        this.path = null;
+        this.path = new ArrayList<Direction>();
         this.cellTotal = cellTotal;
         this.grid.put(new Cell(0, 0), 0);
     }
     
     @Override
     public void run() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Aspi.class.getName()).log(Level.SEVERE, null, ex);
+        }
         while(true) {
-           updateBelief();
-           switch(getDesire()){
+            updateBelief();
+            switch(getDesire()){
                 case EXPLORE:{
                     explore();
                     break;
                 }
                 case GETNEWGOAL:{
                     path = getPath(currentCell, getGoal());
+                    System.out.println(path.toString());
                     break;
                 }
                 case PICK: {
@@ -80,10 +86,16 @@ public class Aspi implements Runnable {
                 cellTotal--;
             }
         }
-        if(cellTotal == 0)
+        if(cellTotal == 0) {
             isExploDone = true;
+            System.out.println(grid.toString());
+        }
         else
-            move(getDir(unknown.get((int) (Math.random() * unknown.size()))));
+            if(unknown.size() == 0){
+                move(getDir(adjacent.get((int) (Math.random()*adjacent.size()))));
+            }
+            else
+                move(getDir(unknown.get((int) (Math.random() * unknown.size()))));
     }
     
     private void updateBelief() {
@@ -183,7 +195,7 @@ public class Aspi implements Runnable {
         adjacent = getAdj(start);
         
         for(Cell c : adjacent){
-            closeAdj.put(c, Math.abs(c.getCol() - currentCell.getCol()) + Math.abs(c.getRow() - currentCell.getRow()));
+            closeAdj.put(c, Math.abs(end.getCol() - c.getCol()) + Math.abs(end.getRow() - c.getRow()));
         }
         
         for(Map.Entry<Cell, Integer> entry : closeAdj.entrySet()) {
@@ -204,15 +216,19 @@ public class Aspi implements Runnable {
         ArrayList<Cell> result = new ArrayList<Cell>();
         
         for(Direction d : Direction.values()){
-            result.add(getCell(c, d));
+            Cell cell = getCell(c, d);
+            if(cell != null)
+                result.add(cell);
         }
+        System.out.println(result.toString());
         return result;
+        //Modifier prendre en compte cell disable si hors explo
     } 
     
     private void move(Direction dir) {
         conso++;
-        currentCell = getCell(currentCell, dir);
         master.botMove(dir);
+        currentCell = getCell(currentCell, dir);        
         try {
             Thread.sleep(1000);
         } catch (InterruptedException ex) {
@@ -253,10 +269,13 @@ public class Aspi implements Runnable {
             if(entry.getKey().getCol() == x && entry.getKey().getRow() == y)
                 return entry.getKey();
         }
-        if(!isExploDone)
-            return new Cell(y,x);
-        else
-            return null;
+        if(!isExploDone) {
+            Cell c = new Cell(y,x);
+            if(master.isCellEnabled(c))
+                return c;
+        }
+        System.out.println("TOTO");
+        return null;
     }
     
     private Cell getCell(Cell c, Direction dir) {
@@ -270,11 +289,13 @@ public class Aspi implements Runnable {
             case DOWN:
                 return getCell(c.getCol(),c.getRow()+1);
             default:
+                System.out.println("IA.Aspi.getCell()");
                 return null;
         }
     }
     
     private Direction getDir(Cell c) {
+        System.out.println("");
         if(c.getCol() == currentCell.getCol() && c.getRow() == currentCell.getRow()+1)
             return Direction.DOWN;
         else if(c.getCol() == currentCell.getCol() && c.getRow() == currentCell.getRow()-1)
@@ -283,8 +304,10 @@ public class Aspi implements Runnable {
             return Direction.RIGHT;
         else if(c.getCol() == currentCell.getCol()-1 && c.getRow() == currentCell.getRow())
             return Direction.LEFT;
-        else
+        else {
+            System.out.println("IA.Aspi.getDir()");
             return null;
+        }
     }
 }
 
