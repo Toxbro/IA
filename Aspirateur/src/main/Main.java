@@ -7,6 +7,8 @@ package main;
 
 import environnement.*;
 import IA.*;
+import java.io.IOException;
+import java.nio.CharBuffer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,20 +22,16 @@ public final class Main {
     
     private graphic.Main graph;
     
+    private Aspi robot;
+    
     private Cell currentRobotCell;
     
     public Main (){
-
-        //Initialize other threads
+        
         setGraph(new graphic.Main(this));
         Thread tGraphic = new Thread(getGraph());
         tGraphic.start();
-        //Temporisation for cell creation
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
         setEnvironnement(new Environnement(this));
         Thread tEnvironnement = new Thread(getEnvironnement());
         tEnvironnement.start();
@@ -50,7 +48,9 @@ public final class Main {
         //DEBUG
         System.out.println("Robot is currently on : "+currentRobotCell.toString());
         
-        
+        setRobot(new Aspi(this, 11));
+        Thread tRobot = new Thread(getRobot());
+        tRobot.start();
     }
     
     public static void main(String [] args){
@@ -75,7 +75,7 @@ public final class Main {
         Grid grid = environnement.getGrid();
         Cell newCell = null;
         
-<<<<<<< HEAD
+
         switch(dir){
             case LEFT:
                 newCell = grid.getCell(currentRobotCell.getRow(), currentRobotCell.getCol()-1);
@@ -87,7 +87,7 @@ public final class Main {
                 newCell = grid.getCell(currentRobotCell.getRow()+1, currentRobotCell.getCol());
         }
         currentRobotCell = newCell;
-=======
+
         if (dir.equals(Direction.LEFT)) {
             newCell = grid.getCell(currentRobotCell.getRow(), currentRobotCell.getCol()-1);
             if ((newCell != null) && (newCell.getEnable())) {
@@ -95,8 +95,7 @@ public final class Main {
                 graph.view.mvtR(currentRobotCell.getCol(), currentRobotCell.getRow(), newCell.getCol(), newCell.getRow());  
                 currentRobotCell = newCell;
                 
-                              
-                return true;
+                
             }   
         }
         if (dir.equals(Direction.RIGHT)) {
@@ -107,35 +106,23 @@ public final class Main {
                 currentRobotCell = newCell;
                 
 
-                return true;
             }   
         }
         if (dir.equals(Direction.UP)) {
             newCell = grid.getCell(currentRobotCell.getRow()-1, currentRobotCell.getCol());
             if ((newCell != null) && (newCell.getEnable())) {
-                //Send event to GUI
+
                 graph.view.mvtR(currentRobotCell.getCol(), currentRobotCell.getRow(), newCell.getCol(), newCell.getRow()); 
                 currentRobotCell = newCell;
-                
-                //Send event to GUI
-                
-                return true;
             }   
         }
         if (dir.equals(Direction.DOWN)) {
             newCell = grid.getCell(currentRobotCell.getRow()+1, currentRobotCell.getCol());
             if ((newCell != null) && (newCell.getEnable())) {
-                //Send event to GUI
                 graph.view.mvtR(currentRobotCell.getCol(), currentRobotCell.getRow(), newCell.getCol(), newCell.getRow()); 
                 currentRobotCell = newCell;
-                
-                //Send event to GUI
-                
-                return true;
             }   
         }
-        return false;
->>>>>>> master
     }
     
     //retourne l'état de la poussière sur la case actuelle du robot.
@@ -151,7 +138,6 @@ public final class Main {
     //le robot aspire la poussière et les bijous
     public void suck() {
         currentRobotCell.removeAllObjects();
-        //Send event to GUI
         graph.view.delD(currentRobotCell.getCol(), currentRobotCell.getRow());
         graph.view.delJ(currentRobotCell.getCol(), currentRobotCell.getRow());
     }
@@ -159,7 +145,6 @@ public final class Main {
     //le robot prend un bijou
     public void pick() {
         currentRobotCell.removeObject(Type.JEWEL);
-        //Send event to GUI
         graph.view.delJ(currentRobotCell.getCol(), currentRobotCell.getRow());
     }
     
@@ -169,13 +154,11 @@ public final class Main {
      */ 
     public void addDust(int r, int c){
         StackTraceElement [] stackTraceElements = Thread.currentThread().getStackTrace();
-        //GUI -> complete what to do
         if (stackTraceElements[stackTraceElements.length-2].getClassName().equals("environnement.Environnement")) {
             System.out.println("Called by environnement");
             graph.view.addD(c, r);
             
         }
-        //GUI -> complete if
         else{
             environnement.getGrid().getCell(r, c).addObject(Type.DUST);
             System.out.println("Called by user");
@@ -234,5 +217,19 @@ public final class Main {
             return true;
         else
             return false;
+    }
+
+    /**
+     * @return the robot
+     */
+    public Aspi getRobot() {
+        return robot;
+    }
+
+    /**
+     * @param robot the robot to set
+     */
+    public void setRobot(Aspi robot) {
+        this.robot = robot;
     }
 }

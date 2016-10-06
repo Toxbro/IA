@@ -5,6 +5,9 @@
  */
 package graphic;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Thomas
@@ -278,6 +281,11 @@ public class Main extends javax.swing.JFrame implements Runnable{
     public void run() {
         initComponents();
         view.initialize(this);
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
         setVisible(true);
     }
 
