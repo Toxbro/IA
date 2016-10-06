@@ -24,29 +24,27 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="view" min="-2" max="-2" attributes="0"/>
+              <Component id="view" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="labelTime" max="32767" attributes="0"/>
-                  <Component id="labelDust" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="sliderTime" min="-2" max="-2" attributes="0"/>
-                          <Component id="sliderDust" min="-2" max="-2" attributes="0"/>
-                          <Component id="sliderJewel" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="textFieldTime" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="textFieldDust" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="textFieldJewel" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="89" pref="89" max="-2" attributes="0"/>
-                  </Group>
                   <Component id="labelJewel" max="32767" attributes="0"/>
+                  <Component id="sliderTime" alignment="1" pref="202" max="32767" attributes="0"/>
+                  <Component id="sliderDust" alignment="1" max="32767" attributes="0"/>
+                  <Component id="labelEnergy" alignment="0" max="32767" attributes="0"/>
+                  <Component id="energy" alignment="0" max="32767" attributes="0"/>
+                  <Component id="sliderJewel" alignment="1" max="32767" attributes="0"/>
+                  <Component id="textFieldJewel" alignment="1" max="32767" attributes="0"/>
+                  <Component id="textFieldDust" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="labelTime" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                      <Component id="labelDust" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="textFieldTime" alignment="1" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -54,24 +52,28 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Component id="labelTime" min="-2" max="-2" attributes="0"/>
+              <Component id="labelTime" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="sliderTime" min="-2" max="-2" attributes="0"/>
+              <Component id="sliderTime" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="textFieldTime" min="-2" max="-2" attributes="0"/>
+              <Component id="textFieldTime" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="labelDust" min="-2" max="-2" attributes="0"/>
+              <Component id="labelDust" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="sliderDust" min="-2" max="-2" attributes="0"/>
+              <Component id="sliderDust" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="textFieldDust" min="-2" max="-2" attributes="0"/>
+              <Component id="textFieldDust" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="labelJewel" min="-2" max="-2" attributes="0"/>
+              <Component id="labelJewel" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="sliderJewel" min="-2" max="-2" attributes="0"/>
+              <Component id="sliderJewel" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="textFieldJewel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="72" max="32767" attributes="0"/>
+              <Component id="textFieldJewel" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="labelEnergy" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="energy" max="-2" attributes="0"/>
+              <EmptySpace pref="32" max="32767" attributes="0"/>
           </Group>
           <Component id="view" max="32767" attributes="0"/>
       </Group>
@@ -102,7 +104,7 @@
         <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
           <ComponentRef name="sliderTime"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Frequency of apparition"/>
+        <Property name="text" type="java.lang.String" value="Time to loop for apparition (in s)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JSlider" name="sliderTime">
@@ -175,6 +177,24 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldJewelActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelEnergy">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Consumed energy"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="energy">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="0" type="rgb"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="0"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package main;
 
 import environnement.*;
@@ -13,27 +8,53 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Classe principale du programme
+ * Lance les autres modules (Environnement, Robot et Graphique) et joue le rôle d'interface
  * @author Thomas
  */
 public final class Main {
     
+    /**
+     * Environnement avec lequel le robot doit intéragir
+     */
     private  Environnement environnement;
     
+    /**
+     * Interface graphique de l'application
+     */
     private graphic.Main graph;
     
-    private Aspi robot;
+    /**
+     * Robot interagissant avec l'environnement
+     */
+    private Bender robot;
     
+    /**
+     * La cellule courante du robot
+     */
     private Cell currentRobotCell;
     
+    /**
+     * La cellule initiale du robot
+     * Le robot est placé aléatoirement sur une case de la grille.
+     * S'en suit une phase d'exploration durant laquelle le robot détermine les cellules.
+     * Cependant le robot s'exprime en fonction de sa cellule initiale qui correspond à la cellule [0, 0] à ses yeux.
+     * La classe principale étant la seule à connaitre sa position réelle doit calculer les cellules réelles avec
+     * lesquelles le robot veut intéragir.
+     */
     private Cell initialRobotCell;
     
+    /**
+     * Constructeur de la classe
+     * Lance tous les modules dans des threads distincts
+     */
     public Main (){
         
         setGraph(new graphic.Main(this));
         Thread tGraphic = new Thread(getGraph());
         tGraphic.start();
         
+        //Temporisation pour la génération de l'interface graphique
         try {
             Thread.sleep(500);
         } catch (InterruptedException ex) {
@@ -44,7 +65,7 @@ public final class Main {
         Thread tEnvironnement = new Thread(getEnvironnement());
         tEnvironnement.start();
         
-        //Temporisation for cell creation
+        //Temporisation pour la création des cellules
         try {
             Thread.sleep(500);
         } catch (InterruptedException ex) {
@@ -53,39 +74,46 @@ public final class Main {
         currentRobotCell = environnement.getGrid().getCell(0, 0);
         initialRobotCell = currentRobotCell;
         graph.view.addR(currentRobotCell.getCol(), currentRobotCell.getRow());
-        
-        //DEBUG
-        System.out.println("Robot is currently on : "+currentRobotCell.toString());
-        
-        setRobot(new Aspi(this, 10));
+                
+        setRobot(new Bender(this, 10));
         Thread tRobot = new Thread(getRobot());
         tRobot.start();
     }
     
+    /**
+     * Fonction appelée au lancement du programme
+     * Construit un Main ce qui a pour effet de lancer le programme
+     * @param args Paramètres d'appels
+     */
     public static void main(String [] args){
         Main main = new Main();
     }
 
     /**
-     * @return the environnement
+     * Getter de l'environnement
+     * @return L'environnement
      */
     public Environnement getEnvironnement() {
         return environnement;
     }
 
     /**
-     * @param aEnvironnement the environnement to set
+     * Setter de l'environnement
+     * @param aEnvironnement L'environnement
      */
     public void setEnvironnement(Environnement aEnvironnement) {
         environnement = aEnvironnement;
     }
     
+    /**
+     * Méthode appelée lorsque le robot bouge
+     * Quelque soit la direction désirée, la méthode vérifie que la cellule demandée
+     * existe et est valable
+     * @param dir La direction dans laquelle le robot bouge
+     */
     public void botMove(Direction dir) {
         Grid grid = environnement.getGrid();
-        Cell newCell = null;
-        
-        System.out.println(dir);
-        
+        Cell newCell = null;        
         switch(dir){
             case LEFT:
                 newCell = grid.getCell(currentRobotCell.getRow(), currentRobotCell.getCol()-1);
@@ -116,95 +144,120 @@ public final class Main {
                 }
                 break;
         }
-        
-        System.out.println("Robot déplacé en "+currentRobotCell.getRow()+','+currentRobotCell.getCol());
     }
     
-    //retourne l'état de la poussière sur la case actuelle du robot.
+    /**
+     * Getter de l'état de poussière de la cellule courante du robot
+     * @return Si la cellule possède de la poussière
+     */
     public boolean getDustState() {
         return currentRobotCell.hasObject(Type.DUST);
     }
     
-    //retourne l'état des bijous sur la case actuelle du robot.
+    /**
+     * Getter de l'état de bijou de la cellule courante du robot
+     * @return Si la cellule possède un bijou
+     */
     public boolean getJewelState() {
         return currentRobotCell.hasObject(Type.JEWEL);
     }
     
-    //le robot aspire la poussière et les bijous
+    /**
+     * Le robot aspire tous les objets présents sur la cellule courante
+     */
     public void suck() {
         currentRobotCell.removeAllObjects();
         graph.view.delD(currentRobotCell.getCol(), currentRobotCell.getRow());
         graph.view.delJ(currentRobotCell.getCol(), currentRobotCell.getRow());
     }
     
-    //le robot prend un bijou
+    /**
+     * Le robot prend un bijou présent sur la cellule
+     */
     public void pick() {
         currentRobotCell.removeObject(Type.JEWEL);
         graph.view.delJ(currentRobotCell.getCol(), currentRobotCell.getRow());
     }
     
     /**
-     * Method called by GUI or by Environnement : determined by {@link StackTraceElement}
-     * Add dust to the environnement or the GUI
+     * Méthode appelée par l'interface graphique ou l'environnement, cet appel est déterminé par {@link StackTraceElement}
+     * Ajoute de la poussière soit à l'environnement soit à l'interface graphique dépendamment de l'appelant
+     * @param r La ligne de la cellule où ajouter de la poussière
+     * @param c La colonne de la cellule où ajouter de la poussière
      */ 
     public void addDust(int r, int c){
+        //Utilisation de StackTraceElement pour déterminer l'appelant
         StackTraceElement [] stackTraceElements = Thread.currentThread().getStackTrace();
         if (stackTraceElements[stackTraceElements.length-2].getClassName().equals("environnement.Environnement")) {
-            System.out.println("Called by environnement");
             graph.view.addD(c, r);
-            
         }
         else{
             environnement.getGrid().getCell(r, c).addObject(Type.DUST);
-            System.out.println("Called by user");
         }
     }
     
     /**
-     * Method called by GUI or by Environnement : determined by {@link StackTraceElement}
-     * Add jewel to the environnement or the GUI
-     */ 
+     * Méthode appelée par l'interface graphique ou l'environnement, cet appel est déterminé par {@link StackTraceElement}
+     * Ajoute un bijou soit à l'environnement soit à l'interface graphique dépendamment de l'appelant
+     * @param r La ligne de la cellule où ajouter un bijou
+     * @param c La colonne de la cellule où ajouter un bijou
+     */  
     public void addJewel(int r, int c){
         StackTraceElement [] stackTraceElements = Thread.currentThread().getStackTrace();
-        //GUI -> complete what to do
         if (stackTraceElements[stackTraceElements.length-2].getClassName().equals("environnement.Environnement")) {
-            System.out.println("Called by environnement");
             graph.view.addJ(c, r);
         }
-        //GUI -> complete if
         else{
             environnement.getGrid().getCell(r, c).addObject(Type.JEWEL);
-            System.out.println("Called by user");
         }
     }
 
     /**
-     * @return the graph
+     * Getter de l'interface graphique
+     * @return L'interface graphique
      */
     public graphic.Main getGraph() {
         return graph;
     }
 
     /**
-     * @param graph the graph to set
+     * Setter de l'interface graphique
+     * @param graph L'interface graphique
      */
     public void setGraph(graphic.Main graph) {
         this.graph = graph;
     }
     
+    /**
+     * Setter du temps inter boucle pour les générations de poussière et de bijoux
+     * @param freq Le nouveau temps inter boucle
+     */
     public void setFrequency(int freq){
-        //System.out.println("main.Main.setFrequency()"+freq);
         environnement.setSecondsToLoop(freq);
     }
+    
+    /**
+     * Setter de la probabilité d'apparition de poussière
+     * @param prob Nouvelle probabilité d'apparition de poussière
+     */
     public void setDustProb(int prob){
-        //System.out.println("main.Main.setDustProb()"+prob);
         environnement.setPercentageDust(prob);
     }
+    
+    /**
+     * Setter de la probabilité d'apparition de bijoux
+     * @param prob Nouvelle probabilité d'apparition de bijoux
+     */
     public void setJewelProb(int prob){
-        //System.out.println("main.Main.setJewelProb()"+prob);
         environnement.setPercentageJewel(prob);
     }
     
+    /**
+     * Méthode appelée par le robot pour savoir si une cellule est valable
+     * Cette méthode traduit les coordonnées exprimées par le robot en coordonnées réelles pour l'environnement
+     * @param c La cellule souhaitée
+     * @return Si la cellule est valable
+     */
     public boolean isCellEnabled(Cell c) {
         Grid grid = environnement.getGrid();
         Cell cell;
@@ -216,16 +269,27 @@ public final class Main {
     }
 
     /**
-     * @return the robot
+     * Getter pour le robot
+     * @return Le robot
      */
-    public Aspi getRobot() {
+    public Bender getRobot() {
         return robot;
     }
 
     /**
-     * @param robot the robot to set
+     * Setter pour le robot
+     * @param robot Le robot
      */
-    public void setRobot(Aspi robot) {
+    public void setRobot(Bender robot) {
         this.robot = robot;
+    }
+    
+    /**
+     * Méthode appelée par le robot pour mettre à jour le niveau d'énergie
+     * consommé dans l'interface graphique
+     * @param i Nouvelle valeur de la consommation en énergie
+     */
+    public void updateConso(int i){
+        graph.setEnergy(Integer.toString(i));
     }
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package IA;
 
 import java.util.Map;
@@ -14,11 +9,12 @@ import java.util.logging.Logger;
 import main.Main;
 
 /**
- *
+ * Classe principale du robot.
+ * Possède un état mental BDI
  * @author quentin
  */
 
-public class Aspi implements Runnable {
+public class Bender implements Runnable {
     
     /**
      * La cellule actuelle du robot;
@@ -62,7 +58,7 @@ public class Aspi implements Runnable {
      * @param master        Référence vers le maître qui instancie tous les threads. Nécessaire afin de mettre à jour l'environnement en fonction des actions du robot.
      * @param cellTotal     Nombre de cellules total dans la grille. Permet au robot de savoir quand terminer la phase d'exploration.
      */
-    public Aspi(Main master, int cellTotal) {
+    public Bender(Main master, int cellTotal) {
         this.master = master;
         this.currentCell = new Cell(0, 0, true);
         this.grid.put(currentCell, 0);
@@ -74,6 +70,7 @@ public class Aspi implements Runnable {
      *  La méthode run() du thread Aspirateur.
      *  La routine du robot met à jour ses Beliefs, puis appelle la fonction getDesire() afin d'obtenir la prochaine tâche à effectuer, puis effectuer cette tâche.
      */
+    @Override
     public void run() {
         while(true) {
             updateBelief();
@@ -410,7 +407,7 @@ public class Aspi implements Runnable {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException ex) {
-            Logger.getLogger(Aspi.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Bender.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -442,7 +439,7 @@ public class Aspi implements Runnable {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException ex) {
-            Logger.getLogger(Aspi.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Bender.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -456,9 +453,7 @@ public class Aspi implements Runnable {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException ex) {
-            Logger.getLogger(Aspi.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Bender.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
-
-

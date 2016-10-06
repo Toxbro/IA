@@ -72,7 +72,7 @@ public class CellPane extends JPanel{
 
         @Override
         public Dimension getPreferredSize() {
-            return new Dimension(50, 50);
+            return new Dimension(120, 120);
         }
         
         private void doPop(MouseEvent e){
