@@ -50,7 +50,7 @@ public final class Main {
         } catch (InterruptedException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
-        currentRobotCell = environnement.getRandomCell();
+        currentRobotCell = environnement.getGrid().getCell(0, 0);
         initialRobotCell = currentRobotCell;
         graph.view.addR(currentRobotCell.getCol(), currentRobotCell.getRow());
         
