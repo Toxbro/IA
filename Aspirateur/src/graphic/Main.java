@@ -9,50 +9,24 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author Thomas
+ * Classe principale de l'interface graphique.
+ * Elle permet d'initialiser la grille et d'ajouter les éléments graphiques
+ * utilisable par les utilisateurs.
+ * @author Maxime
  */
 public class Main extends javax.swing.JFrame implements Runnable{
 
+    /**
+     * Variable qui représente la classe principale du projet
+     * et qui permet de faire le lien avec les autres classes du projet
+     */
     private main.Main main;
     /**
-     * Creates new form Main
+     * Constructeur de la classe qui permet d'initialiser la variable main
+     * @param main Classe principale du projet
      */
     public Main(main.Main main) {
         this.main = main;
-        
-//        view.addD(0,0);
-//        view.addJ(0,0);
-//        view.delJ(0, 0);
-//        view.addR(0,0);
-//        view.delJ(0,0);
-//        view.delD(0,0);
-//        view.mvtR(0,0,0,1);
-      //view.delJ(0,0);
-//      view.addD(2,2);
-//      view.addJ(2,2);
-//      view.addR(2, 2);
-//      view.delR(2, 2);
-
-//      view.addJ(1,0);
-//      view.delJ(1,0);
-//      view.addD(1,0);
-//      view.addJ(0,0);
-//      view.addD(0,0);
-//      view.delD(0,0);
-//      view.addD(2,2);
-//      view.mvtR(0,1,0,2);
-//      view.mvtR(0,2,1,2);
-//      view.addD(2,1);
-//      view.addJ(2,1);
-//      view.mvtR(1,2,2,2);
-//      view.mvtR(2,2,2,1);
-      
-////        view.addR(0,0);
-////        view.mvtR(0, 0, 1, 0);
-////        view.addJ(1,0);
-////        view.addD(1,0);
-//      view.delR(2, 2);
     }
 
     /**
@@ -78,12 +52,13 @@ public class Main extends javax.swing.JFrame implements Runnable{
         energy = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1200, 720));
 
         javax.swing.GroupLayout viewLayout = new javax.swing.GroupLayout(view);
         view.setLayout(viewLayout);
         viewLayout.setHorizontalGroup(
             viewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 302, Short.MAX_VALUE)
+            .addGap(0, 453, Short.MAX_VALUE)
         );
         viewLayout.setVerticalGroup(
             viewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,25 +140,21 @@ public class Main extends javax.swing.JFrame implements Runnable{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelJewel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(sliderTime, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                    .addComponent(sliderTime, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)
                     .addComponent(sliderDust, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(labelEnergy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(energy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(sliderJewel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(textFieldJewel, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(textFieldDust)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelTime)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(labelDust)
-                        .addContainerGap())
-                    .addComponent(textFieldTime, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addComponent(textFieldTime, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelDust, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(labelTime)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sliderTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -205,38 +176,63 @@ public class Main extends javax.swing.JFrame implements Runnable{
                 .addComponent(labelEnergy)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(energy)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(354, Short.MAX_VALUE))
             .addComponent(view, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Méthode qui permet de mettre à jour le champs texte de la fréquence 
+     * lorsque le slider de la fréquence est modifié
+     * @param evt 
+     */
     private void sliderTimeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderTimeStateChanged
         textFieldTime.setText(Integer.toString(sliderTime.getValue()));
         main.setFrequency(sliderTime.getValue());
     }//GEN-LAST:event_sliderTimeStateChanged
-
+    /**
+     * Méthode qui permet de mettre à jour le champs texte de la prob de la 
+     * poussière lorsque le slider de la poussière est modifié 
+     * @param evt 
+     */
     private void sliderDustStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderDustStateChanged
         textFieldDust.setText(Integer.toString(sliderDust.getValue()));
         main.setDustProb(sliderDust.getValue());
     }//GEN-LAST:event_sliderDustStateChanged
-
+    /**
+     * Méthode qui permet de mettre à jour le champs texte de la prob du bijou 
+     * lorsque le slider du bijou est modifié
+     * @param evt 
+     */
     private void sliderJewelStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderJewelStateChanged
         textFieldJewel.setText(Integer.toString(sliderJewel.getValue()));
         main.setJewelProb(sliderJewel.getValue());
     }//GEN-LAST:event_sliderJewelStateChanged
-
+    /**
+     * Méthode qui permet de mettre à jour le slider de la frequence
+     * lorsque la valeur du champs texte de la fréquence est modifiée
+     * @param evt 
+     */
     private void textFieldTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldTimeActionPerformed
         sliderTime.setValue(Integer.parseInt(textFieldTime.getText()));
         main.setFrequency(Integer.parseInt(textFieldTime.getText()));
     }//GEN-LAST:event_textFieldTimeActionPerformed
-
+    /**
+     * Méthode qui permet de mettre à jour le slider de la prob de la
+     * poussière lorsque la valeur du champs texte de la prob de la 
+     * poussière est modifiée
+     * @param evt 
+     */
     private void textFieldDustActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldDustActionPerformed
         sliderDust.setValue(Integer.parseInt(textFieldDust.getText()));
         main.setDustProb(Integer.parseInt(textFieldDust.getText()));
     }//GEN-LAST:event_textFieldDustActionPerformed
-
+    /**
+     * Méthode qui permet de mettre à jour le slider de la prob du bijou
+     * lorsque la valeur du champs texte de la prob du bijou est modifiée
+     * @param evt 
+     */
     private void textFieldJewelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldJewelActionPerformed
         sliderJewel.setValue(Integer.parseInt(textFieldJewel.getText()));
         main.setJewelProb(Integer.parseInt(textFieldJewel.getText()));
@@ -277,6 +273,21 @@ public class Main extends javax.swing.JFrame implements Runnable{
 //        });
 //    }
 
+    /**
+     * energy = label texte qui affiche l'énergie dépensée
+     * labelDust = label qui affiche le texte ""
+     * labelEnergy = label qui affiche le texte ""
+     * labelJewel = label qui affiche le texte ""
+     * sliderDust = slider de la probabilité d'avoir une poussière
+     * sliderJewel = slider de la probabilité d'avoir un bijou
+     * sliderTime = slider de la fréquence d'apparition d'un item
+     * textFieldDust = champs texte qui affiche la probabilité d'avoir une 
+     * poussière
+     * textFieldJewel = champs texte qui affiche la probabilité d'avoir un bijou
+     * textFieldDust = champs texte qui affiche la fréquence d'apparition d'un
+     * item
+     * view = la grille qui va recevoir l'affichage des items 
+     */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel energy;
     private javax.swing.JLabel labelDust;
@@ -292,9 +303,15 @@ public class Main extends javax.swing.JFrame implements Runnable{
     public graphic.GridPanel view;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Méthode qui permet d'initialiser tous les composants graphiques ainsi 
+     * que d'initialiser la grille et ses cellules
+     */
     @Override
     public void run() {
+        //initiliase les composants graphiques
         initComponents();
+        //Création de la grille et de ses cellules
         view.initialize(this);
         try {
             Thread.sleep(500);
@@ -305,6 +322,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
     }
 
     /**
+     * Getter du main
      * @return the main
      */
     public main.Main getMain() {
@@ -312,12 +330,17 @@ public class Main extends javax.swing.JFrame implements Runnable{
     }
 
     /**
+     * Setter du main 
      * @param main the main to set
      */
     public void setMain(main.Main main) {
         this.main = main;
     }
-    
+    /**
+     * Setter de l'energie 
+     * permet de modifer le champs de l'énergie
+     * @param s représente la valeur
+     */
     public void setEnergy(String s){
         this.energy.setText(s);
     }

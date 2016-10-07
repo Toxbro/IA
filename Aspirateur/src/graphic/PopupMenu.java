@@ -5,30 +5,29 @@
  */
 package graphic;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JMenuItem;
-import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
-import javax.swing.SwingUtilities;
-import javax.swing.border.Border;
-import javax.swing.border.MatteBorder;
 
 /**
- *
- * @author Thomas
+ * Classe qui représente le menu contextuel d'une cellule
+ * @author Maxime
  */
 public class PopupMenu extends JPopupMenu{
+    /**
+     * Element  du menu permettant d'ajouter de la poussière
+     */
     JMenuItem addDust;
+    /**
+     * Element du menu permettant d'jouter un bijou
+     */
     JMenuItem addJewel;
+    /**
+     * Constructeur de la classe qui permet d'initialiser le menu
+     * ainsi que les listeneners
+     * @param c = la cellule mère
+     */
     public PopupMenu(CellPane c){
         addDust = new JMenuItem("Add dust");
         addJewel = new JMenuItem("Add jewel");
