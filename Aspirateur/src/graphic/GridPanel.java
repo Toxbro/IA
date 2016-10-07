@@ -9,17 +9,13 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.util.ArrayList;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
 
 /**
- *
- * @author Thomas
+ * Classe représentant la grille de l'interface graphique
+ * @author Maxime
  */
 public class GridPanel extends JPanel{
 //Grille
@@ -32,20 +28,52 @@ public class GridPanel extends JPanel{
 //    (1,0) = 1
 //    (0,1) = 3
 //    (2,2) = 10
+    /**
+     * Tableau qui contient l'état des 11 cellules de la grille
+     * état d'une cellule correspon à son contenu, elle peut contenir 
+     * de la poussière, des bijoux et/ou le robot
+     * l'état d'une cellule va de 0 à 7
+     * B = Bijou, R=Robot, P=Poussière, / = vide
+     * 0 = /,/,/
+     * 1 = /,/,P
+     * 2 = /,R,/
+     * 3 = /,R,P
+     * 4 = B,/,/
+     * 5 = B,/,P
+     * 6 = B,R,/
+     * 7 = B,R,P
+     */
     public int[] etat = new int[11];
+    /**
+     * booléan qui informe si il y'a un robot sur la grille
+     * True = il y a un robot
+     * False = il n'y a pas de robot
+     */
     public boolean robot;
+    /**
+     * contient les contraintes du gridBagLayout
+     */
     private GridBagConstraints gbc = new GridBagConstraints();
+    /**
+     * permet d'établir un lien entre le main du package graphic et cette classe
+     */
     private graphic.Main main;
-    
+    /**
+     * Méthode principale de la classe
+     * qui initialise la grille.
+     * @param main 
+     */
     public void initialize(graphic.Main main){
         this.setMain(main);
-        //initialisation de l'état des cellules
+            //initialisation de l'état des cellules
             for (int i=0; i<11; i++){
+                //toutes initialisés à 0 car au démarrage il n'y a rien
                 etat[i]=0;
             }
+            
             setLayout(new GridBagLayout());
 
-            //GridBagConstraints gbc = new GridBagConstraints();
+            //construction et ajout des cellules à la grille
             for (int row = 0; row < 3; row++) {
                 for (int col = 0; col < 5; col++) {
                     gbc.gridx = col;
@@ -63,12 +91,21 @@ public class GridPanel extends JPanel{
                 }
             }
         }
-    
+    /**
+     * méthode qui permet d'ajouter un bijou en position x et y
+     * @param x = la colonne où placer le bijou
+     * @param y = la ligne où placer le bijou
+     */
     public void addJ(int x, int y){
+        //on récupère le numéro de la cellule
         int numCell = numCompo(x,y);
+        //on récupère l'état de la cellule
         int etatCell = etat[numCell];
+        //on récupère toutes les cellules de la grille
         Component listC[] = this.getComponents();
+        //on récupère ensuite la cellule qui nous interresse
         CellPane cp = (CellPane)listC[numCell];
+        //suivant l'état de la cellule on effectue le bon traite
         if(etatCell<4){
             if(etatCell == 0){
                 cp.getComponent(0).setVisible(true);
@@ -91,10 +128,15 @@ public class GridPanel extends JPanel{
         gbc.gridx=x;
         gbc.gridy=y;
         cp.setBorder(fBord(numCell));
+        //on réinjecte la cellule dans la grille
         this.setComponentZOrder(cp, numCell);
 
     }
-    
+    /**
+     * Méthode qui permet d'enlever un bijou en position x,y
+     * @param x = la colonne
+     * @param y = la ligne
+     */
     public void delJ(int x, int y){
         int numCell = numCompo(x,y);
         int etatCell = etat[numCell];
@@ -124,7 +166,11 @@ public class GridPanel extends JPanel{
         cp.setBorder(fBord(numCell));
         this.setComponentZOrder(cp, numCell);
     }
-    
+    /**
+     * Méthode qui ajoute de la poussière en position passé en paramètre
+     * @param x = la colonne
+     * @param y = la ligne
+     */
     public void addD(int x, int y){
         int numCell = numCompo(x,y);
         int etatCell = etat[numCell];
@@ -154,7 +200,12 @@ public class GridPanel extends JPanel{
         cp.setBorder(fBord(numCell));
         this.setComponentZOrder(cp, numCell);
     }
-    
+    /**
+     * Méthode permettant d'enlever une poussière suivant les coordonnées
+     * passées en paramètre
+     * @param x = la colonne
+     * @param y = la ligne
+     */
     public void delD(int x, int y){
         int numCell = numCompo(x,y);
         int etatCell = etat[numCell];
@@ -184,8 +235,14 @@ public class GridPanel extends JPanel{
         cp.setBorder(fBord(numCell));
         this.setComponentZOrder(cp, numCell);
     }
-    
+    /**
+     * Méthode permettant d'ajouter le robot suivant les coordonnées
+     * passées en paramètre
+     * @param x = la colonne
+     * @param y = la ligne
+     */
     public void addR(int x, int y){
+        //on vérifie que le robot n'est pas déjà sur la grille
         if(!robot){
             int numCell = numCompo(x,y);
             int etatCell = etat[numCell];
@@ -212,10 +269,18 @@ public class GridPanel extends JPanel{
             gbc.gridy=y;
             cp.setBorder(fBord(numCell));
             this.setComponentZOrder(cp, numCell);
+            //on passe la variable afin de ne pas pouvoir ajouter un autre robot
+            //sur la grille
             robot = true;
         }
     }
     
+    /**
+     * Méthode permettant d'enlever le robot suivant les coordonnées
+     * passées en paramètre
+     * @param x = la colonne
+     * @param y = la ligne
+     */
     public void delR(int x, int y){
         if(robot){
             int numCell = numCompo(x,y);
@@ -246,18 +311,27 @@ public class GridPanel extends JPanel{
             robot = false;
         }
     }
-    
+    /**
+     * Méthode permettant de déplacer le robot sur la grille
+     * @param exX ancienne coordonnée x du robot (colonne)
+     * @param exY ancienne coordonnée y du robot (ligne)
+     * @param x nouvelle coordonnée x du robot (colonne)
+     * @param y nouvelle coordonnée y du robot (ligne)
+     */
     public void mvtR(int exX, int exY, int x, int y){
+        //on vérifie que le robot existe
         if(robot){
+            //on le supprime de son ancien emplacement
             delR(exX,exY);
+            //on l'ajoute à son nouvel emplacement
             addR(x,y);
         }
     }
     /**
-     * Fonction qui retourne le numéro de la CellPane en fonction de X et Y
+     * Méthode qui retourne le numéro de la cellule en fonction de X et Y
      * @param x = la colonne
      * @param y = la ligne
-     * @return  = le numéro du CellPane
+     * @return  = le numéro du cellule
      */
     public int numCompo(int x, int y){
        
@@ -293,46 +367,57 @@ public class GridPanel extends JPanel{
     }
     
     /**
-     * Fonction pour créer une cellule
+     * Méthode pour créer une cellule
      * @param numCell
-     * @return 
+     * @return la cellule créée
      */
     public CellPane creaCell (int numCell, int x, int y){
-        System.out.println("créa cellule : "+numCell+" X:"+x+" Y:"+y);
+        System.out.println("création cellule : "+numCell+" X:"+x+" Y:"+y);
         CellPane cellPane = new CellPane(this, x, y);
-        Border border = new MatteBorder(0, 0, 0, 0, Color.GRAY);
-        border = fBord(numCell);
+        //border représente la bordure de la cellule
+        Border border = fBord(numCell);
+        //on ajoute la bordure à la cellule
         cellPane.setBorder(border);
+        //on retourne la cellule
         return cellPane;
     }
     
+    /**
+     * Méthode qui permet suivant la cellule crééer la bordure de cette dernière
+     * @param numCell = le numéro de la cellule
+     * @return retourne la bonne bordure de la cellule
+     */
     public Border fBord(int numCell){
-        if(numCell==0){
-            return new MatteBorder(1, 1, 0, 1, Color.GRAY);
-        }else if(numCell == 1){
-            return new MatteBorder(1, 0, 0, 1, Color.GRAY);
-        }else if(numCell == 2){
-            return new MatteBorder(1, 0, 0, 1, Color.GRAY);
-        }else if(numCell == 3){
-            return new MatteBorder(1, 1, 1, 1, Color.GRAY);
-        }else if(numCell == 4){
-            return new MatteBorder(1, 0, 1, 1, Color.GRAY);
-        }else if(numCell == 5){
-            return new MatteBorder(1, 0, 1, 1, Color.GRAY);
-        }else if(numCell == 6){
-            return new MatteBorder(1, 0, 1, 1, Color.GRAY);
-        }else if(numCell == 7){
-            return new MatteBorder(1, 0, 1, 1, Color.GRAY);
-        }else if(numCell == 8){
-            return new MatteBorder(0, 1, 1, 1, Color.GRAY);
-        }else if(numCell == 9){
-            return new MatteBorder(0, 0, 1, 1, Color.GRAY);
-        }else{
-            return new MatteBorder(0, 0, 1, 1, Color.GRAY);
+        switch (numCell) {
+            case 0:
+                return new MatteBorder(1, 1, 0, 1, Color.GRAY);
+            case 1:
+                return new MatteBorder(1, 0, 0, 1, Color.GRAY);
+            case 2:
+                return new MatteBorder(1, 0, 0, 1, Color.GRAY);
+            case 3:
+                return new MatteBorder(1, 1, 1, 1, Color.GRAY);
+            case 4:
+                return new MatteBorder(1, 0, 1, 1, Color.GRAY);
+            case 5:
+                return new MatteBorder(1, 0, 1, 1, Color.GRAY);
+            case 6:
+                return new MatteBorder(1, 0, 1, 1, Color.GRAY);
+            case 7:
+                return new MatteBorder(1, 0, 1, 1, Color.GRAY);
+            case 8:
+                return new MatteBorder(0, 1, 1, 1, Color.GRAY);
+            case 9:
+                return new MatteBorder(0, 0, 1, 1, Color.GRAY);
+            case 10:
+                return new MatteBorder(0, 0, 1, 1, Color.GRAY);
+            default:
+                return new MatteBorder(0, 0, 0, 0, Color.GRAY);
         }
     }
 
     /**
+     * Getter du main du package graphic
      * @return the main
      */
     public graphic.Main getMain() {
@@ -340,6 +425,7 @@ public class GridPanel extends JPanel{
     }
 
     /**
+     * Setter du main du package graphic
      * @param main the main to set
      */
     public void setMain(graphic.Main main) {
