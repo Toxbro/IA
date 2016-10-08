@@ -1,0 +1,106 @@
+.TH "graphic.Main" 3 "Thu Oct 6 2016" "Version 1.0" "IA-Aspirateur" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+graphic.Main \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits JFrame, and Runnable\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMain\fP (\fBmain\&.Main\fP main)"
+.br
+.ti -1c
+.RI "void \fBrun\fP ()"
+.br
+.ti -1c
+.RI "\fBmain\&.Main\fP \fBgetMain\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetMain\fP (\fBmain\&.Main\fP main)"
+.br
+.ti -1c
+.RI "void \fBsetEnergy\fP (String s)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "javax\&.swing\&.JLabel \fBenergy\fP"
+.br
+.ti -1c
+.RI "\fBgraphic\&.GridPanel\fP \fBview\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Classe principale de l'interface graphique\&. Elle permet d'initialiser la grille et d'ajouter les éléments graphiques utilisable par les utilisateurs\&. 
+.PP
+\fBAuthor:\fP
+.RS 4
+Maxime 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "graphic\&.Main\&.Main (\fBmain\&.Main\fP main)"
+Constructeur de la classe qui permet d'initialiser la variable main 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImain\fP Classe principale du projet 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBmain\&.Main\fP graphic\&.Main\&.getMain ()"
+Getter du main 
+.PP
+\fBReturns:\fP
+.RS 4
+the main 
+.RE
+.PP
+
+.SS "void graphic\&.Main\&.run ()"
+Méthode qui permet d'initialiser tous les composants graphiques ainsi que d'initialiser la grille et ses cellules 
+.SS "void graphic\&.Main\&.setEnergy (String s)"
+Setter de l'energie permet de modifer le champs de l'énergie 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP représente la valeur 
+.RE
+.PP
+
+.SS "void graphic\&.Main\&.setMain (\fBmain\&.Main\fP main)"
+Setter du main 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImain\fP the main to set 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "javax\&.swing\&.JLabel graphic\&.Main\&.energy"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIargs\fP the command line arguments energy = label texte qui affiche l'énergie dépensée labelDust = label qui affiche le texte '' labelEnergy = label qui affiche le texte '' labelJewel = label qui affiche le texte '' sliderDust = slider de la probabilité d'avoir une poussière sliderJewel = slider de la probabilité d'avoir un bijou sliderTime = slider de la fréquence d'apparition d'un item textFieldDust = champs texte qui affiche la probabilité d'avoir une poussière textFieldJewel = champs texte qui affiche la probabilité d'avoir un bijou textFieldDust = champs texte qui affiche la fréquence d'apparition d'un item view = la grille qui va recevoir l'affichage des items 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IA-Aspirateur from the source code\&.

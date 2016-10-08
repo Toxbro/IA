@@ -1,0 +1,219 @@
+.TH "environnement.Cell" 3 "Thu Oct 6 2016" "Version 1.0" "IA-Aspirateur" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+environnement.Cell \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCell\fP (int r, int c)"
+.br
+.ti -1c
+.RI "\fBCell\fP (int r, int c, Boolean e)"
+.br
+.ti -1c
+.RI "Boolean \fBgetEnable\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetEnable\fP (Boolean enable)"
+.br
+.ti -1c
+.RI "int \fBgetCol\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetCol\fP (int col)"
+.br
+.ti -1c
+.RI "int \fBgetRow\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetRow\fP (int row)"
+.br
+.ti -1c
+.RI "ArrayList< \fBObject\fP > \fBgetObjects\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetObjects\fP (ArrayList< \fBObject\fP > objects)"
+.br
+.ti -1c
+.RI "void \fBaddObject\fP (\fBType\fP t)"
+.br
+.ti -1c
+.RI "Boolean \fBremoveObject\fP (\fBType\fP t)"
+.br
+.ti -1c
+.RI "void \fBremoveAllObjects\fP ()"
+.br
+.ti -1c
+.RI "Boolean \fBhasObject\fP (\fBType\fP t)"
+.br
+.ti -1c
+.RI "String \fBtoString\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Classe représentant une cellule de la \fBenvironnement\&.Grid\fP 
+.PP
+\fBAuthor:\fP
+.RS 4
+Thomas 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "environnement\&.Cell\&.Cell (int r, int c)"
+Constructeur de la classe prenant en paramètre la ligne et la colonne de la cellule 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIr\fP Ligne de la cellule 
+.br
+\fIc\fP Colonne de la cellule 
+.RE
+.PP
+
+.SS "environnement\&.Cell\&.Cell (int r, int c, Boolean e)"
+Surcharge du constructeur prenant en compte si la cellule est valable 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIr\fP Ligne de la cellule 
+.br
+\fIc\fP Colonne de la cellule 
+.br
+\fIe\fP Si la cellule est valable 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void environnement\&.Cell\&.addObject (\fBType\fP t)"
+Méthode permettant de rajouter un objet d'un certain \fBType\fP à la cellule 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIt\fP Le type de l'objet à ajouter 
+.RE
+.PP
+
+.SS "int environnement\&.Cell\&.getCol ()"
+Getter de la colonne de la cellule 
+.PP
+\fBReturns:\fP
+.RS 4
+La colonne de la cellule 
+.RE
+.PP
+
+.SS "Boolean environnement\&.Cell\&.getEnable ()"
+Getter de la validité de la cellule 
+.PP
+\fBReturns:\fP
+.RS 4
+Si la cellule est valable 
+.RE
+.PP
+
+.SS "ArrayList<\fBObject\fP> environnement\&.Cell\&.getObjects ()"
+Getter de la liste des objets présents dans la cellule 
+.PP
+\fBReturns:\fP
+.RS 4
+La liste des objets présents dans la cellule 
+.RE
+.PP
+
+.SS "int environnement\&.Cell\&.getRow ()"
+Getter de la ligne de la cellule 
+.PP
+\fBReturns:\fP
+.RS 4
+La ligne de la cellule 
+.RE
+.PP
+
+.SS "Boolean environnement\&.Cell\&.hasObject (\fBType\fP t)"
+Méthode permettant de tester si la cellule possède un objet du type passé en paramètre 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIt\fP Le type de l'objet à tester 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Si le type d'objet est présent dans la cellule 
+.RE
+.PP
+
+.SS "void environnement\&.Cell\&.removeAllObjects ()"
+Méthode permettant de supprimer tous les objets de la cellule 
+.SS "Boolean environnement\&.Cell\&.removeObject (\fBType\fP t)"
+Méthode permettant de supprimer un objet d'un certain \fBType\fP de la cellule 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIt\fP Le type de l'objet à supprimer 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+L'objet supprimé 
+.RE
+.PP
+
+.SS "void environnement\&.Cell\&.setCol (int col)"
+Setter de la colonne de la cellule 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcol\fP Colonne de la cellule 
+.RE
+.PP
+
+.SS "void environnement\&.Cell\&.setEnable (Boolean enable)"
+Setter de la validité de la cellule 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIenable\fP Si la cellule est valable 
+.RE
+.PP
+
+.SS "void environnement\&.Cell\&.setObjects (ArrayList< \fBObject\fP > objects)"
+Setter de la liste des objets présents dans la cellule 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobjects\fP La liste des objets présents dans la cellule 
+.RE
+.PP
+
+.SS "void environnement\&.Cell\&.setRow (int row)"
+Setter de la ligne de la cellule 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrow\fP La ligne de la cellule 
+.RE
+.PP
+
+.SS "String environnement\&.Cell\&.toString ()"
+Méthode utilisée pour identifier la cellule sous forme de chaine de caractères 
+.PP
+\fBReturns:\fP
+.RS 4
+La chaine de caractère identifiant la cellule sour la forme [ligne, colonne] 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IA-Aspirateur from the source code\&.

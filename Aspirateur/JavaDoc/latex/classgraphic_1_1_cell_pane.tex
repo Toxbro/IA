@@ -1,0 +1,140 @@
+\hypertarget{classgraphic_1_1_cell_pane}{}\section{graphic.\+Cell\+Pane Class Reference}
+\label{classgraphic_1_1_cell_pane}\index{graphic.\+Cell\+Pane@{graphic.\+Cell\+Pane}}
+Inheritance diagram for graphic.\+Cell\+Pane\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classgraphic_1_1_cell_pane}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classgraphic_1_1_cell_pane_acfa4533330876d91705e1871c854c1f2}{Cell\+Pane} (\hyperlink{classgraphic_1_1_grid_panel}{Grid\+Panel} gp, int x, int y)
+\item 
+Dimension \hyperlink{classgraphic_1_1_cell_pane_a0fd531a6556674de04015e906aabe03a}{get\+Preferred\+Size} ()
+\item 
+\hyperlink{classgraphic_1_1_grid_panel}{Grid\+Panel} \hyperlink{classgraphic_1_1_cell_pane_a34a6be4ba7f268bc1cf97abb8133ea21}{get\+Gp} ()
+\item 
+void \hyperlink{classgraphic_1_1_cell_pane_aa61724c598a72a3b1968bc07bb2c29aa}{set\+Gp} (\hyperlink{classgraphic_1_1_grid_panel}{Grid\+Panel} gp)
+\item 
+int \hyperlink{classgraphic_1_1_cell_pane_a26561bfa4a8802268c9b081e5c5682f8}{get\+CoordX} ()
+\item 
+void \hyperlink{classgraphic_1_1_cell_pane_ad2287605b18570f3af59ada0e1feaade}{set\+CoordX} (int coordX)
+\item 
+int \hyperlink{classgraphic_1_1_cell_pane_a085ea8c70a07a051e103af3c89e66eb2}{get\+CoordY} ()
+\item 
+void \hyperlink{classgraphic_1_1_cell_pane_a5f6ca9deb28ada5b1442f6b9ecb3b616}{set\+CoordY} (int coordY)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe représant une cellule de la grille \begin{DoxyAuthor}{Author}
+Maxime 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classgraphic_1_1_cell_pane_acfa4533330876d91705e1871c854c1f2}{}\label{classgraphic_1_1_cell_pane_acfa4533330876d91705e1871c854c1f2} 
+\index{graphic\+::\+Cell\+Pane@{graphic\+::\+Cell\+Pane}!Cell\+Pane@{Cell\+Pane}}
+\index{Cell\+Pane@{Cell\+Pane}!graphic\+::\+Cell\+Pane@{graphic\+::\+Cell\+Pane}}
+\subsubsection{\texorpdfstring{Cell\+Pane()}{CellPane()}}
+{\footnotesize\ttfamily graphic.\+Cell\+Pane.\+Cell\+Pane (\begin{DoxyParamCaption}\item[{\hyperlink{classgraphic_1_1_grid_panel}{Grid\+Panel}}]{gp,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+constructeur de la classe prenant en paramètre sa grille mère, et ses coordonnées x et y 
+\begin{DoxyParams}{Parameters}
+{\em gp} & = grille mère \\
+\hline
+{\em x} & = colonne de la cellule \\
+\hline
+{\em y} & = ligne de la cellule \\
+\hline
+\end{DoxyParams}
+Méthode qui permet de modifier le background lorsque la souris de l\textquotesingle{}utilisateur entre dans la cellule
+
+on remet le fond de la cellule par défaut lorsque l\textquotesingle{}utilisateur sort de la cellule 
+\begin{DoxyParams}{Parameters}
+{\em e} & \\
+\hline
+\end{DoxyParams}
+on affiche un menu contextuel lorsque l\textquotesingle{}utilisateur clique droit sur la cellule 
+\begin{DoxyParams}{Parameters}
+{\em e} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classgraphic_1_1_cell_pane_a26561bfa4a8802268c9b081e5c5682f8}{}\label{classgraphic_1_1_cell_pane_a26561bfa4a8802268c9b081e5c5682f8} 
+\index{graphic\+::\+Cell\+Pane@{graphic\+::\+Cell\+Pane}!get\+CoordX@{get\+CoordX}}
+\index{get\+CoordX@{get\+CoordX}!graphic\+::\+Cell\+Pane@{graphic\+::\+Cell\+Pane}}
+\subsubsection{\texorpdfstring{get\+Coord\+X()}{getCoordX()}}
+{\footnotesize\ttfamily int graphic.\+Cell\+Pane.\+get\+CoordX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Getter qui retourne la coordonnée X de la cellule \begin{DoxyReturn}{Returns}
+the coordX (la colonne) 
+\end{DoxyReturn}
+\hypertarget{classgraphic_1_1_cell_pane_a085ea8c70a07a051e103af3c89e66eb2}{}\label{classgraphic_1_1_cell_pane_a085ea8c70a07a051e103af3c89e66eb2} 
+\index{graphic\+::\+Cell\+Pane@{graphic\+::\+Cell\+Pane}!get\+CoordY@{get\+CoordY}}
+\index{get\+CoordY@{get\+CoordY}!graphic\+::\+Cell\+Pane@{graphic\+::\+Cell\+Pane}}
+\subsubsection{\texorpdfstring{get\+Coord\+Y()}{getCoordY()}}
+{\footnotesize\ttfamily int graphic.\+Cell\+Pane.\+get\+CoordY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Getter qui retourne la coordonnée Y de la cellule \begin{DoxyReturn}{Returns}
+the coordY (la ligne) 
+\end{DoxyReturn}
+\hypertarget{classgraphic_1_1_cell_pane_a34a6be4ba7f268bc1cf97abb8133ea21}{}\label{classgraphic_1_1_cell_pane_a34a6be4ba7f268bc1cf97abb8133ea21} 
+\index{graphic\+::\+Cell\+Pane@{graphic\+::\+Cell\+Pane}!get\+Gp@{get\+Gp}}
+\index{get\+Gp@{get\+Gp}!graphic\+::\+Cell\+Pane@{graphic\+::\+Cell\+Pane}}
+\subsubsection{\texorpdfstring{get\+Gp()}{getGp()}}
+{\footnotesize\ttfamily \hyperlink{classgraphic_1_1_grid_panel}{Grid\+Panel} graphic.\+Cell\+Pane.\+get\+Gp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Getter de la grille mère \begin{DoxyReturn}{Returns}
+the gp 
+\end{DoxyReturn}
+\hypertarget{classgraphic_1_1_cell_pane_a0fd531a6556674de04015e906aabe03a}{}\label{classgraphic_1_1_cell_pane_a0fd531a6556674de04015e906aabe03a} 
+\index{graphic\+::\+Cell\+Pane@{graphic\+::\+Cell\+Pane}!get\+Preferred\+Size@{get\+Preferred\+Size}}
+\index{get\+Preferred\+Size@{get\+Preferred\+Size}!graphic\+::\+Cell\+Pane@{graphic\+::\+Cell\+Pane}}
+\subsubsection{\texorpdfstring{get\+Preferred\+Size()}{getPreferredSize()}}
+{\footnotesize\ttfamily Dimension graphic.\+Cell\+Pane.\+get\+Preferred\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+taille de la cellule \begin{DoxyReturn}{Returns}
+la dimension 
+\end{DoxyReturn}
+\hypertarget{classgraphic_1_1_cell_pane_ad2287605b18570f3af59ada0e1feaade}{}\label{classgraphic_1_1_cell_pane_ad2287605b18570f3af59ada0e1feaade} 
+\index{graphic\+::\+Cell\+Pane@{graphic\+::\+Cell\+Pane}!set\+CoordX@{set\+CoordX}}
+\index{set\+CoordX@{set\+CoordX}!graphic\+::\+Cell\+Pane@{graphic\+::\+Cell\+Pane}}
+\subsubsection{\texorpdfstring{set\+Coord\+X()}{setCoordX()}}
+{\footnotesize\ttfamily void graphic.\+Cell\+Pane.\+set\+CoordX (\begin{DoxyParamCaption}\item[{int}]{coordX }\end{DoxyParamCaption})}
+
+Setter qui modifie la coordonnée X de la cellule 
+\begin{DoxyParams}{Parameters}
+{\em coordX} & the coordX to set (la colonne) \\
+\hline
+\end{DoxyParams}
+\hypertarget{classgraphic_1_1_cell_pane_a5f6ca9deb28ada5b1442f6b9ecb3b616}{}\label{classgraphic_1_1_cell_pane_a5f6ca9deb28ada5b1442f6b9ecb3b616} 
+\index{graphic\+::\+Cell\+Pane@{graphic\+::\+Cell\+Pane}!set\+CoordY@{set\+CoordY}}
+\index{set\+CoordY@{set\+CoordY}!graphic\+::\+Cell\+Pane@{graphic\+::\+Cell\+Pane}}
+\subsubsection{\texorpdfstring{set\+Coord\+Y()}{setCoordY()}}
+{\footnotesize\ttfamily void graphic.\+Cell\+Pane.\+set\+CoordY (\begin{DoxyParamCaption}\item[{int}]{coordY }\end{DoxyParamCaption})}
+
+Setter qui permet de modifier la coordonnée Y de la cellule 
+\begin{DoxyParams}{Parameters}
+{\em coordY} & the coordY to set (la ligne) \\
+\hline
+\end{DoxyParams}
+\hypertarget{classgraphic_1_1_cell_pane_aa61724c598a72a3b1968bc07bb2c29aa}{}\label{classgraphic_1_1_cell_pane_aa61724c598a72a3b1968bc07bb2c29aa} 
+\index{graphic\+::\+Cell\+Pane@{graphic\+::\+Cell\+Pane}!set\+Gp@{set\+Gp}}
+\index{set\+Gp@{set\+Gp}!graphic\+::\+Cell\+Pane@{graphic\+::\+Cell\+Pane}}
+\subsubsection{\texorpdfstring{set\+Gp()}{setGp()}}
+{\footnotesize\ttfamily void graphic.\+Cell\+Pane.\+set\+Gp (\begin{DoxyParamCaption}\item[{\hyperlink{classgraphic_1_1_grid_panel}{Grid\+Panel}}]{gp }\end{DoxyParamCaption})}
+
+Setter de la grille mère 
+\begin{DoxyParams}{Parameters}
+{\em gp} & the gp to set \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+graphic/Cell\+Pane.\+java\end{DoxyCompactItemize}

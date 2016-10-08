@@ -1,0 +1,262 @@
+.TH "main.Main" 3 "Thu Oct 6 2016" "Version 1.0" "IA-Aspirateur" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+main.Main \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMain\fP ()"
+.br
+.ti -1c
+.RI "\fBEnvironnement\fP \fBgetEnvironnement\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetEnvironnement\fP (\fBEnvironnement\fP aEnvironnement)"
+.br
+.ti -1c
+.RI "void \fBbotMove\fP (\fBDirection\fP dir)"
+.br
+.ti -1c
+.RI "boolean \fBgetDustState\fP ()"
+.br
+.ti -1c
+.RI "boolean \fBgetJewelState\fP ()"
+.br
+.ti -1c
+.RI "void \fBsuck\fP ()"
+.br
+.ti -1c
+.RI "void \fBpick\fP ()"
+.br
+.ti -1c
+.RI "void \fBaddDust\fP (int r, int c)"
+.br
+.ti -1c
+.RI "void \fBaddJewel\fP (int r, int c)"
+.br
+.ti -1c
+.RI "\fBgraphic\&.Main\fP \fBgetGraph\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetGraph\fP (\fBgraphic\&.Main\fP graph)"
+.br
+.ti -1c
+.RI "void \fBsetFrequency\fP (int freq)"
+.br
+.ti -1c
+.RI "void \fBsetDustProb\fP (int prob)"
+.br
+.ti -1c
+.RI "void \fBsetJewelProb\fP (int prob)"
+.br
+.ti -1c
+.RI "boolean \fBisCellEnabled\fP (\fBCell\fP c)"
+.br
+.ti -1c
+.RI "\fBBender\fP \fBgetRobot\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetRobot\fP (\fBBender\fP robot)"
+.br
+.ti -1c
+.RI "void \fBupdateConso\fP (int i)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBmain\fP (String [] args)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Classe principale du programme Lance les autres modules (Environnement, Robot et Graphique) et joue le rôle d'interface 
+.PP
+\fBAuthor:\fP
+.RS 4
+Thomas 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "main\&.Main\&.Main ()"
+Constructeur de la classe Lance tous les modules dans des threads distincts 
+.SH "Member Function Documentation"
+.PP 
+.SS "void main\&.Main\&.addDust (int r, int c)"
+Méthode appelée par l'interface graphique ou l'environnement, cet appel est déterminé par \fBStackTraceElement\fP Ajoute de la poussière soit à l'environnement soit à l'interface graphique dépendamment de l'appelant 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIr\fP La ligne de la cellule où ajouter de la poussière 
+.br
+\fIc\fP La colonne de la cellule où ajouter de la poussière 
+.RE
+.PP
+
+.SS "void main\&.Main\&.addJewel (int r, int c)"
+Méthode appelée par l'interface graphique ou l'environnement, cet appel est déterminé par \fBStackTraceElement\fP Ajoute un bijou soit à l'environnement soit à l'interface graphique dépendamment de l'appelant 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIr\fP La ligne de la cellule où ajouter un bijou 
+.br
+\fIc\fP La colonne de la cellule où ajouter un bijou 
+.RE
+.PP
+
+.SS "void main\&.Main\&.botMove (\fBDirection\fP dir)"
+Méthode appelée lorsque le robot bouge Quelque soit la direction désirée, la méthode vérifie que la cellule demandée existe et est valable 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdir\fP La direction dans laquelle le robot bouge 
+.RE
+.PP
+
+.SS "boolean main\&.Main\&.getDustState ()"
+Getter de l'état de poussière de la cellule courante du robot 
+.PP
+\fBReturns:\fP
+.RS 4
+Si la cellule possède de la poussière 
+.RE
+.PP
+
+.SS "\fBEnvironnement\fP main\&.Main\&.getEnvironnement ()"
+Getter de l'environnement 
+.PP
+\fBReturns:\fP
+.RS 4
+L'environnement 
+.RE
+.PP
+
+.SS "\fBgraphic\&.Main\fP main\&.Main\&.getGraph ()"
+Getter de l'interface graphique 
+.PP
+\fBReturns:\fP
+.RS 4
+L'interface graphique 
+.RE
+.PP
+
+.SS "boolean main\&.Main\&.getJewelState ()"
+Getter de l'état de bijou de la cellule courante du robot 
+.PP
+\fBReturns:\fP
+.RS 4
+Si la cellule possède un bijou 
+.RE
+.PP
+
+.SS "\fBBender\fP main\&.Main\&.getRobot ()"
+Getter pour le robot 
+.PP
+\fBReturns:\fP
+.RS 4
+Le robot 
+.RE
+.PP
+
+.SS "boolean main\&.Main\&.isCellEnabled (\fBCell\fP c)"
+Méthode appelée par le robot pour savoir si une cellule est valable Cette méthode traduit les coordonnées exprimées par le robot en coordonnées réelles pour l'environnement 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIc\fP La cellule souhaitée 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Si la cellule est valable 
+.RE
+.PP
+
+.SS "static void main\&.Main\&.main (String [] args)\fC [static]\fP"
+Fonction appelée au lancement du programme Construit un \fBMain\fP ce qui a pour effet de lancer le programme 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIargs\fP Paramètres d'appels 
+.RE
+.PP
+
+.SS "void main\&.Main\&.pick ()"
+Le robot prend un bijou présent sur la cellule 
+.SS "void main\&.Main\&.setDustProb (int prob)"
+Setter de la probabilité d'apparition de poussière 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprob\fP Nouvelle probabilité d'apparition de poussière 
+.RE
+.PP
+
+.SS "void main\&.Main\&.setEnvironnement (\fBEnvironnement\fP aEnvironnement)"
+Setter de l'environnement 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaEnvironnement\fP L'environnement 
+.RE
+.PP
+
+.SS "void main\&.Main\&.setFrequency (int freq)"
+Setter du temps inter boucle pour les générations de poussière et de bijoux 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfreq\fP Le nouveau temps inter boucle 
+.RE
+.PP
+
+.SS "void main\&.Main\&.setGraph (\fBgraphic\&.Main\fP graph)"
+Setter de l'interface graphique 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgraph\fP L'interface graphique 
+.RE
+.PP
+
+.SS "void main\&.Main\&.setJewelProb (int prob)"
+Setter de la probabilité d'apparition de bijoux 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprob\fP Nouvelle probabilité d'apparition de bijoux 
+.RE
+.PP
+
+.SS "void main\&.Main\&.setRobot (\fBBender\fP robot)"
+Setter pour le robot 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrobot\fP Le robot 
+.RE
+.PP
+
+.SS "void main\&.Main\&.suck ()"
+Le robot aspire tous les objets présents sur la cellule courante 
+.SS "void main\&.Main\&.updateConso (int i)"
+Méthode appelée par le robot pour mettre à jour le niveau d'énergie consommé dans l'interface graphique 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Nouvelle valeur de la consommation en énergie 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IA-Aspirateur from the source code\&.

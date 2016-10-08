@@ -1,0 +1,148 @@
+.TH "graphic.CellPane" 3 "Thu Oct 6 2016" "Version 1.0" "IA-Aspirateur" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+graphic.CellPane \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits JPanel\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCellPane\fP (\fBGridPanel\fP gp, int x, int y)"
+.br
+.ti -1c
+.RI "Dimension \fBgetPreferredSize\fP ()"
+.br
+.ti -1c
+.RI "\fBGridPanel\fP \fBgetGp\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetGp\fP (\fBGridPanel\fP gp)"
+.br
+.ti -1c
+.RI "int \fBgetCoordX\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetCoordX\fP (int coordX)"
+.br
+.ti -1c
+.RI "int \fBgetCoordY\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetCoordY\fP (int coordY)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Classe représant une cellule de la grille 
+.PP
+\fBAuthor:\fP
+.RS 4
+Maxime 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "graphic\&.CellPane\&.CellPane (\fBGridPanel\fP gp, int x, int y)"
+constructeur de la classe prenant en paramètre sa grille mère, et ses coordonnées x et y 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgp\fP = grille mère 
+.br
+\fIx\fP = colonne de la cellule 
+.br
+\fIy\fP = ligne de la cellule 
+.RE
+.PP
+Méthode qui permet de modifier le background lorsque la souris de l'utilisateur entre dans la cellule
+.PP
+on remet le fond de la cellule par défaut lorsque l'utilisateur sort de la cellule 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIe\fP 
+.RE
+.PP
+on affiche un menu contextuel lorsque l'utilisateur clique droit sur la cellule 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIe\fP 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "int graphic\&.CellPane\&.getCoordX ()"
+Getter qui retourne la coordonnée X de la cellule 
+.PP
+\fBReturns:\fP
+.RS 4
+the coordX (la colonne) 
+.RE
+.PP
+
+.SS "int graphic\&.CellPane\&.getCoordY ()"
+Getter qui retourne la coordonnée Y de la cellule 
+.PP
+\fBReturns:\fP
+.RS 4
+the coordY (la ligne) 
+.RE
+.PP
+
+.SS "\fBGridPanel\fP graphic\&.CellPane\&.getGp ()"
+Getter de la grille mère 
+.PP
+\fBReturns:\fP
+.RS 4
+the gp 
+.RE
+.PP
+
+.SS "Dimension graphic\&.CellPane\&.getPreferredSize ()"
+taille de la cellule 
+.PP
+\fBReturns:\fP
+.RS 4
+la dimension 
+.RE
+.PP
+
+.SS "void graphic\&.CellPane\&.setCoordX (int coordX)"
+Setter qui modifie la coordonnée X de la cellule 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcoordX\fP the coordX to set (la colonne) 
+.RE
+.PP
+
+.SS "void graphic\&.CellPane\&.setCoordY (int coordY)"
+Setter qui permet de modifier la coordonnée Y de la cellule 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcoordY\fP the coordY to set (la ligne) 
+.RE
+.PP
+
+.SS "void graphic\&.CellPane\&.setGp (\fBGridPanel\fP gp)"
+Setter de la grille mère 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgp\fP the gp to set 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IA-Aspirateur from the source code\&.

@@ -1,0 +1,214 @@
+\hypertarget{classenvironnement_1_1_cell}{}\section{environnement.\+Cell Class Reference}
+\label{classenvironnement_1_1_cell}\index{environnement.\+Cell@{environnement.\+Cell}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classenvironnement_1_1_cell_ada829b1f91021c63aa07bea9f9f4285c}{Cell} (int r, int c)
+\item 
+\hyperlink{classenvironnement_1_1_cell_a811f3e78d96ea09509dd67cfd23cde66}{Cell} (int r, int c, Boolean e)
+\item 
+Boolean \hyperlink{classenvironnement_1_1_cell_a25650d3cbb77512f24039d6ac9d454ba}{get\+Enable} ()
+\item 
+void \hyperlink{classenvironnement_1_1_cell_a6581171e649b2eca5bf1ebfcdc106ed9}{set\+Enable} (Boolean enable)
+\item 
+int \hyperlink{classenvironnement_1_1_cell_ab4854841abcb284f9478c921dd3c86d3}{get\+Col} ()
+\item 
+void \hyperlink{classenvironnement_1_1_cell_a864f6711fd70a6fa132f8c2280db72af}{set\+Col} (int col)
+\item 
+int \hyperlink{classenvironnement_1_1_cell_a614f23d343407efa4f07156f414522db}{get\+Row} ()
+\item 
+void \hyperlink{classenvironnement_1_1_cell_a66a02095836f9791548e7ef0547569b5}{set\+Row} (int row)
+\item 
+Array\+List$<$ \hyperlink{classenvironnement_1_1_object}{Object} $>$ \hyperlink{classenvironnement_1_1_cell_a2423a51a5e48790cea89061c3793357a}{get\+Objects} ()
+\item 
+void \hyperlink{classenvironnement_1_1_cell_a7a5be16d3f2bd085a86e67d2266680eb}{set\+Objects} (Array\+List$<$ \hyperlink{classenvironnement_1_1_object}{Object} $>$ objects)
+\item 
+void \hyperlink{classenvironnement_1_1_cell_aedfad655287c0ae1fda977ec15efb6a0}{add\+Object} (\hyperlink{enumenvironnement_1_1_type}{Type} t)
+\item 
+Boolean \hyperlink{classenvironnement_1_1_cell_ad83c17c96dae12f864af43ad546f86f3}{remove\+Object} (\hyperlink{enumenvironnement_1_1_type}{Type} t)
+\item 
+void \hyperlink{classenvironnement_1_1_cell_a1844f98b1999045deb72d45c7ec0ff21}{remove\+All\+Objects} ()
+\item 
+Boolean \hyperlink{classenvironnement_1_1_cell_a3551332fb08fc588ca65714cc7642046}{has\+Object} (\hyperlink{enumenvironnement_1_1_type}{Type} t)
+\item 
+String \hyperlink{classenvironnement_1_1_cell_ab3f7830b0b36a34150a732d2f17ba66d}{to\+String} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe représentant une cellule de la \hyperlink{classenvironnement_1_1_grid}{environnement.\+Grid} \begin{DoxyAuthor}{Author}
+Thomas 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classenvironnement_1_1_cell_ada829b1f91021c63aa07bea9f9f4285c}{}\label{classenvironnement_1_1_cell_ada829b1f91021c63aa07bea9f9f4285c} 
+\index{environnement\+::\+Cell@{environnement\+::\+Cell}!Cell@{Cell}}
+\index{Cell@{Cell}!environnement\+::\+Cell@{environnement\+::\+Cell}}
+\subsubsection{\texorpdfstring{Cell()}{Cell()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily environnement.\+Cell.\+Cell (\begin{DoxyParamCaption}\item[{int}]{r,  }\item[{int}]{c }\end{DoxyParamCaption})}
+
+Constructeur de la classe prenant en paramètre la ligne et la colonne de la cellule 
+\begin{DoxyParams}{Parameters}
+{\em r} & Ligne de la cellule \\
+\hline
+{\em c} & Colonne de la cellule \\
+\hline
+\end{DoxyParams}
+\hypertarget{classenvironnement_1_1_cell_a811f3e78d96ea09509dd67cfd23cde66}{}\label{classenvironnement_1_1_cell_a811f3e78d96ea09509dd67cfd23cde66} 
+\index{environnement\+::\+Cell@{environnement\+::\+Cell}!Cell@{Cell}}
+\index{Cell@{Cell}!environnement\+::\+Cell@{environnement\+::\+Cell}}
+\subsubsection{\texorpdfstring{Cell()}{Cell()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily environnement.\+Cell.\+Cell (\begin{DoxyParamCaption}\item[{int}]{r,  }\item[{int}]{c,  }\item[{Boolean}]{e }\end{DoxyParamCaption})}
+
+Surcharge du constructeur prenant en compte si la cellule est valable 
+\begin{DoxyParams}{Parameters}
+{\em r} & Ligne de la cellule \\
+\hline
+{\em c} & Colonne de la cellule \\
+\hline
+{\em e} & Si la cellule est valable \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classenvironnement_1_1_cell_aedfad655287c0ae1fda977ec15efb6a0}{}\label{classenvironnement_1_1_cell_aedfad655287c0ae1fda977ec15efb6a0} 
+\index{environnement\+::\+Cell@{environnement\+::\+Cell}!add\+Object@{add\+Object}}
+\index{add\+Object@{add\+Object}!environnement\+::\+Cell@{environnement\+::\+Cell}}
+\subsubsection{\texorpdfstring{add\+Object()}{addObject()}}
+{\footnotesize\ttfamily void environnement.\+Cell.\+add\+Object (\begin{DoxyParamCaption}\item[{\hyperlink{enumenvironnement_1_1_type}{Type}}]{t }\end{DoxyParamCaption})}
+
+Méthode permettant de rajouter un objet d\textquotesingle{}un certain \hyperlink{}{Type} à la cellule 
+\begin{DoxyParams}{Parameters}
+{\em t} & Le type de l\textquotesingle{}objet à ajouter \\
+\hline
+\end{DoxyParams}
+\hypertarget{classenvironnement_1_1_cell_ab4854841abcb284f9478c921dd3c86d3}{}\label{classenvironnement_1_1_cell_ab4854841abcb284f9478c921dd3c86d3} 
+\index{environnement\+::\+Cell@{environnement\+::\+Cell}!get\+Col@{get\+Col}}
+\index{get\+Col@{get\+Col}!environnement\+::\+Cell@{environnement\+::\+Cell}}
+\subsubsection{\texorpdfstring{get\+Col()}{getCol()}}
+{\footnotesize\ttfamily int environnement.\+Cell.\+get\+Col (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Getter de la colonne de la cellule \begin{DoxyReturn}{Returns}
+La colonne de la cellule 
+\end{DoxyReturn}
+\hypertarget{classenvironnement_1_1_cell_a25650d3cbb77512f24039d6ac9d454ba}{}\label{classenvironnement_1_1_cell_a25650d3cbb77512f24039d6ac9d454ba} 
+\index{environnement\+::\+Cell@{environnement\+::\+Cell}!get\+Enable@{get\+Enable}}
+\index{get\+Enable@{get\+Enable}!environnement\+::\+Cell@{environnement\+::\+Cell}}
+\subsubsection{\texorpdfstring{get\+Enable()}{getEnable()}}
+{\footnotesize\ttfamily Boolean environnement.\+Cell.\+get\+Enable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Getter de la validité de la cellule \begin{DoxyReturn}{Returns}
+Si la cellule est valable 
+\end{DoxyReturn}
+\hypertarget{classenvironnement_1_1_cell_a2423a51a5e48790cea89061c3793357a}{}\label{classenvironnement_1_1_cell_a2423a51a5e48790cea89061c3793357a} 
+\index{environnement\+::\+Cell@{environnement\+::\+Cell}!get\+Objects@{get\+Objects}}
+\index{get\+Objects@{get\+Objects}!environnement\+::\+Cell@{environnement\+::\+Cell}}
+\subsubsection{\texorpdfstring{get\+Objects()}{getObjects()}}
+{\footnotesize\ttfamily Array\+List$<$\hyperlink{classenvironnement_1_1_object}{Object}$>$ environnement.\+Cell.\+get\+Objects (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Getter de la liste des objets présents dans la cellule \begin{DoxyReturn}{Returns}
+La liste des objets présents dans la cellule 
+\end{DoxyReturn}
+\hypertarget{classenvironnement_1_1_cell_a614f23d343407efa4f07156f414522db}{}\label{classenvironnement_1_1_cell_a614f23d343407efa4f07156f414522db} 
+\index{environnement\+::\+Cell@{environnement\+::\+Cell}!get\+Row@{get\+Row}}
+\index{get\+Row@{get\+Row}!environnement\+::\+Cell@{environnement\+::\+Cell}}
+\subsubsection{\texorpdfstring{get\+Row()}{getRow()}}
+{\footnotesize\ttfamily int environnement.\+Cell.\+get\+Row (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Getter de la ligne de la cellule \begin{DoxyReturn}{Returns}
+La ligne de la cellule 
+\end{DoxyReturn}
+\hypertarget{classenvironnement_1_1_cell_a3551332fb08fc588ca65714cc7642046}{}\label{classenvironnement_1_1_cell_a3551332fb08fc588ca65714cc7642046} 
+\index{environnement\+::\+Cell@{environnement\+::\+Cell}!has\+Object@{has\+Object}}
+\index{has\+Object@{has\+Object}!environnement\+::\+Cell@{environnement\+::\+Cell}}
+\subsubsection{\texorpdfstring{has\+Object()}{hasObject()}}
+{\footnotesize\ttfamily Boolean environnement.\+Cell.\+has\+Object (\begin{DoxyParamCaption}\item[{\hyperlink{enumenvironnement_1_1_type}{Type}}]{t }\end{DoxyParamCaption})}
+
+Méthode permettant de tester si la cellule possède un objet du type passé en paramètre 
+\begin{DoxyParams}{Parameters}
+{\em t} & Le type de l\textquotesingle{}objet à tester \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Si le type d\textquotesingle{}objet est présent dans la cellule 
+\end{DoxyReturn}
+\hypertarget{classenvironnement_1_1_cell_a1844f98b1999045deb72d45c7ec0ff21}{}\label{classenvironnement_1_1_cell_a1844f98b1999045deb72d45c7ec0ff21} 
+\index{environnement\+::\+Cell@{environnement\+::\+Cell}!remove\+All\+Objects@{remove\+All\+Objects}}
+\index{remove\+All\+Objects@{remove\+All\+Objects}!environnement\+::\+Cell@{environnement\+::\+Cell}}
+\subsubsection{\texorpdfstring{remove\+All\+Objects()}{removeAllObjects()}}
+{\footnotesize\ttfamily void environnement.\+Cell.\+remove\+All\+Objects (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Méthode permettant de supprimer tous les objets de la cellule \hypertarget{classenvironnement_1_1_cell_ad83c17c96dae12f864af43ad546f86f3}{}\label{classenvironnement_1_1_cell_ad83c17c96dae12f864af43ad546f86f3} 
+\index{environnement\+::\+Cell@{environnement\+::\+Cell}!remove\+Object@{remove\+Object}}
+\index{remove\+Object@{remove\+Object}!environnement\+::\+Cell@{environnement\+::\+Cell}}
+\subsubsection{\texorpdfstring{remove\+Object()}{removeObject()}}
+{\footnotesize\ttfamily Boolean environnement.\+Cell.\+remove\+Object (\begin{DoxyParamCaption}\item[{\hyperlink{enumenvironnement_1_1_type}{Type}}]{t }\end{DoxyParamCaption})}
+
+Méthode permettant de supprimer un objet d\textquotesingle{}un certain \hyperlink{}{Type} de la cellule 
+\begin{DoxyParams}{Parameters}
+{\em t} & Le type de l\textquotesingle{}objet à supprimer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}objet supprimé 
+\end{DoxyReturn}
+\hypertarget{classenvironnement_1_1_cell_a864f6711fd70a6fa132f8c2280db72af}{}\label{classenvironnement_1_1_cell_a864f6711fd70a6fa132f8c2280db72af} 
+\index{environnement\+::\+Cell@{environnement\+::\+Cell}!set\+Col@{set\+Col}}
+\index{set\+Col@{set\+Col}!environnement\+::\+Cell@{environnement\+::\+Cell}}
+\subsubsection{\texorpdfstring{set\+Col()}{setCol()}}
+{\footnotesize\ttfamily void environnement.\+Cell.\+set\+Col (\begin{DoxyParamCaption}\item[{int}]{col }\end{DoxyParamCaption})}
+
+Setter de la colonne de la cellule 
+\begin{DoxyParams}{Parameters}
+{\em col} & Colonne de la cellule \\
+\hline
+\end{DoxyParams}
+\hypertarget{classenvironnement_1_1_cell_a6581171e649b2eca5bf1ebfcdc106ed9}{}\label{classenvironnement_1_1_cell_a6581171e649b2eca5bf1ebfcdc106ed9} 
+\index{environnement\+::\+Cell@{environnement\+::\+Cell}!set\+Enable@{set\+Enable}}
+\index{set\+Enable@{set\+Enable}!environnement\+::\+Cell@{environnement\+::\+Cell}}
+\subsubsection{\texorpdfstring{set\+Enable()}{setEnable()}}
+{\footnotesize\ttfamily void environnement.\+Cell.\+set\+Enable (\begin{DoxyParamCaption}\item[{Boolean}]{enable }\end{DoxyParamCaption})}
+
+Setter de la validité de la cellule 
+\begin{DoxyParams}{Parameters}
+{\em enable} & Si la cellule est valable \\
+\hline
+\end{DoxyParams}
+\hypertarget{classenvironnement_1_1_cell_a7a5be16d3f2bd085a86e67d2266680eb}{}\label{classenvironnement_1_1_cell_a7a5be16d3f2bd085a86e67d2266680eb} 
+\index{environnement\+::\+Cell@{environnement\+::\+Cell}!set\+Objects@{set\+Objects}}
+\index{set\+Objects@{set\+Objects}!environnement\+::\+Cell@{environnement\+::\+Cell}}
+\subsubsection{\texorpdfstring{set\+Objects()}{setObjects()}}
+{\footnotesize\ttfamily void environnement.\+Cell.\+set\+Objects (\begin{DoxyParamCaption}\item[{Array\+List$<$ \hyperlink{classenvironnement_1_1_object}{Object} $>$}]{objects }\end{DoxyParamCaption})}
+
+Setter de la liste des objets présents dans la cellule 
+\begin{DoxyParams}{Parameters}
+{\em objects} & La liste des objets présents dans la cellule \\
+\hline
+\end{DoxyParams}
+\hypertarget{classenvironnement_1_1_cell_a66a02095836f9791548e7ef0547569b5}{}\label{classenvironnement_1_1_cell_a66a02095836f9791548e7ef0547569b5} 
+\index{environnement\+::\+Cell@{environnement\+::\+Cell}!set\+Row@{set\+Row}}
+\index{set\+Row@{set\+Row}!environnement\+::\+Cell@{environnement\+::\+Cell}}
+\subsubsection{\texorpdfstring{set\+Row()}{setRow()}}
+{\footnotesize\ttfamily void environnement.\+Cell.\+set\+Row (\begin{DoxyParamCaption}\item[{int}]{row }\end{DoxyParamCaption})}
+
+Setter de la ligne de la cellule 
+\begin{DoxyParams}{Parameters}
+{\em row} & La ligne de la cellule \\
+\hline
+\end{DoxyParams}
+\hypertarget{classenvironnement_1_1_cell_ab3f7830b0b36a34150a732d2f17ba66d}{}\label{classenvironnement_1_1_cell_ab3f7830b0b36a34150a732d2f17ba66d} 
+\index{environnement\+::\+Cell@{environnement\+::\+Cell}!to\+String@{to\+String}}
+\index{to\+String@{to\+String}!environnement\+::\+Cell@{environnement\+::\+Cell}}
+\subsubsection{\texorpdfstring{to\+String()}{toString()}}
+{\footnotesize\ttfamily String environnement.\+Cell.\+to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Méthode utilisée pour identifier la cellule sous forme de chaine de caractères \begin{DoxyReturn}{Returns}
+La chaine de caractère identifiant la cellule sour la forme \mbox{[}ligne, colonne\mbox{]} 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+environnement/Cell.\+java\end{DoxyCompactItemize}

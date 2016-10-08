@@ -1,0 +1,145 @@
+.TH "environnement.Environnement" 3 "Thu Oct 6 2016" "Version 1.0" "IA-Aspirateur" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+environnement.Environnement \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits Runnable\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEnvironnement\fP (\fBMain\fP main)"
+.br
+.ti -1c
+.RI "void \fBrun\fP ()"
+.br
+.ti -1c
+.RI "\fBCell\fP \fBgetRandomCell\fP ()"
+.br
+.ti -1c
+.RI "int \fBgetPercentageDust\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetPercentageDust\fP (int percentageDust)"
+.br
+.ti -1c
+.RI "int \fBgetPercentageJewel\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetPercentageJewel\fP (int percentageJewel)"
+.br
+.ti -1c
+.RI "int \fBgetSecondsToLoop\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetSecondsToLoop\fP (int secondsToLoop)"
+.br
+.ti -1c
+.RI "\fBGrid\fP \fBgetGrid\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Classe principale de l'environnement\&. Contient les informations générales relatives à l'environnement telles que la probabilité d'apparition de poussières, le temps entre chaque boucle de tentative d'apparition, etc\&. 
+.PP
+\fBAuthor:\fP
+.RS 4
+Thomas 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "environnement\&.Environnement\&.Environnement (\fBMain\fP main)"
+Constructeur de la classe 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImain\fP Classe principale de l'application utilisée comme interface 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBGrid\fP environnement\&.Environnement\&.getGrid ()"
+Getter de la \fBgrid\fP de l'environnement 
+.PP
+\fBReturns:\fP
+.RS 4
+La \fBgrid\fP de l'environnement 
+.RE
+.PP
+
+.SS "int environnement\&.Environnement\&.getPercentageDust ()"
+Getter de la probabilité d'apparition de poussière 
+.PP
+\fBReturns:\fP
+.RS 4
+La probabilité d'apparition de poussière 
+.RE
+.PP
+
+.SS "int environnement\&.Environnement\&.getPercentageJewel ()"
+Getter de la probabilité d'apparition de bijou 
+.PP
+\fBReturns:\fP
+.RS 4
+La probabilité d'apparition de bijou 
+.RE
+.PP
+
+.SS "\fBCell\fP environnement\&.Environnement\&.getRandomCell ()"
+Méthode permettant de récupérer une cellule aléatoire dans la grille 
+.PP
+\fBReturns:\fP
+.RS 4
+Une cellule de la grille étant enable 
+.RE
+.PP
+
+.SS "int environnement\&.Environnement\&.getSecondsToLoop ()"
+Getter du temps entre chaque boucle 
+.PP
+\fBReturns:\fP
+.RS 4
+Le temps entre chaque boucle en seconde 
+.RE
+.PP
+
+.SS "void environnement\&.Environnement\&.run ()"
+Méthode principale de la classe\&. Génère la grille puis tant que \fBrun\fP est vrai génère des poussières et des bijoux\&. 
+.SS "void environnement\&.Environnement\&.setPercentageDust (int percentageDust)"
+Setter de la probabilité d'apparition de poussière 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpercentageDust\fP La probabilité d'apparition de poussière 
+.RE
+.PP
+
+.SS "void environnement\&.Environnement\&.setPercentageJewel (int percentageJewel)"
+Setter de la probabilité d'apparition de bijou 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpercentageJewel\fP La probabilité d'apparition de bijou 
+.RE
+.PP
+
+.SS "void environnement\&.Environnement\&.setSecondsToLoop (int secondsToLoop)"
+Setter du temps entre chaque boucle 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsecondsToLoop\fP Le temps entre chaque boucle en seconde 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IA-Aspirateur from the source code\&.

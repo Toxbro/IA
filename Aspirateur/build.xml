@@ -10,6 +10,11 @@
 <project name="Aspirateur" default="default" basedir=".">
     <description>Builds, tests, and runs the project Aspirateur.</description>
     <import file="nbproject/build-impl.xml"/>
+    <target name="-pre-jar">
+        <copy todir="${build.dir}/ressources">
+            <fileset dir="ressources"/>
+        </copy>
+    </target>
     <!--
 
     There exist several targets which are by default empty and which can be 

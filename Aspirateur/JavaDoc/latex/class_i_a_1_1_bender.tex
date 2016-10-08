@@ -1,0 +1,53 @@
+\hypertarget{class_i_a_1_1_bender}{}\section{I\+A.\+Bender Class Reference}
+\label{class_i_a_1_1_bender}\index{I\+A.\+Bender@{I\+A.\+Bender}}
+Inheritance diagram for I\+A.\+Bender\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_i_a_1_1_bender}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_i_a_1_1_bender_ab961bfaa97015eed15f408a22f442766}{Bender} (\hyperlink{classmain_1_1_main}{Main} master, int cell\+Total)
+\item 
+void \hyperlink{class_i_a_1_1_bender_a39093dae1a9f2b190e32fc5305a46533}{run} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe principale du robot. Possède un état mental B\+DI \begin{DoxyAuthor}{Author}
+quentin 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_i_a_1_1_bender_ab961bfaa97015eed15f408a22f442766}{}\label{class_i_a_1_1_bender_ab961bfaa97015eed15f408a22f442766} 
+\index{I\+A\+::\+Bender@{I\+A\+::\+Bender}!Bender@{Bender}}
+\index{Bender@{Bender}!I\+A\+::\+Bender@{I\+A\+::\+Bender}}
+\subsubsection{\texorpdfstring{Bender()}{Bender()}}
+{\footnotesize\ttfamily I\+A.\+Bender.\+Bender (\begin{DoxyParamCaption}\item[{\hyperlink{classmain_1_1_main}{Main}}]{master,  }\item[{int}]{cell\+Total }\end{DoxyParamCaption})}
+
+Le constructeur de l\textquotesingle{}objet Aspirateur. En plus d\textquotesingle{}initialiser les attributs \char`\"{}master\char`\"{}, \char`\"{}is\+Explo\+Done\char`\"{} et \char`\"{}cell\+Total\char`\"{}, crée la cellule de départ et l\textquotesingle{}ajoute à la grille.
+
+
+\begin{DoxyParams}{Parameters}
+{\em master} & Référence vers le maître qui instancie tous les threads. Nécessaire afin de mettre à jour l\textquotesingle{}environnement en fonction des actions du robot. \\
+\hline
+{\em cell\+Total} & Nombre de cellules total dans la grille. Permet au robot de savoir quand terminer la phase d\textquotesingle{}exploration. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_i_a_1_1_bender_a39093dae1a9f2b190e32fc5305a46533}{}\label{class_i_a_1_1_bender_a39093dae1a9f2b190e32fc5305a46533} 
+\index{I\+A\+::\+Bender@{I\+A\+::\+Bender}!run@{run}}
+\index{run@{run}!I\+A\+::\+Bender@{I\+A\+::\+Bender}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void I\+A.\+Bender.\+run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+La méthode \hyperlink{class_i_a_1_1_bender_a39093dae1a9f2b190e32fc5305a46533}{run()} du thread Aspirateur. La routine du robot met à jour ses Beliefs, puis appelle la fonction get\+Desire() afin d\textquotesingle{}obtenir la prochaine tâche à effectuer, puis effectuer cette tâche. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+I\+A/Bender.\+java\end{DoxyCompactItemize}

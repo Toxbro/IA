@@ -1,0 +1,51 @@
+.TH "IA.Bender" 3 "Thu Oct 6 2016" "Version 1.0" "IA-Aspirateur" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+IA.Bender \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits Runnable\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBender\fP (\fBMain\fP master, int cellTotal)"
+.br
+.ti -1c
+.RI "void \fBrun\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Classe principale du robot\&. Possède un état mental BDI 
+.PP
+\fBAuthor:\fP
+.RS 4
+quentin 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "IA\&.Bender\&.Bender (\fBMain\fP master, int cellTotal)"
+Le constructeur de l'objet Aspirateur\&. En plus d'initialiser les attributs 'master', 'isExploDone' et 'cellTotal', crée la cellule de départ et l'ajoute à la grille\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fImaster\fP Référence vers le maître qui instancie tous les threads\&. Nécessaire afin de mettre à jour l'environnement en fonction des actions du robot\&. 
+.br
+\fIcellTotal\fP Nombre de cellules total dans la grille\&. Permet au robot de savoir quand terminer la phase d'exploration\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void IA\&.Bender\&.run ()"
+La méthode \fBrun()\fP du thread Aspirateur\&. La routine du robot met à jour ses Beliefs, puis appelle la fonction getDesire() afin d'obtenir la prochaine tâche à effectuer, puis effectuer cette tâche\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IA-Aspirateur from the source code\&.

@@ -56,9 +56,9 @@ public class CellPane extends JPanel{
             JPanel jpR = new JPanel();
             JPanel jpD = new JPanel();
             //création des images
-            JLabel jewel = new JLabel(new ImageIcon(((new ImageIcon("ressources/jewels.png")).getImage()).getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH)));
-            JLabel robot = new JLabel(new ImageIcon(((new ImageIcon("ressources/aspi.png")).getImage()).getScaledInstance(40, 110, java.awt.Image.SCALE_SMOOTH)));
-            JLabel dust = new JLabel(new ImageIcon(((new ImageIcon("ressources/dust.png")).getImage()).getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH)));
+            JLabel jewel = new JLabel(new ImageIcon(((new ImageIcon("../ressources/jewels.png")).getImage()).getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH)));
+            JLabel robot = new JLabel(new ImageIcon(((new ImageIcon("../ressources/aspi.png")).getImage()).getScaledInstance(40, 110, java.awt.Image.SCALE_SMOOTH)));
+            JLabel dust = new JLabel(new ImageIcon(((new ImageIcon("../ressources/dust.png")).getImage()).getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH)));
             jpJ.setOpaque(false);
             jpR.setOpaque(false);
             jpD.setOpaque(false);

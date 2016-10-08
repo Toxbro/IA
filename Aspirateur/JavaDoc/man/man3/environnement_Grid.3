@@ -1,0 +1,78 @@
+.TH "environnement.Grid" 3 "Thu Oct 6 2016" "Version 1.0" "IA-Aspirateur" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+environnement.Grid \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGrid\fP ()"
+.br
+.ti -1c
+.RI "\fBCell\fP \fBgetCell\fP (int r, int c)"
+.br
+.ti -1c
+.RI "ArrayList< \fBCell\fP > \fBgetCells\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetCells\fP (ArrayList< \fBCell\fP > cells)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Classe représentant la grille de l'environnement 
+.PP
+\fBAuthor:\fP
+.RS 4
+Thomas 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "environnement\&.Grid\&.Grid ()"
+Constructeur de la grille X : 0 1 2 3 4 Y : 0 | | | | 1 | | | | | | 2 | | | | Crée toutes les cellules nécessaires et mets les cellules situées en [0;3], [0;4], [2;3] et [2;4] en non valable 
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBCell\fP environnement\&.Grid\&.getCell (int r, int c)"
+Getter d'une cellule précise dans la grille 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIr\fP Ligne de la cellule souhaitée 
+.br
+\fIc\fP Colonne de la cellule souhaitée 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+La cellule souhaitée si existante null sinon 
+.RE
+.PP
+
+.SS "ArrayList<\fBCell\fP> environnement\&.Grid\&.getCells ()"
+Getter de toutes les cellules présentes dans la grille 
+.PP
+\fBReturns:\fP
+.RS 4
+Les cellules de la grille 
+.RE
+.PP
+
+.SS "void environnement\&.Grid\&.setCells (ArrayList< \fBCell\fP > cells)"
+Setter de toutes les cellules présentes dans la grille 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcells\fP Les cellules de la grille 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IA-Aspirateur from the source code\&.

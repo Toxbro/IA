@@ -1,0 +1,267 @@
+\hypertarget{classmain_1_1_main}{}\section{main.\+Main Class Reference}
+\label{classmain_1_1_main}\index{main.\+Main@{main.\+Main}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmain_1_1_main_a3bd36c15a333d7b594eb71f68a938492}{Main} ()
+\item 
+\hyperlink{classenvironnement_1_1_environnement}{Environnement} \hyperlink{classmain_1_1_main_a701386aa685b5e10807def95e010d915}{get\+Environnement} ()
+\item 
+void \hyperlink{classmain_1_1_main_aaf5877a75af1ae2d8f6e35ce6d624301}{set\+Environnement} (\hyperlink{classenvironnement_1_1_environnement}{Environnement} a\+Environnement)
+\item 
+void \hyperlink{classmain_1_1_main_a79f1b4e1ccb0a641c1d36973af32eca1}{bot\+Move} (\hyperlink{enum_i_a_1_1_direction}{Direction} dir)
+\item 
+boolean \hyperlink{classmain_1_1_main_a791b90bdd63a0a13054f10b7f4b4e27f}{get\+Dust\+State} ()
+\item 
+boolean \hyperlink{classmain_1_1_main_aa0df4a294d402074303f47f1fd33a766}{get\+Jewel\+State} ()
+\item 
+void \hyperlink{classmain_1_1_main_a95439ee2c099d18cc32c6ffd785540ab}{suck} ()
+\item 
+void \hyperlink{classmain_1_1_main_a007a1feb59e43e37f32b6d8625664986}{pick} ()
+\item 
+void \hyperlink{classmain_1_1_main_a07fa4830b941140965687c3a2dc8c2e9}{add\+Dust} (int r, int c)
+\item 
+void \hyperlink{classmain_1_1_main_aaa7affd0b1ef80da03008902969da99b}{add\+Jewel} (int r, int c)
+\item 
+\hyperlink{classgraphic_1_1_main}{graphic.\+Main} \hyperlink{classmain_1_1_main_a1daa1d9376ab5764f820ee594ff537ce}{get\+Graph} ()
+\item 
+void \hyperlink{classmain_1_1_main_ab5524b1612bb914ee34f0f0c6cc89a5f}{set\+Graph} (\hyperlink{classgraphic_1_1_main}{graphic.\+Main} graph)
+\item 
+void \hyperlink{classmain_1_1_main_a3cec64baca52714fb67467ec5d793249}{set\+Frequency} (int freq)
+\item 
+void \hyperlink{classmain_1_1_main_a4fe27a92bfb4ab6b91100b78d5e60984}{set\+Dust\+Prob} (int prob)
+\item 
+void \hyperlink{classmain_1_1_main_a300ba85da3a72bc7ca9ad5f5b5a104ed}{set\+Jewel\+Prob} (int prob)
+\item 
+boolean \hyperlink{classmain_1_1_main_a5052a776c99a2dadce1fe83501e5860e}{is\+Cell\+Enabled} (\hyperlink{classenvironnement_1_1_cell}{Cell} c)
+\item 
+\hyperlink{class_i_a_1_1_bender}{Bender} \hyperlink{classmain_1_1_main_afa1c1d8de2dbeb639cf157413f82aec2}{get\+Robot} ()
+\item 
+void \hyperlink{classmain_1_1_main_ab2bea62d3409f687309c3ce697825c63}{set\+Robot} (\hyperlink{class_i_a_1_1_bender}{Bender} robot)
+\item 
+void \hyperlink{classmain_1_1_main_a676892cd2586d3b8d20e05451f306fba}{update\+Conso} (int i)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{classmain_1_1_main_ab607ced846a257d28e8f81d1820d587c}{main} (String \mbox{[}$\,$\mbox{]} args)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe principale du programme Lance les autres modules (Environnement, Robot et Graphique) et joue le rôle d\textquotesingle{}interface \begin{DoxyAuthor}{Author}
+Thomas 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmain_1_1_main_a3bd36c15a333d7b594eb71f68a938492}{}\label{classmain_1_1_main_a3bd36c15a333d7b594eb71f68a938492} 
+\index{main\+::\+Main@{main\+::\+Main}!Main@{Main}}
+\index{Main@{Main}!main\+::\+Main@{main\+::\+Main}}
+\subsubsection{\texorpdfstring{Main()}{Main()}}
+{\footnotesize\ttfamily main.\+Main.\+Main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructeur de la classe Lance tous les modules dans des threads distincts 
+
+\subsection{Member Function Documentation}
+\hypertarget{classmain_1_1_main_a07fa4830b941140965687c3a2dc8c2e9}{}\label{classmain_1_1_main_a07fa4830b941140965687c3a2dc8c2e9} 
+\index{main\+::\+Main@{main\+::\+Main}!add\+Dust@{add\+Dust}}
+\index{add\+Dust@{add\+Dust}!main\+::\+Main@{main\+::\+Main}}
+\subsubsection{\texorpdfstring{add\+Dust()}{addDust()}}
+{\footnotesize\ttfamily void main.\+Main.\+add\+Dust (\begin{DoxyParamCaption}\item[{int}]{r,  }\item[{int}]{c }\end{DoxyParamCaption})}
+
+Méthode appelée par l\textquotesingle{}interface graphique ou l\textquotesingle{}environnement, cet appel est déterminé par \hyperlink{}{Stack\+Trace\+Element} Ajoute de la poussière soit à l\textquotesingle{}environnement soit à l\textquotesingle{}interface graphique dépendamment de l\textquotesingle{}appelant 
+\begin{DoxyParams}{Parameters}
+{\em r} & La ligne de la cellule où ajouter de la poussière \\
+\hline
+{\em c} & La colonne de la cellule où ajouter de la poussière \\
+\hline
+\end{DoxyParams}
+\hypertarget{classmain_1_1_main_aaa7affd0b1ef80da03008902969da99b}{}\label{classmain_1_1_main_aaa7affd0b1ef80da03008902969da99b} 
+\index{main\+::\+Main@{main\+::\+Main}!add\+Jewel@{add\+Jewel}}
+\index{add\+Jewel@{add\+Jewel}!main\+::\+Main@{main\+::\+Main}}
+\subsubsection{\texorpdfstring{add\+Jewel()}{addJewel()}}
+{\footnotesize\ttfamily void main.\+Main.\+add\+Jewel (\begin{DoxyParamCaption}\item[{int}]{r,  }\item[{int}]{c }\end{DoxyParamCaption})}
+
+Méthode appelée par l\textquotesingle{}interface graphique ou l\textquotesingle{}environnement, cet appel est déterminé par \hyperlink{}{Stack\+Trace\+Element} Ajoute un bijou soit à l\textquotesingle{}environnement soit à l\textquotesingle{}interface graphique dépendamment de l\textquotesingle{}appelant 
+\begin{DoxyParams}{Parameters}
+{\em r} & La ligne de la cellule où ajouter un bijou \\
+\hline
+{\em c} & La colonne de la cellule où ajouter un bijou \\
+\hline
+\end{DoxyParams}
+\hypertarget{classmain_1_1_main_a79f1b4e1ccb0a641c1d36973af32eca1}{}\label{classmain_1_1_main_a79f1b4e1ccb0a641c1d36973af32eca1} 
+\index{main\+::\+Main@{main\+::\+Main}!bot\+Move@{bot\+Move}}
+\index{bot\+Move@{bot\+Move}!main\+::\+Main@{main\+::\+Main}}
+\subsubsection{\texorpdfstring{bot\+Move()}{botMove()}}
+{\footnotesize\ttfamily void main.\+Main.\+bot\+Move (\begin{DoxyParamCaption}\item[{\hyperlink{enum_i_a_1_1_direction}{Direction}}]{dir }\end{DoxyParamCaption})}
+
+Méthode appelée lorsque le robot bouge Quelque soit la direction désirée, la méthode vérifie que la cellule demandée existe et est valable 
+\begin{DoxyParams}{Parameters}
+{\em dir} & La direction dans laquelle le robot bouge \\
+\hline
+\end{DoxyParams}
+\hypertarget{classmain_1_1_main_a791b90bdd63a0a13054f10b7f4b4e27f}{}\label{classmain_1_1_main_a791b90bdd63a0a13054f10b7f4b4e27f} 
+\index{main\+::\+Main@{main\+::\+Main}!get\+Dust\+State@{get\+Dust\+State}}
+\index{get\+Dust\+State@{get\+Dust\+State}!main\+::\+Main@{main\+::\+Main}}
+\subsubsection{\texorpdfstring{get\+Dust\+State()}{getDustState()}}
+{\footnotesize\ttfamily boolean main.\+Main.\+get\+Dust\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Getter de l\textquotesingle{}état de poussière de la cellule courante du robot \begin{DoxyReturn}{Returns}
+Si la cellule possède de la poussière 
+\end{DoxyReturn}
+\hypertarget{classmain_1_1_main_a701386aa685b5e10807def95e010d915}{}\label{classmain_1_1_main_a701386aa685b5e10807def95e010d915} 
+\index{main\+::\+Main@{main\+::\+Main}!get\+Environnement@{get\+Environnement}}
+\index{get\+Environnement@{get\+Environnement}!main\+::\+Main@{main\+::\+Main}}
+\subsubsection{\texorpdfstring{get\+Environnement()}{getEnvironnement()}}
+{\footnotesize\ttfamily \hyperlink{classenvironnement_1_1_environnement}{Environnement} main.\+Main.\+get\+Environnement (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Getter de l\textquotesingle{}environnement \begin{DoxyReturn}{Returns}
+L\textquotesingle{}environnement 
+\end{DoxyReturn}
+\hypertarget{classmain_1_1_main_a1daa1d9376ab5764f820ee594ff537ce}{}\label{classmain_1_1_main_a1daa1d9376ab5764f820ee594ff537ce} 
+\index{main\+::\+Main@{main\+::\+Main}!get\+Graph@{get\+Graph}}
+\index{get\+Graph@{get\+Graph}!main\+::\+Main@{main\+::\+Main}}
+\subsubsection{\texorpdfstring{get\+Graph()}{getGraph()}}
+{\footnotesize\ttfamily \hyperlink{classgraphic_1_1_main}{graphic.\+Main} main.\+Main.\+get\+Graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Getter de l\textquotesingle{}interface graphique \begin{DoxyReturn}{Returns}
+L\textquotesingle{}interface graphique 
+\end{DoxyReturn}
+\hypertarget{classmain_1_1_main_aa0df4a294d402074303f47f1fd33a766}{}\label{classmain_1_1_main_aa0df4a294d402074303f47f1fd33a766} 
+\index{main\+::\+Main@{main\+::\+Main}!get\+Jewel\+State@{get\+Jewel\+State}}
+\index{get\+Jewel\+State@{get\+Jewel\+State}!main\+::\+Main@{main\+::\+Main}}
+\subsubsection{\texorpdfstring{get\+Jewel\+State()}{getJewelState()}}
+{\footnotesize\ttfamily boolean main.\+Main.\+get\+Jewel\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Getter de l\textquotesingle{}état de bijou de la cellule courante du robot \begin{DoxyReturn}{Returns}
+Si la cellule possède un bijou 
+\end{DoxyReturn}
+\hypertarget{classmain_1_1_main_afa1c1d8de2dbeb639cf157413f82aec2}{}\label{classmain_1_1_main_afa1c1d8de2dbeb639cf157413f82aec2} 
+\index{main\+::\+Main@{main\+::\+Main}!get\+Robot@{get\+Robot}}
+\index{get\+Robot@{get\+Robot}!main\+::\+Main@{main\+::\+Main}}
+\subsubsection{\texorpdfstring{get\+Robot()}{getRobot()}}
+{\footnotesize\ttfamily \hyperlink{class_i_a_1_1_bender}{Bender} main.\+Main.\+get\+Robot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Getter pour le robot \begin{DoxyReturn}{Returns}
+Le robot 
+\end{DoxyReturn}
+\hypertarget{classmain_1_1_main_a5052a776c99a2dadce1fe83501e5860e}{}\label{classmain_1_1_main_a5052a776c99a2dadce1fe83501e5860e} 
+\index{main\+::\+Main@{main\+::\+Main}!is\+Cell\+Enabled@{is\+Cell\+Enabled}}
+\index{is\+Cell\+Enabled@{is\+Cell\+Enabled}!main\+::\+Main@{main\+::\+Main}}
+\subsubsection{\texorpdfstring{is\+Cell\+Enabled()}{isCellEnabled()}}
+{\footnotesize\ttfamily boolean main.\+Main.\+is\+Cell\+Enabled (\begin{DoxyParamCaption}\item[{\hyperlink{classenvironnement_1_1_cell}{Cell}}]{c }\end{DoxyParamCaption})}
+
+Méthode appelée par le robot pour savoir si une cellule est valable Cette méthode traduit les coordonnées exprimées par le robot en coordonnées réelles pour l\textquotesingle{}environnement 
+\begin{DoxyParams}{Parameters}
+{\em c} & La cellule souhaitée \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Si la cellule est valable 
+\end{DoxyReturn}
+\hypertarget{classmain_1_1_main_ab607ced846a257d28e8f81d1820d587c}{}\label{classmain_1_1_main_ab607ced846a257d28e8f81d1820d587c} 
+\index{main\+::\+Main@{main\+::\+Main}!main@{main}}
+\index{main@{main}!main\+::\+Main@{main\+::\+Main}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily static void main.\+Main.\+main (\begin{DoxyParamCaption}\item[{String \mbox{[}$\,$\mbox{]}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Fonction appelée au lancement du programme Construit un \hyperlink{classmain_1_1_main}{Main} ce qui a pour effet de lancer le programme 
+\begin{DoxyParams}{Parameters}
+{\em args} & Paramètres d\textquotesingle{}appels \\
+\hline
+\end{DoxyParams}
+\hypertarget{classmain_1_1_main_a007a1feb59e43e37f32b6d8625664986}{}\label{classmain_1_1_main_a007a1feb59e43e37f32b6d8625664986} 
+\index{main\+::\+Main@{main\+::\+Main}!pick@{pick}}
+\index{pick@{pick}!main\+::\+Main@{main\+::\+Main}}
+\subsubsection{\texorpdfstring{pick()}{pick()}}
+{\footnotesize\ttfamily void main.\+Main.\+pick (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Le robot prend un bijou présent sur la cellule \hypertarget{classmain_1_1_main_a4fe27a92bfb4ab6b91100b78d5e60984}{}\label{classmain_1_1_main_a4fe27a92bfb4ab6b91100b78d5e60984} 
+\index{main\+::\+Main@{main\+::\+Main}!set\+Dust\+Prob@{set\+Dust\+Prob}}
+\index{set\+Dust\+Prob@{set\+Dust\+Prob}!main\+::\+Main@{main\+::\+Main}}
+\subsubsection{\texorpdfstring{set\+Dust\+Prob()}{setDustProb()}}
+{\footnotesize\ttfamily void main.\+Main.\+set\+Dust\+Prob (\begin{DoxyParamCaption}\item[{int}]{prob }\end{DoxyParamCaption})}
+
+Setter de la probabilité d\textquotesingle{}apparition de poussière 
+\begin{DoxyParams}{Parameters}
+{\em prob} & Nouvelle probabilité d\textquotesingle{}apparition de poussière \\
+\hline
+\end{DoxyParams}
+\hypertarget{classmain_1_1_main_aaf5877a75af1ae2d8f6e35ce6d624301}{}\label{classmain_1_1_main_aaf5877a75af1ae2d8f6e35ce6d624301} 
+\index{main\+::\+Main@{main\+::\+Main}!set\+Environnement@{set\+Environnement}}
+\index{set\+Environnement@{set\+Environnement}!main\+::\+Main@{main\+::\+Main}}
+\subsubsection{\texorpdfstring{set\+Environnement()}{setEnvironnement()}}
+{\footnotesize\ttfamily void main.\+Main.\+set\+Environnement (\begin{DoxyParamCaption}\item[{\hyperlink{classenvironnement_1_1_environnement}{Environnement}}]{a\+Environnement }\end{DoxyParamCaption})}
+
+Setter de l\textquotesingle{}environnement 
+\begin{DoxyParams}{Parameters}
+{\em a\+Environnement} & L\textquotesingle{}environnement \\
+\hline
+\end{DoxyParams}
+\hypertarget{classmain_1_1_main_a3cec64baca52714fb67467ec5d793249}{}\label{classmain_1_1_main_a3cec64baca52714fb67467ec5d793249} 
+\index{main\+::\+Main@{main\+::\+Main}!set\+Frequency@{set\+Frequency}}
+\index{set\+Frequency@{set\+Frequency}!main\+::\+Main@{main\+::\+Main}}
+\subsubsection{\texorpdfstring{set\+Frequency()}{setFrequency()}}
+{\footnotesize\ttfamily void main.\+Main.\+set\+Frequency (\begin{DoxyParamCaption}\item[{int}]{freq }\end{DoxyParamCaption})}
+
+Setter du temps inter boucle pour les générations de poussière et de bijoux 
+\begin{DoxyParams}{Parameters}
+{\em freq} & Le nouveau temps inter boucle \\
+\hline
+\end{DoxyParams}
+\hypertarget{classmain_1_1_main_ab5524b1612bb914ee34f0f0c6cc89a5f}{}\label{classmain_1_1_main_ab5524b1612bb914ee34f0f0c6cc89a5f} 
+\index{main\+::\+Main@{main\+::\+Main}!set\+Graph@{set\+Graph}}
+\index{set\+Graph@{set\+Graph}!main\+::\+Main@{main\+::\+Main}}
+\subsubsection{\texorpdfstring{set\+Graph()}{setGraph()}}
+{\footnotesize\ttfamily void main.\+Main.\+set\+Graph (\begin{DoxyParamCaption}\item[{\hyperlink{classgraphic_1_1_main}{graphic.\+Main}}]{graph }\end{DoxyParamCaption})}
+
+Setter de l\textquotesingle{}interface graphique 
+\begin{DoxyParams}{Parameters}
+{\em graph} & L\textquotesingle{}interface graphique \\
+\hline
+\end{DoxyParams}
+\hypertarget{classmain_1_1_main_a300ba85da3a72bc7ca9ad5f5b5a104ed}{}\label{classmain_1_1_main_a300ba85da3a72bc7ca9ad5f5b5a104ed} 
+\index{main\+::\+Main@{main\+::\+Main}!set\+Jewel\+Prob@{set\+Jewel\+Prob}}
+\index{set\+Jewel\+Prob@{set\+Jewel\+Prob}!main\+::\+Main@{main\+::\+Main}}
+\subsubsection{\texorpdfstring{set\+Jewel\+Prob()}{setJewelProb()}}
+{\footnotesize\ttfamily void main.\+Main.\+set\+Jewel\+Prob (\begin{DoxyParamCaption}\item[{int}]{prob }\end{DoxyParamCaption})}
+
+Setter de la probabilité d\textquotesingle{}apparition de bijoux 
+\begin{DoxyParams}{Parameters}
+{\em prob} & Nouvelle probabilité d\textquotesingle{}apparition de bijoux \\
+\hline
+\end{DoxyParams}
+\hypertarget{classmain_1_1_main_ab2bea62d3409f687309c3ce697825c63}{}\label{classmain_1_1_main_ab2bea62d3409f687309c3ce697825c63} 
+\index{main\+::\+Main@{main\+::\+Main}!set\+Robot@{set\+Robot}}
+\index{set\+Robot@{set\+Robot}!main\+::\+Main@{main\+::\+Main}}
+\subsubsection{\texorpdfstring{set\+Robot()}{setRobot()}}
+{\footnotesize\ttfamily void main.\+Main.\+set\+Robot (\begin{DoxyParamCaption}\item[{\hyperlink{class_i_a_1_1_bender}{Bender}}]{robot }\end{DoxyParamCaption})}
+
+Setter pour le robot 
+\begin{DoxyParams}{Parameters}
+{\em robot} & Le robot \\
+\hline
+\end{DoxyParams}
+\hypertarget{classmain_1_1_main_a95439ee2c099d18cc32c6ffd785540ab}{}\label{classmain_1_1_main_a95439ee2c099d18cc32c6ffd785540ab} 
+\index{main\+::\+Main@{main\+::\+Main}!suck@{suck}}
+\index{suck@{suck}!main\+::\+Main@{main\+::\+Main}}
+\subsubsection{\texorpdfstring{suck()}{suck()}}
+{\footnotesize\ttfamily void main.\+Main.\+suck (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Le robot aspire tous les objets présents sur la cellule courante \hypertarget{classmain_1_1_main_a676892cd2586d3b8d20e05451f306fba}{}\label{classmain_1_1_main_a676892cd2586d3b8d20e05451f306fba} 
+\index{main\+::\+Main@{main\+::\+Main}!update\+Conso@{update\+Conso}}
+\index{update\+Conso@{update\+Conso}!main\+::\+Main@{main\+::\+Main}}
+\subsubsection{\texorpdfstring{update\+Conso()}{updateConso()}}
+{\footnotesize\ttfamily void main.\+Main.\+update\+Conso (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+Méthode appelée par le robot pour mettre à jour le niveau d\textquotesingle{}énergie consommé dans l\textquotesingle{}interface graphique 
+\begin{DoxyParams}{Parameters}
+{\em i} & Nouvelle valeur de la consommation en énergie \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+main/Main.\+java\end{DoxyCompactItemize}

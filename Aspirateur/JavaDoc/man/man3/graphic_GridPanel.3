@@ -1,0 +1,237 @@
+.TH "graphic.GridPanel" 3 "Thu Oct 6 2016" "Version 1.0" "IA-Aspirateur" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+graphic.GridPanel \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits JPanel\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBinitialize\fP (\fBgraphic\&.Main\fP main)"
+.br
+.ti -1c
+.RI "void \fBaddJ\fP (int x, int y)"
+.br
+.ti -1c
+.RI "void \fBdelJ\fP (int x, int y)"
+.br
+.ti -1c
+.RI "void \fBaddD\fP (int x, int y)"
+.br
+.ti -1c
+.RI "void \fBdelD\fP (int x, int y)"
+.br
+.ti -1c
+.RI "void \fBaddR\fP (int x, int y)"
+.br
+.ti -1c
+.RI "void \fBdelR\fP (int x, int y)"
+.br
+.ti -1c
+.RI "void \fBmvtR\fP (int exX, int exY, int x, int y)"
+.br
+.ti -1c
+.RI "int \fBnumCompo\fP (int x, int y)"
+.br
+.ti -1c
+.RI "\fBCellPane\fP \fBcreaCell\fP (int numCell, int x, int y)"
+.br
+.ti -1c
+.RI "Border \fBfBord\fP (int numCell)"
+.br
+.ti -1c
+.RI "\fBgraphic\&.Main\fP \fBgetMain\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetMain\fP (\fBgraphic\&.Main\fP main)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int [] \fBetat\fP = new int[11]"
+.br
+.ti -1c
+.RI "boolean \fBrobot\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Classe représentant la grille de l'interface graphique 
+.PP
+\fBAuthor:\fP
+.RS 4
+Maxime 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void graphic\&.GridPanel\&.addD (int x, int y)"
+Méthode qui ajoute de la poussière en position passé en paramètre 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP = la colonne 
+.br
+\fIy\fP = la ligne 
+.RE
+.PP
+
+.SS "void graphic\&.GridPanel\&.addJ (int x, int y)"
+méthode qui permet d'ajouter un bijou en position x et y 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP = la colonne où placer le bijou 
+.br
+\fIy\fP = la ligne où placer le bijou 
+.RE
+.PP
+
+.SS "void graphic\&.GridPanel\&.addR (int x, int y)"
+Méthode permettant d'ajouter le robot suivant les coordonnées passées en paramètre 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP = la colonne 
+.br
+\fIy\fP = la ligne 
+.RE
+.PP
+
+.SS "\fBCellPane\fP graphic\&.GridPanel\&.creaCell (int numCell, int x, int y)"
+Méthode pour créer une cellule 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInumCell\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+la cellule créée 
+.RE
+.PP
+
+.SS "void graphic\&.GridPanel\&.delD (int x, int y)"
+Méthode permettant d'enlever une poussière suivant les coordonnées passées en paramètre 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP = la colonne 
+.br
+\fIy\fP = la ligne 
+.RE
+.PP
+
+.SS "void graphic\&.GridPanel\&.delJ (int x, int y)"
+Méthode qui permet d'enlever un bijou en position x,y 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP = la colonne 
+.br
+\fIy\fP = la ligne 
+.RE
+.PP
+
+.SS "void graphic\&.GridPanel\&.delR (int x, int y)"
+Méthode permettant d'enlever le robot suivant les coordonnées passées en paramètre 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP = la colonne 
+.br
+\fIy\fP = la ligne 
+.RE
+.PP
+
+.SS "Border graphic\&.GridPanel\&.fBord (int numCell)"
+Méthode qui permet suivant la cellule crééer la bordure de cette dernière 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInumCell\fP = le numéro de la cellule 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+retourne la bonne bordure de la cellule 
+.RE
+.PP
+
+.SS "\fBgraphic\&.Main\fP graphic\&.GridPanel\&.getMain ()"
+Getter du main du package graphic 
+.PP
+\fBReturns:\fP
+.RS 4
+the main 
+.RE
+.PP
+
+.SS "void graphic\&.GridPanel\&.initialize (\fBgraphic\&.Main\fP main)"
+Méthode principale de la classe qui initialise la grille\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImain\fP 
+.RE
+.PP
+
+.SS "void graphic\&.GridPanel\&.mvtR (int exX, int exY, int x, int y)"
+Méthode permettant de déplacer le robot sur la grille 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexX\fP ancienne coordonnée x du robot (colonne) 
+.br
+\fIexY\fP ancienne coordonnée y du robot (ligne) 
+.br
+\fIx\fP nouvelle coordonnée x du robot (colonne) 
+.br
+\fIy\fP nouvelle coordonnée y du robot (ligne) 
+.RE
+.PP
+
+.SS "int graphic\&.GridPanel\&.numCompo (int x, int y)"
+Méthode qui retourne le numéro de la cellule en fonction de X et Y 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP = la colonne 
+.br
+\fIy\fP = la ligne 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+= le numéro du cellule 
+.RE
+.PP
+
+.SS "void graphic\&.GridPanel\&.setMain (\fBgraphic\&.Main\fP main)"
+Setter du main du package graphic 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImain\fP the main to set 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "int [] graphic\&.GridPanel\&.etat = new int[11]"
+Tableau qui contient l'état des 11 cellules de la grille état d'une cellule correspon à son contenu, elle peut contenir de la poussière, des bijoux et/ou le robot l'état d'une cellule va de 0 à 7 B = Bijou, R=Robot, P=Poussière, / = vide 0 = /,/,/ 1 = /,/,P 2 = /,R,/ 3 = /,R,P 4 = B,/,/ 5 = B,/,P 6 = B,R,/ 7 = B,R,P 
+.SS "boolean graphic\&.GridPanel\&.robot"
+booléan qui informe si il y'a un robot sur la grille True = il y a un robot False = il n'y a pas de robot 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IA-Aspirateur from the source code\&.

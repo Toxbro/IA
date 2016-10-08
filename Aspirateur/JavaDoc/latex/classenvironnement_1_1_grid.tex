@@ -1,0 +1,72 @@
+\hypertarget{classenvironnement_1_1_grid}{}\section{environnement.\+Grid Class Reference}
+\label{classenvironnement_1_1_grid}\index{environnement.\+Grid@{environnement.\+Grid}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classenvironnement_1_1_grid_a1757a9849685f20e0bb3bd84a3cf9cb7}{Grid} ()
+\item 
+\hyperlink{classenvironnement_1_1_cell}{Cell} \hyperlink{classenvironnement_1_1_grid_a81df13c46a58ff1f2accb6debafcced7}{get\+Cell} (int r, int c)
+\item 
+Array\+List$<$ \hyperlink{classenvironnement_1_1_cell}{Cell} $>$ \hyperlink{classenvironnement_1_1_grid_abaf214d02e4a27765bb266d5e46741de}{get\+Cells} ()
+\item 
+void \hyperlink{classenvironnement_1_1_grid_a1ea7cb1aa53fa6c45291ad29349731b2}{set\+Cells} (Array\+List$<$ \hyperlink{classenvironnement_1_1_cell}{Cell} $>$ cells)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe représentant la grille de l\textquotesingle{}environnement \begin{DoxyAuthor}{Author}
+Thomas 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classenvironnement_1_1_grid_a1757a9849685f20e0bb3bd84a3cf9cb7}{}\label{classenvironnement_1_1_grid_a1757a9849685f20e0bb3bd84a3cf9cb7} 
+\index{environnement\+::\+Grid@{environnement\+::\+Grid}!Grid@{Grid}}
+\index{Grid@{Grid}!environnement\+::\+Grid@{environnement\+::\+Grid}}
+\subsubsection{\texorpdfstring{Grid()}{Grid()}}
+{\footnotesize\ttfamily environnement.\+Grid.\+Grid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructeur de la grille X \+: 0 1 2 3 4 Y \+: 0 $\vert$ $\vert$ $\vert$ $\vert$ 1 $\vert$ $\vert$ $\vert$ $\vert$ $\vert$ $\vert$ 2 $\vert$ $\vert$ $\vert$ $\vert$ Crée toutes les cellules nécessaires et mets les cellules situées en \mbox{[}0;3\mbox{]}, \mbox{[}0;4\mbox{]}, \mbox{[}2;3\mbox{]} et \mbox{[}2;4\mbox{]} en non valable 
+
+\subsection{Member Function Documentation}
+\hypertarget{classenvironnement_1_1_grid_a81df13c46a58ff1f2accb6debafcced7}{}\label{classenvironnement_1_1_grid_a81df13c46a58ff1f2accb6debafcced7} 
+\index{environnement\+::\+Grid@{environnement\+::\+Grid}!get\+Cell@{get\+Cell}}
+\index{get\+Cell@{get\+Cell}!environnement\+::\+Grid@{environnement\+::\+Grid}}
+\subsubsection{\texorpdfstring{get\+Cell()}{getCell()}}
+{\footnotesize\ttfamily \hyperlink{classenvironnement_1_1_cell}{Cell} environnement.\+Grid.\+get\+Cell (\begin{DoxyParamCaption}\item[{int}]{r,  }\item[{int}]{c }\end{DoxyParamCaption})}
+
+Getter d\textquotesingle{}une cellule précise dans la grille 
+\begin{DoxyParams}{Parameters}
+{\em r} & Ligne de la cellule souhaitée \\
+\hline
+{\em c} & Colonne de la cellule souhaitée \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La cellule souhaitée si existante null sinon 
+\end{DoxyReturn}
+\hypertarget{classenvironnement_1_1_grid_abaf214d02e4a27765bb266d5e46741de}{}\label{classenvironnement_1_1_grid_abaf214d02e4a27765bb266d5e46741de} 
+\index{environnement\+::\+Grid@{environnement\+::\+Grid}!get\+Cells@{get\+Cells}}
+\index{get\+Cells@{get\+Cells}!environnement\+::\+Grid@{environnement\+::\+Grid}}
+\subsubsection{\texorpdfstring{get\+Cells()}{getCells()}}
+{\footnotesize\ttfamily Array\+List$<$\hyperlink{classenvironnement_1_1_cell}{Cell}$>$ environnement.\+Grid.\+get\+Cells (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Getter de toutes les cellules présentes dans la grille \begin{DoxyReturn}{Returns}
+Les cellules de la grille 
+\end{DoxyReturn}
+\hypertarget{classenvironnement_1_1_grid_a1ea7cb1aa53fa6c45291ad29349731b2}{}\label{classenvironnement_1_1_grid_a1ea7cb1aa53fa6c45291ad29349731b2} 
+\index{environnement\+::\+Grid@{environnement\+::\+Grid}!set\+Cells@{set\+Cells}}
+\index{set\+Cells@{set\+Cells}!environnement\+::\+Grid@{environnement\+::\+Grid}}
+\subsubsection{\texorpdfstring{set\+Cells()}{setCells()}}
+{\footnotesize\ttfamily void environnement.\+Grid.\+set\+Cells (\begin{DoxyParamCaption}\item[{Array\+List$<$ \hyperlink{classenvironnement_1_1_cell}{Cell} $>$}]{cells }\end{DoxyParamCaption})}
+
+Setter de toutes les cellules présentes dans la grille 
+\begin{DoxyParams}{Parameters}
+{\em cells} & Les cellules de la grille \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+environnement/Grid.\+java\end{DoxyCompactItemize}
